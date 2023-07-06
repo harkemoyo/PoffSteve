@@ -218,15 +218,15 @@ console.log(StudentRollNo);
 
 // scope
 
-const print = () => {
-  for (var i = 0; i < 4; i++){
-      setTimeout(() => {
-          console.log(i);
-      }, i*1000);//i is closure
-  }
-}
+// const print = () => {
+//   for (var i = 0; i < 4; i++){
+//       setTimeout(() => {
+//           console.log(i);
+//       }, i*1000);//i is closure
+//   }
+// }
 
-print();
+// print();
 
 
 // callback function
@@ -234,7 +234,7 @@ print();
 const mainFunction = (callback) => {
   setTimeout(() => {
       callback([2, 3, 4]);
-  }, 2000)
+  }, 10000)
 }
 
 // Add function
@@ -249,3 +249,24 @@ const add = (array) => {
 // Calling main function
 mainFunction(add);
    
+
+// callback Hell
+let words = document.querySelectorAll(".word");
+ 
+const animateAll = (animate) => {
+    setTimeout(() => {
+        animate(words[0]);
+        setTimeout(() => {
+            animate(words[1]);
+            setTimeout(() => {
+                animate(words[2]);
+            }, 1000)
+        }, 1000)
+    }, 1000)
+}
+
+const animate = (word) => {
+    word.classList.add("animate");
+}
+
+animateAll(animate);
