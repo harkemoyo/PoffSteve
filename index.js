@@ -270,3 +270,44 @@ const animate = (word) => {
 }
 
 animateAll(animate);
+
+
+// Block scope
+
+function sayHello() {
+  let name = "Hark"; // Function variable
+
+  if (true) {
+      let message = "Hello"; // Block variable
+      console.log(message + " " + name); 
+      // Output: "Hello John"
+  }
+
+  // console.log(message); 
+  // Output: Uncaught ReferenceError: 
+  // message is not defined
+}
+
+sayHello();
+
+// lexical scope
+// function myName(){
+//   let mark = "Hark"
+//   function greeting(){
+//     console.log(`Hi ${mark}`);
+//   }
+//   greeting()
+// }
+// myName()
+
+
+// lexical scope in setTimeout
+let obj = {
+  name: "Rob",
+  print() {
+  setTimeout(() => {
+    console.log(this.name)
+  }, 1000);
+}
+};
+print()

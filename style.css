@@ -1,0 +1,30 @@
+* {
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 95vh;
+}
+.container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+.word {
+    color: #308d46;
+    font-size: 4rem;
+    transition: all .5s ease-in;
+    margin: 0 5px;
+    transform: translateY(3.8rem);
+    opacity: 0;
+}
+
+.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
