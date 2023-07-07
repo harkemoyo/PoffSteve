@@ -322,7 +322,68 @@ function func() {
   let str = 'It is Saba Saba Day.'
 
   // Splitting up to 2 terms
-  let array = str.split(", ",9);
+  let array = str.split(" ", 4);
   console.log(array);
 }
 func();
+
+// Join () method
+
+let a = [1, 2, 3, 4, 5, 6];
+console.log(a.join(' '));
+//  new keyword
+
+class ready {
+  constructor() {
+    this.c = 1
+    this.a = 100
+  }
+}
+
+// Set the function prototype
+ready.prototype.b = 200;
+
+// Create an object
+let obj = new ready();
+
+// Display the result on console
+console.log(obj.c);
+
+console.log(obj.b);
+
+
+// This keyWord using call(),bind() and apply() methods
+
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person2 = {
+  firstName:"William",
+  lastName: "Kalibo",
+}
+console.log(person1.fullName.call(person2));
+
+
+
+// bind()
+// function Borrowing
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Wiz",
+  lastName: "Kizo",
+}
+
+const fullName = person.fullName.bind(member);
+console.log(fullName());
+
+
