@@ -322,8 +322,12 @@ function func() {
   let str = 'It is Saba Saba Day.'
 
   // Splitting up to 2 terms
-  let array = str.split(" ", 4);
-  console.log(array);
+  // After split it can take in any array method
+  str.split('').forEach((element,index,array)=>{
+      console.log(element)
+      
+  });
+ 
 }
 func();
 
