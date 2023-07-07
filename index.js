@@ -251,12 +251,13 @@ mainFunction(add);
    
 
 // callback Hell
+// hoisting in this because it is an arrow function
 let words = document.querySelectorAll(".word");
- 
+
 const animateAll = (animate) => {
-    setTimeout(() => {
+    setTimeout(function(){
         animate(words[0]);
-        setTimeout(() => {
+        setTimeout(function() {
             animate(words[1]);
             setTimeout(() => {
                 animate(words[2]);
@@ -282,32 +283,46 @@ function sayHello() {
       console.log(message + " " + name); 
       // Output: "Hello John"
   }
-
-  // console.log(message); 
-  // Output: Uncaught ReferenceError: 
-  // message is not defined
 }
 
 sayHello();
 
-// lexical scope
+// lexical scope /in function
+
 // function myName(){
 //   let mark = "Hark"
+ 
 //   function greeting(){
 //     console.log(`Hi ${mark}`);
 //   }
 //   greeting()
+  
 // }
 // myName()
 
 
-// lexical scope in setTimeout
-let obj = {
-  name: "Rob",
-  print() {
-  setTimeout(() => {
-    console.log(this.name)
-  }, 1000);
+// lexical scope in setTimeout/arrow function
+
+// let obj = {
+//   name: "Rob",
+//   print() {
+//   setTimeout(() => {
+//     console.log(this.name)
+//   }, 100);
+// }
+// };
+// window.print()
+
+// Split() and Join()
+// split => Is turning strings into array of strings using substrings with specified operator you provide in the argument
+// substrings => Are strings inside a string. Depending on which index you start and end
+function func() {
+ 
+  // Original string
+  let str = 'It is Saba Saba Day.'
+
+  // Splitting up to 2 terms
+  let array = str.split(", ",9);
+  console.log(array);
 }
-};
-print()
+func();

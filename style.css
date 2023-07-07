@@ -20,7 +20,7 @@ body {
     font-size: 4rem;
     transition: all .5s ease-in;
     margin: 0 5px;
-    transform: translateY(3.8rem);
+    transform: translateY(2.8rem);
     opacity: 0;
 }
 
