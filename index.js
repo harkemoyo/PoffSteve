@@ -323,7 +323,7 @@ function func() {
 
   // Splitting up to 2 terms
   // After split it can take in any array method
-  str.split('').forEach((element,index,array)=>{
+  str.split(' ').forEach((element,index,array)=>{
       console.log(element)
       
   });
