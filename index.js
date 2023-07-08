@@ -368,7 +368,8 @@ const person2 = {
   firstName:"William",
   lastName: "Kalibo",
 }
-console.log(person1.fullName.call(person2));
+const copy = person1.fullName.apply(person2)
+console.log(copy);
 
 
 
