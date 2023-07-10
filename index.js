@@ -493,6 +493,8 @@ func();
 
 let strinIcd = "Can you recieve that call it's from Hark man."
 let gold = strinIcd.split(" ")
-console.log(gold[7]);
-const incde = strinIcd.includes('Hark')
+
+ console.log(gold);
+const incde = gold.includes('Hark',)
+// console.log(gold);
 console.log(incde);
