@@ -185,6 +185,8 @@ numbers.forEach(number => {
 
 //    forEach in 
 let Form2Student = ['mark', 'john', 'peter','mercy','Haron','Mecury', 'Venus']
+// let Value = Form2Student.join('')
+// console.log(Value);
    Form2Student.forEach((item,index, array) => {
     console.log(item); //( callback  )
     console.log(index) //( optional  )
@@ -466,3 +468,31 @@ const sumWithInitial = array1.reduce(
 console.log(sumWithInitial);
 
 // Expected output: 10
+
+// Array concat
+// joining two arrays
+function func() {
+  
+  // Original string
+  let num = [1, 3, 55.70, 50 ,23, 67,16,]
+  let nmu2 = [1, 3, 55.70, 50 ,23, 67,16,]
+  let num3 =[1, 3, 55.70, 50 ,23, 67,16,]
+
+
+  // Joining the strings together
+  let numValue = num.concat(nmu2,num3)
+  let str = 'It';
+  let value = str.concat(' is', ' a', ' great', ' day.');
+  console.log(numValue)
+  console.log(value);
+}
+
+func();
+
+//  include();
+
+let strinIcd = "Can you recieve that call it's from Hark man."
+let gold = strinIcd.split(" ")
+console.log(gold[7]);
+const incde = strinIcd.includes('Hark')
+console.log(incde);
