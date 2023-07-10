@@ -209,7 +209,7 @@ let StudentRollNo = [];
   
 Students.forEach(function (item) {
     StudentRollNo.push(item.rollNo);
-    StudentRollNo.push(item.name);
+    // StudentRollNo.push(item.name);
 });
   
 // Display rollNo data
@@ -323,18 +323,21 @@ function func() {
 
   // Splitting up to 2 terms
   // After split it can take in any array method
-  str.split('').forEach((element,index,array)=>{
-      console.log(element)
+  const strCopy = str.split(" ")
+  const join = strCopy.join(" ")
+
+  //.forEach((element,index,array)=>{
+      console.log('split:',strCopy)
+      console.log('join:', join);
       
-  });
+  // });
  
 }
 func();
 
 // Join () method
 
-let a = [1, 2, 3, 4, 5, 6];
-console.log(a.join(' '));
+
 //  new keyword
 
 class ready {
@@ -392,3 +395,74 @@ const fullName = person.fullName.bind(member);
 console.log(fullName());
 
 
+// map()method
+
+let map1 = new Map();
+  
+map1.set("first name", "sumit");
+map1.set("last name", "ghosh");
+map1.set("website", "geeksforgeeks")
+    .set("friend 1","gourav")
+    .set("friend 2","sourav");
+  
+console.log(map1);
+      
+console.log("map1 has website ? "+ 
+                    map1.has("website"));
+  
+console.log("map1 has friend 3 ? " + 
+                    map1.has("friend 3"));
+  
+console.log("get value for key website "+
+                    map1.get("website"));
+  
+console.log("get value for key friend 3 "+
+                    map1.get("friend 3"));
+console.log("delete element with key website " 
+                    + map1.delete("website"));
+      
+console.log("map1 has website ? "+ 
+                    map1.has("website"));
+  
+console.log("delete element with key website " +
+                    map1.delete("friend 3"));
+  
+map1.clear();
+  
+console.log(map1);
+
+// filter method 
+
+const ages = [32, 15, 60, 33, 16, 40];
+const result = ages.filter(checkAdult);
+
+
+
+function checkAdult(age) {
+  
+  // return age >= 18;
+
+  // Return Even numbers
+  return age%2 === 0
+
+  // Returning oddNumbers
+//  return age & 1
+}
+
+console.log(result)
+
+
+// Array reduce
+const array1 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+const initialValue = 10;
+const sumWithInitial = array1.reduce(
+  (array1,currentValue) => array1 + currentValue,
+  initialValue
+  
+);
+
+console.log(sumWithInitial);
+
+// Expected output: 10
