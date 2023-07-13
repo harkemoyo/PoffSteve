@@ -176,46 +176,46 @@ const numbers = [22, 3, 4, 10, 45];
 
 numbers.forEach(number => {
     if (number === 45) {
-      console.log("terminate the current loop");
-      return false;
+      // console.log("terminate the current loop");
+      return true;
     }
     console.log(number);
    });
 
 
 //    forEach in 
-let Form2Student = ['mark', 'john', 'peter','mercy','Haron','Mecury', 'Venus']
-// let Value = Form2Student.join('')
-// console.log(Value);
-   Form2Student.forEach((item,index, array) => {
-    console.log(item); //( callback  )
-    console.log(index) //( optional  )
-    console.log(array) //( optional  )
+// let Form2Student = ['mark', 'john', 'peter','mercy','Haron','Mecury', 'Venus']
+// // let Value = Form2Student.join('')
+// // console.log(Value);
+//    Form2Student.forEach((item,index, array) => {
+//     console.log(item); //( callback  )
+//     console.log(index) //( optional  )
+//     console.log(array) //( optional  )
   
-  });
+//   });
   
    
 // importance of forEach in object
 
 // Data set of students
-let Students = [
-    { rollNo: 21, name: 'Alpha' },
-    { rollNo: 22, name: 'Beta' },
-    { rollNo: 23, name: 'Gamma' },
-    { rollNo: 24, name: 'Delta' },
-    { rollNo: 25, name: 'Omega'}
-];
+// let Students = [
+//     { rollNo: 21, name: 'Alpha' },
+//     { rollNo: 22, name: 'Beta' },
+//     { rollNo: 23, name: 'Gamma' },
+//     { rollNo: 24, name: 'Delta' },
+//     { rollNo: 25, name: 'Omega'}
+// ];
   
-// Use forEach() function
-let StudentRollNo = [];
+// // Use forEach() function
+// let StudentRollNo = [];
   
-Students.forEach(function (item) {
-    StudentRollNo.push(item.rollNo);
-    // StudentRollNo.push(item.name);
-});
+// Students.forEach(function (item) {
+//     StudentRollNo.push(item.rollNo);
+//     // StudentRollNo.push(item.name);
+// });
   
 // Display rollNo data
-console.log(StudentRollNo);
+// console.log(StudentRollNo);
 
 
 // scope
@@ -233,23 +233,23 @@ console.log(StudentRollNo);
 
 // callback function
 // Main function
-const mainFunction = (callback) => {
-  setTimeout(() => {
-      callback([2, 3, 4]);
-  }, 10000)
-}
+// const mainFunction = (callback) => {
+//   setTimeout(() => {
+//       callback([2, 3, 4]);
+//   }, 10000)
+// }
 
-// Add function
-const add = (array) => {
-  let sum = 0;
-  for(let i of array) {
-      sum += i;
-  }
-  console.log(sum);
-}
+// // Add function
+// const add = (array) => {
+//   let sum = 0;
+//   for(let i of array) {
+//       sum += i;
+//   }
+//   console.log(sum);
+// }
 
-// Calling main function
-mainFunction(add);
+// // Calling main function
+// mainFunction(add);
    
 
 // callback Hell
@@ -442,7 +442,7 @@ const result = ages.filter(checkAdult);
 
 function checkAdult(age) {
   
-  // return age >= 18;
+  return age >= 18;
 
   // Return Even numbers
   return age%2 === 0
@@ -454,18 +454,71 @@ function checkAdult(age) {
 console.log(result)
 
 
+let ageSum =  []
+for (let i = 0; i < ages.length; i++) {
+  if (ages[i] >= 21 ){
+    ageSum.push("print ages",ages[i])
+  }
+  
+}
+console.log(ageSum);
+// // using foreach in filters
+// ages.forEach((element)=>{
+// if (element >= 21)
+  
+//     ageSum.push(element)
+
+// })
+// console.log('Wow!:',ageSum)
+
+
+// using arrow func in filter
+const arrow = ages.filter(age => age >= 21)
+console.log(arrow);
+
+// array find()
+
+// Input array contain some elements.
+let array = [10, 20, 30, 40, 50];
+ 
+// condition
+let found = array.find(function (element) {
+    return element > 20;
+});
+ 
+console.log("find",found);
+
+// function sum(x, y, z) {
+//   return x + y + z;
+// }
+
+// const cookies = [1, 2, 3];
+
+// // console.log(sum(''...cookies));
+// // Expected output: 6
+
+// console.log(sum.apply(null, numbers));
+
+
 // Array reduce
 const array1 = [1, 2, 3, 4];
 
 // 0 + 1 + 2 + 3 + 4
-const initialValue = 10;
-const sumWithInitial = array1.reduce(
-  (array1,currentValue) => array1 + currentValue,
-  initialValue
+let initialValue = 0;
+// const sumWithInitial = array1.reduce(
+//   (array1,currentValue) => array1 + currentValue,
+//   initialValue
   
-);
+// );
 
-console.log(sumWithInitial);
+// console.log(sumWithInitial);
+
+// for loop 
+for (let i = 0; i < array1.length; i++) {
+  initialValue += array1[i];
+
+}
+console.log('forloop',initialValue);
 
 // Expected output: 10
 
@@ -489,12 +542,258 @@ function func() {
 
 func();
 
+
 //  include();
 
-let strinIcd = "Can you recieve that call it's from Hark man."
+let strinIcd = "Can you , recieve that call it's from Hark man."
 let gold = strinIcd.split(" ")
 
  console.log(gold);
-const incde = gold.includes('Hark',)
+const incde = gold.includes(",");
 // console.log(gold);
-console.log(incde);
+console.log('includes', incde)
+
+// Array reduce
+let num = [1, 3, 55.70, 50 ,23, 67,16,]
+const sumI = num.reduce(
+  function(accumulator, value){
+    // what is accumulated  to give to another 
+    console.log(accumulator, value);
+return accumulator + value
+  }, 0)
+console.log("reduce",sumI)
+// for loop
+let valueFirst = 0
+for(let i = 0; i < num.length; i++){
+ valueFirst += num[i]
+}
+console.log("for loop:",valueFirst);
+
+// forEach
+//  num.forEach(
+//   valueFirst.push(num)
+//  )
+  
+ 
+// // console.log(valueFirst);
+// })
+console.log("foreach",sumI)
+
+let dom = ['mark', 'john', 'peter','mercy','Haron','Mecury','Alan', 'Venus','Don']
+const condition = dom.reduce(function(first, initial){
+
+// comparing to sort the array string alphabetically
+
+console.log("compare",first, 'to',initial);
+
+ return (first < initial)? first : initial;
+},"\u0434")
+console.log('condition',condition);
+
+// some ()
+
+// making the code DRY
+const some1 = [33,2, 30, 18, 20];
+
+const available2 = some1.some(function(element){ 
+  return element >= 3
+})
+  
+
+console.log("available2",available2)
+
+
+
+
+// const some1 = [3, 10, 18, 20];
+
+// const available2 = some1.some(checkAdult)
+// function checkAdult(age) {
+//   return age >= 20;
+// }
+// console.log(available2)
+
+// forloop some
+
+// const some1 = [3, 10, 18, 20];
+
+// const available2 = some1.some(
+//   function(){
+
+//   for (let i = 0; i < some1.length; i++) {
+
+//  if( some1[i] >= 20){
+//   return true;
+//  }
+//   }
+// }
+// );
+// console.log(available2);
+
+
+// forEach some
+
+// const some1 = [3, 10, 18, 20];
+
+// // This variable checks whether the loop is true or false. 
+// let isGreaterThanOrEqualTo20 = false;
+
+// let available2 = some1.some(function() {
+//   some1.forEach(function(numbers) {
+//     if (numbers >= 20) {
+//      isGreaterThanOrEqualTo20 = true;
+//     }
+//   });
+//   return isGreaterThanOrEqualTo20;
+// });
+
+// console.log(available2); // Output: true
+
+
+// Converting for loop to forEach
+// const items = ["item1", "item2", "item3"];
+// const copyItems = [];
+
+// // before
+// // for (let i = 0; i < items.length; i++) {
+// //   copyItems.push(items[i]);
+
+// // }
+// // console.log(copyItems);
+// // after
+// items.forEach(function(item){
+//   copyItems.push(item);
+// });
+
+// console.log(copyItems);
+
+
+
+// Reduce array method
+
+
+const People = [
+  {
+    name: "John Smith",
+    age: 30
+  },
+  {
+    name: "William Lane",
+    age: 25
+  },
+  {
+    name: "Michael vonder",
+    age: 19
+  }
+];
+
+const oldAge = People.reduce((acc, curr) => {
+  if (curr.age > acc) {
+    return curr.age;
+  }
+  return acc;
+}, 0);
+
+console.log(oldAge); // Output: 30
+
+
+// const initialName = People.reduce((acc, curr, i ,  a) => { 
+//   const split = curr.name.split(" ");
+//   let initial = split[0];
+// })
+
+
+
+// every () method
+const evey = [3, 30, 18, 20, 41];
+
+let every = evey.every(function (mute){
+  return mute <= 40;
+//   for (let i = 0; i < evey.length; i++){
+//   if (evey[i] >= 4){
+//     return true;
+//   }else{
+//     return false;
+//   }
+  
+// }
+
+});
+
+console.log("every",every); // Output:false
+
+
+
+// console.log(every);
+
+
+// combining arrays methods
+// find all the names of people with @replicant.io
+let people = [
+  {"id":123, "name":"Rick Deckard", "email":"rick@bladerunner.org"},
+  {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
+  {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
+  {"id":258, "name":"Pris", "email":"pris@replicant.io"}
+];
+// filter
+let replicant = people.filter(function(person){
+  return person.email.indexOf("@replicant.io") > -1;
+} )
+
+// using map
+let name1 = replicant.map(function(person){
+  return person.name;
+})
+console.log(name1);
+
+// chaining the Arrays 
+let replicantsNames = people.filter(function(person){
+  return person.email.indexOf("@replicant.io") > -1;
+}).map(function(person){ return person.name}).sort()
+
+
+console.log("combinned:", replicantsNames );
+
+
+// Arrow function
+
+let arrowF = people.filter( (person) => ( person.email.indexOf("@replicant.io") > -1 ) ).map( (person) => (person.name) ).sort().reverse()
+console.log( 'Arrow func:',arrowF);
+
+
+
+
+// Ajax Technology
+
+function showCountries(){
+
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://restcountries.com/v3.1/all', true);
+xhr.onload = function() {
+  if (xhr.status === 200) {
+      console.log('ok')
+      let countries= JSON.parse(this.response)
+      // console.log(countries);
+      // console.log(this.response)
+      countries.forEach(country =>{
+        const countryName = document.getElementById('country')
+         const userName = document.createElement('div')
+         userName.innerHTML = country.name;
+        const flagCountry = document.createElement('img')
+        console.log(flagCountry);
+           
+              flagCountry.src = country.flag
+
+              userName.appendChild(flagCountry)
+             countryName.appendChild(userName)
+             
+            });
+};
+};
+xhr.onerror = function() {
+  console.error('An error occurred while making the request.');
+};
+xhr.send();
+}
