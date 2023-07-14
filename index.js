@@ -482,11 +482,11 @@ console.log(arrow);
 let array = [10, 20, 30, 40, 50];
  
 // condition
-let found = array.find(function (element) {
-    return element > 20;
+let found = array.filter(function (element) {
+    return element > 60;
 });
  
-console.log("find",found);
+console.log("find - f",found);
 
 // function sum(x, y, z) {
 //   return x + y + z;
@@ -763,37 +763,163 @@ console.log( 'Arrow func:',arrowF);
 
 
 
-// Ajax Technology
-
+// // Ajax Technology
+const btn = document.getElementById('btn');
+btn.addEventListener('click', showCountries);
 function showCountries(){
 
 
-let xhr = new XMLHttpRequest();
+// let xhr = new XMLHttpRequest();
 
-xhr.open('GET', 'https://restcountries.com/v3.1/all', true);
-xhr.onload = function() {
-  if (xhr.status === 200) {
-      console.log('ok')
-      let countries= JSON.parse(this.response)
-      // console.log(countries);
-      // console.log(this.response)
-      countries.forEach(country =>{
-        const countryName = document.getElementById('country')
-         const userName = document.createElement('div')
-         userName.innerHTML = country.name;
-        const flagCountry = document.createElement('img')
-        console.log(flagCountry);
+// xhr.open('GET', 'https://restcountries.com/v3.1/all', true);
+// xhr.onload = function() {
+//   if (xhr.status === 200) {
+//       console.log('ok')
+//       let countries= JSON.parse(this.response)
+//       // console.log(countries);
+//       // console.log(this.response)
+//       countries.forEach(country =>{
+//         const countryName = document.getElementById('country')
+//          const userName = document.createElement('div')
+//          userName.innerHTML = country.name;
+//         const flagCountry = document.createElement('img')
+//         console.log(flagCountry);
            
-              flagCountry.src = country.flag
+//               flagCountry.src = country.flag
 
-              userName.appendChild(flagCountry)
-             countryName.appendChild(userName)
+//               userName.appendChild(flagCountry)
+//              countryName.appendChild(userName)
              
-            });
-};
-};
-xhr.onerror = function() {
-  console.error('An error occurred while making the request.');
-};
-xhr.send();
+//             });
+// };
+// };
+// xhr.onerror = function() {
+//   console.error('An error occurred while making the request.');
+// };
+// xhr.send();
+
+// fetch('https://restcountries.com/v3.1/all')
+// .then((response) => response.json())
+
+
+// .then(function(data) { 
+// data.forEach(function(country){
+
+//   const countryName = document.getElementById('country')
+//   console.log(countryName);
+//   const userName = document.createElement('div')
+//   const textH1 = document.createElement('h1')
+//   const textli = document.createElement('li')
+//   textli.textContent = country.id;
+//   userName.appendChild(textli);
+//   textH1.textContent = 'Proff'
+//   countryName.appendChild(textH1)
+//   // userName.innerHTML = country.name;
+//   const flagCountry = document.createElement('img')
+//   flagCountry.src = country.flag
+//   userName.appendChild(flagCountry)
+//   countryName.appendChild(userName)
+
+
+// })
+// })
+// }
+fetch('https://restcountries.com/v3.1/all')
+  .then((response) => response.json())
+  .then(function(data) {
+    data.forEach(function(country) {
+
+// DOM manipulation
+      // Creating Element for DOM
+      const countryName = document.getElementById('country');
+      const userName = document.createElement('div');
+      const textH1 = document.createElement('h1');
+      const flagCountry = document.createElement('img');
+      countryName.classList.add('flags');
+       // Use the 'common' property for the country name
+      
+      textH1.textContent = country.name.common;
+      userName.appendChild(textH1);
+
+     // Use the 'png' property for the country flag URL
+      flagCountry.src = country.flags.png; 
+      userName.appendChild(flagCountry);
+      countryName.appendChild(userName);
+
+    
+    });
+     // form
+      let down = document.getElementById("GFG_DOWN");
+           
+    // Create a break line element
+    let br = document.createElement("br");
+  
+               
+    // Create a form dynamically
+    let form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "submit.php");
+ 
+    // Create an input element for Full Name
+    var FN = document.createElement("input");
+    FN.setAttribute("type", "text");
+    FN.setAttribute("name", "FullName");
+    FN.setAttribute("placeholder", "Full Name");
+ 
+     // Create an input element for date of birth
+     var DOB = document.createElement("input");
+     DOB.setAttribute("type", "text");
+     DOB.setAttribute("name", "dob");
+     DOB.setAttribute("placeholder", "DOB");
+ 
+     // Create an input element for emailID
+     var EID = document.createElement("input");
+     EID.setAttribute("type", "text");
+     EID.setAttribute("name", "emailID");
+     EID.setAttribute("placeholder", "E-Mail ID");
+ 
+      // Create an input element for password
+      var PWD = document.createElement("input");
+      PWD.setAttribute("type", "password");
+      PWD.setAttribute("name", "password");
+      PWD.setAttribute("placeholder", "Password");
+ 
+       // Create an input element for retype-password
+       var RPWD = document.createElement("input");
+       RPWD.setAttribute("type", "password");
+       RPWD.setAttribute("name", "reTypePassword");
+       RPWD.setAttribute("placeholder", "ReEnter Password");
+ 
+                // create a submit button
+                let s = document.createElement("input");
+                s.setAttribute("type", "submit");
+                s.setAttribute("value", "Submit");
+                 
+                // Append the full name input to the form
+                form.appendChild(FN);
+                 
+                // Inserting a line break
+                form.appendChild(br.cloneNode());
+                 
+                // Append the DOB to the form
+                form.appendChild(DOB);
+                form.appendChild(br.cloneNode());
+                 
+                // Append the emailID to the form
+                form.appendChild(EID);
+                form.appendChild(br.cloneNode());
+                 
+                // Append the Password to the form
+                form.appendChild(PWD);
+                form.appendChild(br.cloneNode());
+                 
+                // Append the ReEnterPassword to the form
+                form.appendChild(RPWD);
+                form.appendChild(br.cloneNode());
+                 
+                // Append the submit button to the form
+                form.appendChild(s);
+ 
+                down.appendChild(form);
+  });
 }
