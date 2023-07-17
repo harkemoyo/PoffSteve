@@ -737,14 +737,14 @@ let people = [
 ];
 // filter
 let replicant = people.filter(function(person){
-  return person.email.indexOf("@replicant.io") > -1;
+  return person.email.includes("@replicant.io") > -1;
 } )
 
 // using map
 let name1 = replicant.map(function(person){
   return person.name;
 })
-console.log(name1);
+
 
 // chaining the Arrays 
 let replicantsNames = people.filter(function(person){
@@ -752,7 +752,7 @@ let replicantsNames = people.filter(function(person){
 }).map(function(person){ return person.name}).sort()
 
 
-console.log("combinned:", replicantsNames );
+console.log("combined:", replicantsNames );
 
 
 // Arrow function
@@ -781,11 +781,11 @@ function showCountries(){
 //       countries.forEach(country =>{
 //         const countryName = document.getElementById('country')
 //          const userName = document.createElement('div')
-//          userName.innerHTML = country.name;
+//          userName.innerHTML = country.name.common;
 //         const flagCountry = document.createElement('img')
 //         console.log(flagCountry);
            
-//               flagCountry.src = country.flag
+//               flagCountry.src = country.flag.png;
 
 //               userName.appendChild(flagCountry)
 //              countryName.appendChild(userName)
@@ -848,78 +848,246 @@ fetch('https://restcountries.com/v3.1/all')
 
     
     });
-     // form
-      let down = document.getElementById("GFG_DOWN");
+//      // form
+//       let down = document.getElementById("GFG_DOWN");
            
-    // Create a break line element
-    let br = document.createElement("br");
+//     // Create a break line element
+//     let br = document.createElement("br");
   
                
-    // Create a form dynamically
-    let form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "submit.php");
+//     // Create a form dynamically
+//     let form = document.createElement("form");
+//     form.setAttribute("method", "post");
+//     form.setAttribute("action", "submit.php");
  
-    // Create an input element for Full Name
-    var FN = document.createElement("input");
-    FN.setAttribute("type", "text");
-    FN.setAttribute("name", "FullName");
-    FN.setAttribute("placeholder", "Full Name");
+//     // Create an input element for Full Name
+//     var FN = document.createElement("input");
+//     FN.setAttribute("type", "text");
+//     FN.setAttribute("name", "FullName");
+//     FN.setAttribute("placeholder", "Full Name");
  
-     // Create an input element for date of birth
-     var DOB = document.createElement("input");
-     DOB.setAttribute("type", "text");
-     DOB.setAttribute("name", "dob");
-     DOB.setAttribute("placeholder", "DOB");
+//      // Create an input element for date of birth
+//      var DOB = document.createElement("input");
+//      DOB.setAttribute("type", "text");
+//      DOB.setAttribute("name", "dob");
+//      DOB.setAttribute("placeholder", "DOB");
  
-     // Create an input element for emailID
-     var EID = document.createElement("input");
-     EID.setAttribute("type", "text");
-     EID.setAttribute("name", "emailID");
-     EID.setAttribute("placeholder", "E-Mail ID");
+//      // Create an input element for emailID
+//      var EID = document.createElement("input");
+//      EID.setAttribute("type", "text");
+//      EID.setAttribute("name", "emailID");
+//      EID.setAttribute("placeholder", "E-Mail ID");
  
-      // Create an input element for password
-      var PWD = document.createElement("input");
-      PWD.setAttribute("type", "password");
-      PWD.setAttribute("name", "password");
-      PWD.setAttribute("placeholder", "Password");
+//       // Create an input element for password
+//       var PWD = document.createElement("input");
+//       PWD.setAttribute("type", "password");
+//       PWD.setAttribute("name", "password");
+//       PWD.setAttribute("placeholder", "Password");
  
-       // Create an input element for retype-password
-       var RPWD = document.createElement("input");
-       RPWD.setAttribute("type", "password");
-       RPWD.setAttribute("name", "reTypePassword");
-       RPWD.setAttribute("placeholder", "ReEnter Password");
+//        // Create an input element for retype-password
+//        var RPWD = document.createElement("input");
+//        RPWD.setAttribute("type", "password");
+//        RPWD.setAttribute("name", "reTypePassword");
+//        RPWD.setAttribute("placeholder", "ReEnter Password");
  
-                // create a submit button
-                let s = document.createElement("input");
-                s.setAttribute("type", "submit");
-                s.setAttribute("value", "Submit");
+//                 // create a submit button
+//                 let s = document.createElement("input");
+//                 s.setAttribute("type", "submit");
+//                 s.setAttribute("value", "Submit");
                  
-                // Append the full name input to the form
-                form.appendChild(FN);
+//                 // Append the full name input to the form
+//                 form.appendChild(FN);
                  
-                // Inserting a line break
-                form.appendChild(br.cloneNode());
+//                 // Inserting a line break
+//                 form.appendChild(br.cloneNode());
                  
-                // Append the DOB to the form
-                form.appendChild(DOB);
-                form.appendChild(br.cloneNode());
+//                 // Append the DOB to the form
+//                 form.appendChild(DOB);
+//                 form.appendChild(br.cloneNode());
                  
-                // Append the emailID to the form
-                form.appendChild(EID);
-                form.appendChild(br.cloneNode());
+//                 // Append the emailID to the form
+//                 form.appendChild(EID);
+//                 form.appendChild(br.cloneNode());
                  
-                // Append the Password to the form
-                form.appendChild(PWD);
-                form.appendChild(br.cloneNode());
+//                 // Append the Password to the form
+//                 form.appendChild(PWD);
+//                 form.appendChild(br.cloneNode());
                  
-                // Append the ReEnterPassword to the form
-                form.appendChild(RPWD);
-                form.appendChild(br.cloneNode());
+//                 // Append the ReEnterPassword to the form
+//                 form.appendChild(RPWD);
+//                 form.appendChild(br.cloneNode());
                  
-                // Append the submit button to the form
-                form.appendChild(s);
+//                 // Append the submit button to the form
+//                 form.appendChild(s);
  
-                down.appendChild(form);
+//                 down.appendChild(form);
   });
 }
+
+
+
+// currying function
+function currying(pineapple){
+  return function(Ham){
+   return function(cheese){
+    return function(tomatoSauce){
+        return function(mozarrella){
+        return function(pizzaSauce){
+       
+        return `${pineapple} made ${Ham} is ${cheese} to ${tomatoSauce} to ${mozarrella } to its ${pizzaSauce};`
+        }
+    }
+}
+   }
+  }
+};
+
+
+
+
+console.log(currying('Home')('Hawiian') ('easy')('cook')('due')('recipe'));
+
+
+
+function calculateVolume(length) {
+  return function (breadth) {
+      return function (height) {
+          return length * breadth * height;
+      }
+  }
+}
+console.log(calculateVolume(4)(5)(6));
+
+
+
+// Callback function
+// let Fn = ['mark', 'john', 'peter','mercy','Haron','Mecury','Alan', 'Venus','Don']
+
+// Fn.forEach(amInit)
+
+// function saySomething(wash) {
+//   //Adding parameters as since callback function might be called multiple times.
+//   let message = 'carry Id'
+//   wash(message)
+// }
+// function amInit(id) {
+//   console.log("Are you", id)
+// }
+// saySomething(amInit)
+
+// // settimer function
+
+// setTimeout(amInit, 2000 , 'here is my id');
+
+
+
+
+// Nested for loop
+
+// let twoD = [[1, 3, 55.70, 50 ,23, 67,16,],
+//  [1, 3, 55.70, 50 ,23,],
+// [1, 3, 55.70, 50 ,23, 67,16,9]]
+
+
+// for (let i = 0; i < twoD.length; i++) {
+ 
+//   let items = twoD[i].length
+//   console.log(i ,items)
+//   for (let j = 0; j < items; j++) {
+//     console.log(twoD[i][j])
+//   }
+// }
+
+// Nested loop in object
+
+
+let nested ={ description: [
+  {"id":123, "name":"Rick Deckard", email:"rick@bladerunner.org"},
+  {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
+  {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
+  {"id":258, "name":"Pris", "email":"pris@replicant.io"}
+]};
+
+for (let i = 0; i < nested.description.length; i++) {
+  
+  // console.log(nested.description[i].name)
+  // console.log(nested.description[i].email)
+  // console.log(nested.description[i].id)
+
+  for (let prop in  nested.description[i]) {
+
+  // no using of quotation marks coz prop is a variable
+    console.log("nested:",prop,nested.description[i][prop])
+
+
+}
+}
+// nested.description.forEach(element => {
+//   element.description = element.description
+//   element.email = element.email
+//   element.id = element.id
+//   element.name = element.name
+//   console.log("forEach:",element)
+// });
+
+
+// for (const prop in nested[i]) {
+  
+//   console.log( prop, nested[prop], nested.prop)
+//   // if (Object.hasOwnProperty.call(object, key)) {
+//   //   const element = object[key];
+    
+//   // }
+
+// IIFE
+
+let iife = (function(nmu2) {
+
+  return {
+    name: nmu2,
+    id: 123,
+    length: 4,
+    width: 5,
+    height: 6,
+    sayHello: function() {
+     return this.length * this.width * this.height
+    }
+  }
+
+})('IIFE');
+
+console.log("name:",iife.name, "id:",iife.id );
+console.log("volume:",iife.sayHello());
+
+
+
+// Js eventListeners
+
+let m = document.getElementById('m')
+let d = document.getElementById('d')
+let p = document.getElementById('p')
+let s = document.getElementById('s')
+
+let highlight = (ev) => {
+ ev.stopPropagation();
+  let x = ev.currentTarget;
+  x.className = 'gold'
+  reset(x)
+};
+
+function reset(_element) {
+ 
+ setTimeout(() =>{
+  _element.className = ''}, 2000)
+}
+
+d.addEventListener('click', (ev)=>{
+  ev.stopImmediatePropagation();
+  log('Hi I\'m a DIV');
+});
+
+[m,d,p,s].forEach((element)=>{
+ 
+  element.addEventListener('click', highlight);
+})
+

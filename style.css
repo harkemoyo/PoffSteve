@@ -43,6 +43,9 @@ body {
 .container {
     /* background-color: #DFDBE5; */
     
+    
+    /* align-items: center; */
+   
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -50,11 +53,24 @@ body {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    opacity: 1;
+    
     
 }
+input{
+  align-items: center;
+  
+}
+input :focus{
+  background-color: gold;
+}
+.gold{
+  color: gold;
+}
+span .word{
+  color: crimson;
+}
 .word {
-    background-color: #DFDBE5;
+    border-radius: 5px;
     color: #308d46;
     font-size: 4rem;
     transition: all .5s ease-in;
@@ -63,6 +79,12 @@ body {
    
     text-transform: uppercase;
    
+}
+.word:hover {
+    /* transform: translateY(0); */
+    color: #308d46;
+    background-color: #fff;
+    transition: all .5s ;
 }
 
 .animate {
