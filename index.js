@@ -1091,3 +1091,70 @@ d.addEventListener('click', (ev)=>{
   element.addEventListener('click', highlight);
 })
 
+// Time and Date
+
+let date = new Date();
+
+let calcTime  = 1000 * 60 * 60 * 24 * 365.25 * 40
+let str = '14 November 1994'
+let date1 = new Date( 1500000000000);
+// current timestamp
+log("timestamp:",date1)
+
+// 40 years from timestamp
+let time = new Date(calcTime);
+log(time)
+let  dstr = new Date(str)
+log(dstr)
+let date2 = new Date(1994,0,1,11,0,0,0,0,0)  
+log(date2)
+
+// Get and set methods in time object
+
+date.setFullYear( 1994)
+date.setHours(5)
+log(date)
+
+let getTime = date.getFullYear()
+let day = date.getDay()
+
+log(getTime, day)
+
+// TIME OUTPUT
+
+log(date.toDateString())
+log(date.toLocaleDateString())
+log(date.toUTCString())
+log(date.toLocaleTimeString())
+log(date.toTimeString())
+log(date.toLocaleString('en-CA'))
+log(date.toString())
+
+
+// truthy and falsey
+
+log(!!1)
+log(!!date)
+log(!!0)
+log(!!'')
+log(!!null)
+log(!!undefined)
+log(!!NaN)
+
+// Null and undefined
+let h;
+console.log("undefined:",h);
+
+// null and undefined
+function abc(){
+    //nothing here
+    return null;
+}
+console.log("Null:", abc() );
+
+// var y = global.blah;
+// console.log(y);
+
+
+
+// Try  catch statement

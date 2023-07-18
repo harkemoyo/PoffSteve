@@ -42,3 +42,17 @@
 
 
 
+let  Mary = {
+    changeColor: function(ev){
+        log(ev)
+       let target = ev.currentTarget 
+        target.style.backgroundColor = "purple";
+        target.style.color = "#ffffff";
+    },
+    init: function(){
+        let name1 = document.getElementById('namespace');
+        name1.addEventListener("mouseout", this.changeColor);
+    }
+}
+
+Mary.init();

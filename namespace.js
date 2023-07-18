@@ -12,3 +12,17 @@ let  Mark = {
     }
 }
 Mark.init();
+// let  mary = {
+//     changeColor: function(ev){
+//         log(ev)
+//        let target = ev.currentTarget 
+//         target.style.backgroundColor = "purple";
+//         target.style.color = "#ffffff";
+//     },
+//     loading: function(){
+//         let name1 = document.getElementById('namespace');
+//         name1.addEventListener("mouseout", this.changeColor);
+//     }
+// }
+
+// mary.loading();
