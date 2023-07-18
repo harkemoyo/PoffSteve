@@ -101,6 +101,8 @@ span .word{
             height: 402px;
             width: 602px;
             border: 1px solid #333;
+            justify-content: center;
+            align-items: center;
         }
         .hour{
             width:100px;
