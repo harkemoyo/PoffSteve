@@ -1094,6 +1094,7 @@ d.addEventListener('click', (ev)=>{
 // Time and Date
 
 let date = new Date();
+console.log("date =>", date.getDay() );
 
 let calcTime  = 1000 * 60 * 60 * 24 * 365.25 * 40
 let str = '14 November 1994'
@@ -1158,3 +1159,24 @@ console.log("Null:", abc() );
 
 
 // Try  catch statement
+
+try {
+  // Code that may throw an exception
+  throw new Error("Something went wrong!");
+} catch (error) {
+  // Code to handle the exception
+  console.log("An error occurred:", error.message);
+} finally {
+  // Code that always executes
+  console.log("Cleanup code or final actions.");
+}
+
+
+const meX = 0
+
+if (meX === "") {
+  console.log('I am nothing!');
+} else {
+  console.log('I am here!');
+}
+

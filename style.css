@@ -101,15 +101,15 @@ span .word{
             height: 402px;
             width: 602px;
             border: 1px solid #333;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center;
+            align-items: center; */
         }
         .hour{
             width:100px;
             height: 100px;
             padding: 10px;
-            border: 1px solid #333;
-            font-size: 3.6rem;
+            border: 1px solid #454444;
+            font-size: 2rem;
             position: relative;
         }
         .hour span{
@@ -117,7 +117,7 @@ span .word{
             bottom: 0;
             right: 0;
             left: 0;
-            color: #AAA;
+            color: #3b3939;
             font-size: 1.0rem;
             text-align: center;
         }
