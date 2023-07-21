@@ -1,5 +1,5 @@
-let uri = 'forecast.json';
-let req = new Request(uri, {method:'GET'});
+let url = 'forecast.json';
+let req = new Request(url, {method:'GET'});
 
 // variables
 let container, df

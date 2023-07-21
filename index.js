@@ -1,43 +1,44 @@
-let dog = {
-    name: 'puppy', 
-    age : 1
-}
-let cat = {
-    name: 'meow', 
-    age : 2
-}
-// 
-let pets = [
-{  name: 'puppy', 
-    age : 1 }, cat
-]
-pets.push({name: 'flash', age: 2})
+"use strict";
+// let dog = {
+//     name: 'puppy', 
+//     age : 1
+// }
+// let cat = {
+//     name: 'meow', 
+//     age : 2
+// }
+// // 
+// let pets = [
+// {  name: 'puppy', 
+//     age : 1 }, cat
+// ]
+// pets.push({name: 'flash', age: 2})
 
-// adding a property inside an object 
-cat.type = 'yellow'
-
-
-// accessing objects literal in array
-
-pets[0].type = 'white'
-
-pets[2].type = 'white'
-console.log(pets);
-console.log(cat);
+// // adding a property inside an object 
+// cat.type = 'yellow'
 
 
-// for loop
+// // accessing objects literal in array
 
-let Form1Student = ['mark', 'john', 'peter','mercy','Haron','Mecury', 'Venus']
-let nameNum = Form1Student
-// iterating
-// initialized =>where it begins; test => lenght of array increment => for adding since it a start from array 0;
-for (let i = 0; i < nameNum.length; i++) {
-    const element = nameNum[i];
+// pets[0].type = 'white'
 
-    console.log(element);
+// pets[2].type = 'white'
+// console.log(pets);
+// console.log(cat);
+
+
+// // for loop
+
+// let Form1Student = ['mark', 'john', 'peter','mercy','Haron','Mecury', 'Venus']
+// let nameNum = Form1Student
+// // iterating
+// // initialized =>where it begins; test => lenght of array increment => for adding since it a start from array 0;
+// for (let i = 0; i < nameNum.length; i++) {
+//     const element = nameNum[i];
+
+//     console.log(element);
     
-} 
+// } 
 
 
 // const student = {
@@ -128,59 +129,59 @@ for (let i = 0; i < nameNum.length; i++) {
 
 // Arrow function
 
-let x = (num1, num2) => num1 * num2
-console.log(x(20, 2));
+// let x = (num1, num2) => num1 * num2
+// console.log(x(20, 2));
 
-// in array methods
-const int = [22, 3, 4, 10, 45];
-const integer = int.map((element) => element + 9
-)
-console.log(integer);
+// // in array methods
+// const int = [22, 3, 4, 10, 45];
+// const integer = int.map((element) => element + 9
+// )
+// console.log(integer);
 
-// arrow function in object
-const parent = {
-    father_name: "Omuse King",
-    fatherReal: function (){
-        return `${this.father_name} is my father.`;
-    },
-    father: () => {
-      return `${this.father_name} is my father.`;
-    },
-  };
-//   function will work
-  console.log(parent.fatherReal());
-//   function won'twork
-  console.log(parent.father());
+// // arrow function in object
+// const parent = {
+//     father_name: "Omuse King",
+//     fatherReal: function (){
+//         return `${this.father_name} is my father.`;
+//     },
+//     father: () => {
+//       return `${this.father_name} is my father.`;
+//     },
+//   };
+// //   function will work
+//   console.log(parent.fatherReal());
+// //   function won'twork
+//   console.log(parent.father());
 
-// Foreach loop
+// // Foreach loop
 
-// it's high order function / has argument
-// Can be used in object / i.e json
-// calling a function using forEach
-const log = console.log
- const colors = ['blue', 'green', 'white']
-function iterate(item, index, array) {
-log(item);
-log(array)
-if (index === array.length -1 ) {
-log('The last iteration!' );
-}
-}
-colors.forEach(iterate);
+// // it's high order function / has argument
+// // Can be used in object / i.e json
+// // calling a function using forEach
+// const log = console.log
+//  const colors = ['blue', 'green', 'white']
+// function iterate(item, index, array) {
+// log(item);
+// log(array)
+// if (index === array.length -1 ) {
+// log('The last iteration!' );
+// }
+// }
+// colors.forEach(iterate);
 
 
 
-// forEach in numbers
+// // forEach in numbers
 
-const numbers = [22, 3, 4, 10, 45];
+// const numbers = [22, 3, 4, 10, 45];
 
-numbers.forEach(number => {
-    if (number === 45) {
-      // console.log("terminate the current loop");
-      return true;
-    }
-    console.log(number);
-   });
+// numbers.forEach(number => {
+//     if (number === 45) {
+//       // console.log("terminate the current loop");
+//       return true;
+//     }
+//     console.log(number);
+//    });
 
 
 //    forEach in 
@@ -277,17 +278,17 @@ animateAll(animate);
 
 // Block scope
 
-function sayHello() {
-  let name = "Hark"; // Function variable
+// function sayHello() {
+//   let name = "Hark"; // Function variable
 
-  if (true) {
-      let message = "Hello"; // Block variable
-      console.log(message + " " + name); 
-      // Output: "Hello John"
-  }
-}
+//   if (true) {
+//       let message = "Hello"; // Block variable
+//       console.log(message + " " + name); 
+//       // Output: "Hello John"
+//   }
+// }
 
-sayHello();
+// sayHello();
 
 // lexical scope /in function
 
@@ -318,150 +319,150 @@ sayHello();
 // Split() and Join()
 // split => Is turning strings into array of strings using substrings with specified operator you provide in the argument
 // substrings => Are strings inside a string. Depending on which index you start and end
-function func() {
+// function func() {
  
-  // Original string
-  let str = 'It is Saba Saba Day.'
+//   // Original string
+//   let str = 'It is Saba Saba Day.'
 
-  // Splitting up to 2 terms
-  // After split it can take in any array method
-  const strCopy = str.split(" ")
-  const join = strCopy.join(" ")
+//   // Splitting up to 2 terms
+//   // After split it can take in any array method
+//   const strCopy = str.split(" ")
+//   const join = strCopy.join(" ")
 
-  //.forEach((element,index,array)=>{
-      console.log('split:',strCopy)
-      console.log('join:', join);
+//   //.forEach((element,index,array)=>{
+//       console.log('split:',strCopy)
+//       console.log('join:', join);
       
-  // });
+//   // });
  
-}
-func();
+// }
+// func();
 
 // Join () method
 
 
 //  new keyword
 
-class ready {
-  constructor() {
-    this.c = 1
-    this.a = 100
-  }
-}
+// class ready {
+//   constructor() {
+//     this.c = 1
+//     this.a = 100
+//   }
+// }
 
-// Set the function prototype
-ready.prototype.b = 200;
+// // Set the function prototype
+// ready.prototype.b = 200;
 
-// Create an object
-let obj = new ready();
+// // Create an object
+// let obj = new ready();
 
-// Display the result on console
-console.log(obj.c);
+// // Display the result on console
+// console.log(obj.c);
 
-console.log(obj.b);
-
-
-// This keyWord using call(),bind() and apply() methods
-
-const person1 = {
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-}
-
-const person2 = {
-  firstName:"William",
-  lastName: "Kalibo",
-}
-const copy = person1.fullName.apply(person2)
-console.log(copy);
+// console.log(obj.b);
 
 
+// // This keyWord using call(),bind() and apply() methods
 
-// bind()
-// function Borrowing
-const person = {
-  firstName:"John",
-  lastName: "Doe",
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-}
+// const person1 = {
+//   fullName: function() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
 
-const member = {
-  firstName:"Wiz",
-  lastName: "Kizo",
-}
-
-const fullName = person.fullName.bind(member);
-console.log(fullName());
+// const person2 = {
+//   firstName:"William",
+//   lastName: "Kalibo",
+// }
+// const copy = person1.fullName.apply(person2)
+// console.log(copy);
 
 
-// map()method
 
-let map1 = new Map();
+// // bind()
+// // function Borrowing
+// const person = {
+//   firstName:"John",
+//   lastName: "Doe",
+//   fullName: function() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
+
+// const member = {
+//   firstName:"Wiz",
+//   lastName: "Kizo",
+// }
+
+// const fullName = person.fullName.bind(member);
+// console.log(fullName());
+
+
+// // map()method
+
+// let map1 = new Map();
   
-map1.set("first name", "sumit");
-map1.set("last name", "ghosh");
-map1.set("website", "geeksforgeeks")
-    .set("friend 1","gourav")
-    .set("friend 2","sourav");
+// map1.set("first name", "sumit");
+// map1.set("last name", "ghosh");
+// map1.set("website", "geeksforgeeks")
+//     .set("friend 1","gourav")
+//     .set("friend 2","sourav");
   
-console.log(map1);
+// console.log(map1);
       
-console.log("map1 has website ? "+ 
-                    map1.has("website"));
+// console.log("map1 has website ? "+ 
+//                     map1.has("website"));
   
-console.log("map1 has friend 3 ? " + 
-                    map1.has("friend 3"));
+// console.log("map1 has friend 3 ? " + 
+//                     map1.has("friend 3"));
   
-console.log("get value for key website "+
-                    map1.get("website"));
+// console.log("get value for key website "+
+//                     map1.get("website"));
   
-console.log("get value for key friend 3 "+
-                    map1.get("friend 3"));
-console.log("delete element with key website " 
-                    + map1.delete("website"));
+// console.log("get value for key friend 3 "+
+//                     map1.get("friend 3"));
+// console.log("delete element with key website " 
+//                     + map1.delete("website"));
       
-console.log("map1 has website ? "+ 
-                    map1.has("website"));
+// console.log("map1 has website ? "+ 
+//                     map1.has("website"));
   
-console.log("delete element with key website " +
-                    map1.delete("friend 3"));
+// console.log("delete element with key website " +
+//                     map1.delete("friend 3"));
   
-map1.clear();
+// map1.clear();
   
-console.log(map1);
+// console.log(map1);
 
-// filter method 
+// // filter method 
 
-const ages = [32, 15, 60, 33, 16, 40];
-const result = ages.filter(checkAdult);
+// const ages = [32, 15, 60, 33, 16, 40];
+// const result = ages.filter(checkAdult);
 
 
 
-function checkAdult(age) {
+// function checkAdult(age) {
   
-  return age >= 18;
+//   return age >= 18;
 
-  // Return Even numbers
-  return age%2 === 0
+//   // Return Even numbers
+//   return age%2 === 0
 
-  // Returning oddNumbers
-//  return age & 1
-}
+//   // Returning oddNumbers
+// //  return age & 1
+// }
 
-console.log(result)
+// console.log(result)
 
 
-let ageSum =  []
-for (let i = 0; i < ages.length; i++) {
-  if (ages[i] >= 21 ){
-    ageSum.push("print ages",ages[i])
-  }
+// let ageSum =  []
+// for (let i = 0; i < ages.length; i++) {
+//   if (ages[i] >= 21 ){
+//     ageSum.push("print ages",ages[i])
+//   }
   
-}
-console.log(ageSum);
+// }
+// console.log(ageSum);
 // // using foreach in filters
 // ages.forEach((element)=>{
 // if (element >= 21)
@@ -473,134 +474,134 @@ console.log(ageSum);
 
 
 // using arrow func in filter
-const arrow = ages.filter(age => age >= 21)
-console.log(arrow);
+// const arrow = ages.filter(age => age >= 21)
+// console.log(arrow);
 
 // array find()
 
 // Input array contain some elements.
-let array = [10, 20, 30, 40, 50];
+// let array = [10, 20, 30, 40, 50];
  
-// condition
-let found = array.filter(function (element) {
-    return element > 60;
-});
+// // condition
+// let found = array.filter(function (element) {
+//     return element > 60;
+// });
  
-console.log("find - f",found);
+// console.log("find - f",found);
 
-// function sum(x, y, z) {
-//   return x + y + z;
+// // function sum(x, y, z) {
+// //   return x + y + z;
+// // }
+
+// // const cookies = [1, 2, 3];
+
+// // // console.log(sum(''...cookies));
+// // // Expected output: 6
+
+// // console.log(sum.apply(null, numbers));
+
+
+// // Array reduce
+// const array1 = [1, 2, 3, 4];
+
+// // 0 + 1 + 2 + 3 + 4
+// let initialValue = 0;
+// // const sumWithInitial = array1.reduce(
+// //   (array1,currentValue) => array1 + currentValue,
+// //   initialValue
+  
+// // );
+
+// // console.log(sumWithInitial);
+
+// // for loop 
+// for (let i = 0; i < array1.length; i++) {
+//   initialValue += array1[i];
+
+// }
+// console.log('forloop',initialValue);
+
+// // Expected output: 10
+
+// // Array concat
+// // joining two arrays
+// function func() {
+  
+//   // Original string
+//   let num = [1, 3, 55.70, 50 ,23, 67,16,]
+//   let nmu2 = [1, 3, 55.70, 50 ,23, 67,16,]
+//   let num3 =[1, 3, 55.70, 50 ,23, 67,16,]
+
+
+//   // Joining the strings together
+//   let numValue = num.concat(nmu2,num3)
+//   let str = 'It';
+//   let value = str.concat(' is', ' a', ' great', ' day.');
+//   console.log(numValue)
+//   console.log(value);
 // }
 
-// const cookies = [1, 2, 3];
-
-// // console.log(sum(''...cookies));
-// // Expected output: 6
-
-// console.log(sum.apply(null, numbers));
+// func();
 
 
-// Array reduce
-const array1 = [1, 2, 3, 4];
+// //  include();
 
-// 0 + 1 + 2 + 3 + 4
-let initialValue = 0;
-// const sumWithInitial = array1.reduce(
-//   (array1,currentValue) => array1 + currentValue,
-//   initialValue
-  
-// );
+// let strinIcd = "Can you , recieve that call it's from Hark man."
+// let gold = strinIcd.split(" ")
 
-// console.log(sumWithInitial);
+//  console.log(gold);
+// const incde = gold.includes(",");
+// // console.log(gold);
+// console.log('includes', incde)
 
-// for loop 
-for (let i = 0; i < array1.length; i++) {
-  initialValue += array1[i];
+// // Array reduce
+// let num = [1, 3, 55.70, 50 ,23, 67,16,]
+// const sumI = num.reduce(
+//   function(accumulator, value){
+//     // what is accumulated  to give to another 
+//     console.log(accumulator, value);
+// return accumulator + value
+//   }, 0)
+// console.log("reduce",sumI)
+// // for loop
+// let valueFirst = 0
+// for(let i = 0; i < num.length; i++){
+//  valueFirst += num[i]
+// }
+// console.log("for loop:",valueFirst);
 
-}
-console.log('forloop',initialValue);
-
-// Expected output: 10
-
-// Array concat
-// joining two arrays
-function func() {
-  
-  // Original string
-  let num = [1, 3, 55.70, 50 ,23, 67,16,]
-  let nmu2 = [1, 3, 55.70, 50 ,23, 67,16,]
-  let num3 =[1, 3, 55.70, 50 ,23, 67,16,]
-
-
-  // Joining the strings together
-  let numValue = num.concat(nmu2,num3)
-  let str = 'It';
-  let value = str.concat(' is', ' a', ' great', ' day.');
-  console.log(numValue)
-  console.log(value);
-}
-
-func();
-
-
-//  include();
-
-let strinIcd = "Can you , recieve that call it's from Hark man."
-let gold = strinIcd.split(" ")
-
- console.log(gold);
-const incde = gold.includes(",");
-// console.log(gold);
-console.log('includes', incde)
-
-// Array reduce
-let num = [1, 3, 55.70, 50 ,23, 67,16,]
-const sumI = num.reduce(
-  function(accumulator, value){
-    // what is accumulated  to give to another 
-    console.log(accumulator, value);
-return accumulator + value
-  }, 0)
-console.log("reduce",sumI)
-// for loop
-let valueFirst = 0
-for(let i = 0; i < num.length; i++){
- valueFirst += num[i]
-}
-console.log("for loop:",valueFirst);
-
-// forEach
-//  num.forEach(
-//   valueFirst.push(num)
-//  )
+// // forEach
+// //  num.forEach(
+// //   valueFirst.push(num)
+// //  )
   
  
-// // console.log(valueFirst);
+// // // console.log(valueFirst);
+// // })
+// console.log("foreach",sumI)
+
+// let dom = ['mark', 'john', 'peter','mercy','Haron','Mecury','Alan', 'Venus','Don']
+// const condition = dom.reduce(function(first, initial){
+
+// // comparing to sort the array string alphabetically
+
+// console.log("compare",first, 'to',initial);
+
+//  return (first < initial)? first : initial;
+// },"\u0434")
+// console.log('condition',condition);
+
+// // some ()
+
+// // making the code DRY
+// const some1 = [33,2, 30, 18, 20];
+
+// const available2 = some1.some(function(element){ 
+//   return element >= 3
 // })
-console.log("foreach",sumI)
-
-let dom = ['mark', 'john', 'peter','mercy','Haron','Mecury','Alan', 'Venus','Don']
-const condition = dom.reduce(function(first, initial){
-
-// comparing to sort the array string alphabetically
-
-console.log("compare",first, 'to',initial);
-
- return (first < initial)? first : initial;
-},"\u0434")
-console.log('condition',condition);
-
-// some ()
-
-// making the code DRY
-const some1 = [33,2, 30, 18, 20];
-
-const available2 = some1.some(function(element){ 
-  return element >= 3
-})
   
 
-console.log("available2",available2)
+// console.log("available2",available2)
 
 
 
@@ -672,29 +673,29 @@ console.log("available2",available2)
 // Reduce array method
 
 
-const People = [
-  {
-    name: "John Smith",
-    age: 30
-  },
-  {
-    name: "William Lane",
-    age: 25
-  },
-  {
-    name: "Michael vonder",
-    age: 19
-  }
-];
+// const People = [
+//   {
+//     name: "John Smith",
+//     age: 30
+//   },
+//   {
+//     name: "William Lane",
+//     age: 25
+//   },
+//   {
+//     name: "Michael vonder",
+//     age: 19
+//   }
+// ];
 
-const oldAge = People.reduce((acc, curr) => {
-  if (curr.age > acc) {
-    return curr.age;
-  }
-  return acc;
-}, 0);
+// const oldAge = People.reduce((acc, curr) => {
+//   if (curr.age > acc) {
+//     return curr.age;
+//   }
+//   return acc;
+// }, 0);
 
-console.log(oldAge); // Output: 30
+// console.log(oldAge); // Output: 30
 
 
 // const initialName = People.reduce((acc, curr, i ,  a) => { 
@@ -705,22 +706,22 @@ console.log(oldAge); // Output: 30
 
 
 // every () method
-const evey = [3, 30, 18, 20, 41];
+// const evey = [3, 30, 18, 20, 41];
 
-let every = evey.every(function (mute){
-  return mute <= 40;
-//   for (let i = 0; i < evey.length; i++){
-//   if (evey[i] >= 4){
-//     return true;
-//   }else{
-//     return false;
-//   }
+// let every = evey.every(function (mute){
+//   return mute <= 40;
+// //   for (let i = 0; i < evey.length; i++){
+// //   if (evey[i] >= 4){
+// //     return true;
+// //   }else{
+// //     return false;
+// //   }
   
-// }
+// // }
 
-});
+// });
 
-console.log("every",every); // Output:false
+// console.log("every",every); // Output:false
 
 
 
@@ -729,36 +730,36 @@ console.log("every",every); // Output:false
 
 // combining arrays methods
 // find all the names of people with @replicant.io
-let people = [
-  {"id":123, "name":"Rick Deckard", "email":"rick@bladerunner.org"},
-  {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
-  {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
-  {"id":258, "name":"Pris", "email":"pris@replicant.io"}
-];
-// filter
-let replicant = people.filter(function(person){
-  return person.email.includes("@replicant.io") > -1;
-} )
+// let people = [
+//   {"id":123, "name":"Rick Deckard", "email":"rick@bladerunner.org"},
+//   {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
+//   {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
+//   {"id":258, "name":"Pris", "email":"pris@replicant.io"}
+// ];
+// // filter
+// let replicant = people.filter(function(person){
+//   return person.email.includes("@replicant.io") > -1;
+// } )
 
-// using map
-let name1 = replicant.map(function(person){
-  return person.name;
-})
+// // using map
+// let name1 = replicant.map(function(person){
+//   return person.name;
+// })
 
 
 // chaining the Arrays 
-let replicantsNames = people.filter(function(person){
-  return person.email.indexOf("@replicant.io") > -1;
-}).map(function(person){ return person.name}).sort()
+// let replicantsNames = people.filter(function(person){
+//   return person.email.indexOf("@replicant.io") > -1;
+// }).map(function(person){ return person.name}).sort()
 
 
-console.log("combined:", replicantsNames );
+// console.log("combined:", replicantsNames );
 
 
-// Arrow function
+// // Arrow function
 
-let arrowF = people.filter( (person) => ( person.email.indexOf("@replicant.io") > -1 ) ).map( (person) => (person.name) ).sort().reverse()
-console.log( 'Arrow func:',arrowF);
+// let arrowF = people.filter( (person) => ( person.email.indexOf("@replicant.io") > -1 ) ).map( (person) => (person.name) ).sort().reverse()
+// console.log( 'Arrow func:',arrowF);
 
 
 
@@ -927,36 +928,36 @@ fetch('https://restcountries.com/v3.1/all')
 
 
 // currying function
-function currying(pineapple){
-  return function(Ham){
-   return function(cheese){
-    return function(tomatoSauce){
-        return function(mozarrella){
-        return function(pizzaSauce){
+// function currying(pineapple){
+//   return function(Ham){
+//    return function(cheese){
+//     return function(tomatoSauce){
+//         return function(mozarrella){
+//         return function(pizzaSauce){
        
-        return `${pineapple} made ${Ham} is ${cheese} to ${tomatoSauce} to ${mozarrella } to its ${pizzaSauce};`
-        }
-    }
-}
-   }
-  }
-};
+//         return `${pineapple} made ${Ham} is ${cheese} to ${tomatoSauce} to ${mozarrella } to its ${pizzaSauce};`
+//         }
+//     }
+// }
+//    }
+//   }
+// };
 
 
 
 
-console.log(currying('Home')('Hawiian') ('easy')('cook')('due')('recipe'));
+// console.log(currying('Home')('Hawiian') ('easy')('cook')('due')('recipe'));
 
 
 
-function calculateVolume(length) {
-  return function (breadth) {
-      return function (height) {
-          return length * breadth * height;
-      }
-  }
-}
-console.log(calculateVolume(4)(5)(6));
+// function calculateVolume(length) {
+//   return function (breadth) {
+//       return function (height) {
+//           return length * breadth * height;
+//       }
+//   }
+// }
+// console.log(calculateVolume(4)(5)(6));
 
 
 
@@ -1001,27 +1002,27 @@ console.log(calculateVolume(4)(5)(6));
 // Nested loop in object
 
 
-let nested ={ description: [
-  {"id":123, "name":"Rick Deckard", email:"rick@bladerunner.org"},
-  {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
-  {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
-  {"id":258, "name":"Pris", "email":"pris@replicant.io"}
-]};
+// let nested ={ description: [
+//   {"id":123, "name":"Rick Deckard", email:"rick@bladerunner.org"},
+//   {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
+//   {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
+//   {"id":258, "name":"Pris", "email":"pris@replicant.io"}
+// ]};
 
-for (let i = 0; i < nested.description.length; i++) {
+// for (let i = 0; i < nested.description.length; i++) {
   
-  // console.log(nested.description[i].name)
-  // console.log(nested.description[i].email)
-  // console.log(nested.description[i].id)
+//   // console.log(nested.description[i].name)
+//   // console.log(nested.description[i].email)
+//   // console.log(nested.description[i].id)
 
-  for (let prop in  nested.description[i]) {
+//   for (let prop in  nested.description[i]) {
 
-  // no using of quotation marks coz prop is a variable
-    console.log("nested:",prop,nested.description[i][prop])
+//   // no using of quotation marks coz prop is a variable
+//     console.log("nested:",prop,nested.description[i][prop])
 
 
-}
-}
+// }
+// }
 // nested.description.forEach(element => {
 //   element.description = element.description
 //   element.email = element.email
@@ -1041,117 +1042,116 @@ for (let i = 0; i < nested.description.length; i++) {
 
 // IIFE
 
-let iife = (function(nmu2) {
+// let iife = (function(nmu2) {
 
-  return {
-    name: nmu2,
-    id: 123,
-    length: 4,
-    width: 5,
-    height: 6,
-    sayHello: function() {
-     return this.length * this.width * this.height
-    }
-  }
+//   return {
+//     name: nmu2,
+//     id: 123,
+//     length: 4,
+//     width: 5,
+//     height: 6,
+//     sayHello: function() {
+//      return this.length * this.width * this.height
+//     }
+//   }
 
-})('IIFE');
+// })('IIFE');
 
-console.log("name:",iife.name, "id:",iife.id );
-console.log("volume:",iife.sayHello());
+// console.log("name:",iife.name, "id:",iife.id );
+// console.log("volume:",iife.sayHello());
 
 
 
 // Js eventListeners
 
-let m = document.getElementById('m')
-let d = document.getElementById('d')
-let p = document.getElementById('p')
-let s = document.getElementById('s')
+// let m = document.getElementById('m')
+// let d = document.getElementById('d')
+// let p = document.getElementById('p')
+// let s = document.getElementById('s')
 
-let highlight = (ev) => {
- ev.stopPropagation();
-  let x = ev.currentTarget;
-  x.className = 'gold'
-  reset(x)
-};
+// let highlight = (ev) => {
+//  ev.stopPropagation();
+//   let x = ev.currentTarget;
+//   x.className = 'gold'
+//   reset(x)
+// };
 
-function reset(_element) {
+// function reset(_element) {
  
- setTimeout(() =>{
-  _element.className = ''}, 2000)
-}
+//  setTimeout(() =>{
+//   _element.className = ''}, 2000)
+// }
 
-d.addEventListener('click', (ev)=>{
-  ev.stopImmediatePropagation();
-  log('Hi I\'m a DIV');
-});
+// d.addEventListener('click', (ev)=>{
+//   ev.stopImmediatePropagation();
+//   log('Hi I\'m a DIV');
+// });
 
-[m,d,p,s].forEach((element)=>{
+// [m,d,p,s].forEach((element)=>{
  
-  element.addEventListener('click', highlight);
-})
+//   element.addEventListener('click', highlight);
+// })
 
-// Time and Date
+// // Time and Date
 
-let date = new Date();
-console.log("date =>", date.getDay() );
+// let date = new Date();
+// console.log("date =>", date.getDay() );
 
-let calcTime  = 1000 * 60 * 60 * 24 * 365.25 * 40
-let str = '14 November 1994'
-let date1 = new Date( 1500000000000);
-// current timestamp
-log("timestamp:",date1)
+// let calcTime  = 1000 * 60 * 60 * 24 * 365.25 * 40
+// let str = '14 November 1994'
+// let date1 = new Date( 1500000000000);
+// // current timestamp
+// log("timestamp:",date1)
 
-// 40 years from timestamp
-let time = new Date(calcTime);
-log(time)
-let  dstr = new Date(str)
-log(dstr)
-let date2 = new Date(1994,0,1,11,0,0,0,0,0)  
-log(date2)
+// // 40 years from timestamp
+// let time = new Date(calcTime);
+// log(time)
+// let  dstr = new Date(str)
+// log(dstr)
+// log(date2)
 
-// Get and set methods in time object
+// // Get and set methods in time object
 
-date.setFullYear( 1994)
-date.setHours(5)
-log(date)
+// date.setFullYear( 1994)
+// date.setHours(5)
+// log(date)
 
-let getTime = date.getFullYear()
-let day = date.getDay()
+// let getTime = date.getFullYear()
+// let day = date.getDay()
 
-log(getTime, day)
+// log(getTime, day)
 
-// TIME OUTPUT
+// // TIME OUTPUT
 
-log(date.toDateString())
-log(date.toLocaleDateString())
-log(date.toUTCString())
-log(date.toLocaleTimeString())
-log(date.toTimeString())
-log(date.toLocaleString('en-CA'))
-log(date.toString())
+// log(date.toDateString())
+// log(date.toLocaleDateString())
+// log(date.toUTCString())
+// log(date.toLocaleTimeString())
+// log(date.toTimeString())
+// log(date.toLocaleString('en-CA'))
+// log(date.toString())
 
 
-// truthy and falsey
+// // truthy and falsey
 
-log(!!1)
-log(!!date)
-log(!!0)
-log(!!'')
-log(!!null)
-log(!!undefined)
-log(!!NaN)
+// log(!!1)
+// log(!!date)
+// log(!!0)
+// log(!!'')
+// log(!!null)
+// log(!!undefined)
+// log(!!NaN)
 
-// Null and undefined
-let h;
-console.log("undefined:",h);
+// // Null and undefined
+// let h;
+// console.log("undefined:",h);
 
-// null and undefined
-function abc(){
-    //nothing here
-    return null;
-}
-console.log("Null:", abc() );
+// // null and undefined
+// function abc(){
+//     //nothing here
+//     return null;
+// }
+// console.log("Null:", abc() );
 
 // var y = global.blah;
 // console.log(y);
@@ -1160,23 +1160,189 @@ console.log("Null:", abc() );
 
 // Try  catch statement
 
-try {
-  // Code that may throw an exception
-  throw new Error("Something went wrong!");
-} catch (error) {
-  // Code to handle the exception
-  console.log("An error occurred:", error.message);
-} finally {
-  // Code that always executes
-  console.log("Cleanup code or final actions.");
-}
+// try {
+//   // Code that may throw an exception
+//   throw new Error("Something went wrong!");
+// } catch (error) {
+//   // Code to handle the exception
+//   console.log("An error occurred:", error.message);
+// } finally {
+//   // Code that always executes
+//   console.log("Cleanup code or final actions.");
+// }
 
 
-const meX = 0
+// const meX = undefined
 
-if (meX === "") {
-  console.log('I am nothing!');
-} else {
-  console.log('I am here!');
-}
+// if (meX == "") {
+//   console.log('I am nothing!');
+// } else {
+//   console.log('I am here!');
+// }
 
+// // for of loops
+
+// let supernatural = { 
+//   "actors":['Jared Padelecki', 'Jensen Ackles', 'Mark Sheppard', 'Misha Collins'],
+//   "characters":['Sam Winchester', 'Dean Winchester', 'Crowley', 'Castiel'],
+//   "seasons":12 };
+
+
+//   for(prop in supernatural){
+//     console.log(prop,"Data type:",typeof supernatural[prop],
+//     Array.isArray(supernatural[prop],)
+//     )
+//   }
+//   for (prop in supernatural.actors) {
+//    console.log(prop, supernatural.actors[prop]);
+//   }
+//   // for of loop is short hand for the for in
+//   for (prop of supernatural.actors){
+//     console.log(prop);
+//   }
+
+  // Object assign method
+  // is just writing the copy of the object to a new variable
+  // It is merged of the original to the new
+  let obj1 = {"arms":true, "armCount":2};
+  let obj2 = {"weapons":['missle launcher', 'reciprocating saw']};
+  let obj3 = {"canMove":true, "legs":0, "treads":2};
+  let objA =[ 1, 2,]
+  let objB =[7,8,9]
+
+  let merged = Object.assign([3,3,10],  objB);
+  console.log(merged);
+  let copying = Object.assign({"name":"Hark" ,"arms":false}, obj1);
+  console.log(copying);
+
+  // merge
+  let obj4 = Object.assign({}, obj1, obj2, obj3);
+  console.log(obj4);
+
+
+  // DEBUGGING
+//   const DEBUG_MODE = true;
+
+// var R = "Ricky";
+// var B = "Bobbie";
+// console.count(R);   //1 Ricky
+// if(DEBUG_MODE){
+//     debugger;
+// }
+// function x(nm) { console.count(nm); return true; }
+
+// console.count(B);   //1 Bobbie
+// x(R);               //2 Ricky
+
+// console.count(R);   //3 Ricky
+// x(B);               //2 Bobbie
+
+// console.count(R);   //4 Ricky
+
+// console.time(R);
+// console.group();
+//     console.log('Log');
+//         console.group();
+//         console.info('Info');
+//         console.groupEnd();
+//     //console.error('Error');
+// console.groupEnd();
+// console.timeEnd(R);
+
+// isNaN and NaN
+let log = console.log;
+
+let t = isNaN(true);    //1 - false
+let f = isNaN(false);   //0 - false
+let n = isNaN(null);    //0 - false
+let u = isNaN(undefined);   // NaN - true
+let b = isNaN(23);      //false
+let c = isNaN('45');    // false
+let d = isNaN('45.45'); // false
+let e = isNaN(new Date() ); //timestamp false
+let z = isNaN('');          // 0 false
+let g = isNaN('   ');       //0  false
+let h = isNaN(new Date('28 August, 2017'));  //integer timestamp returned by new Date() so... false
+
+
+let a = Number(true);
+log(t);
+log(f);
+log(n);
+log(u);
+
+// new key word
+
+
+// function car(make, model){
+//   //log(this);
+//   this.props = {
+//       make,
+//       model
+//   };
+//   let info = function(){
+//       return this.props;
+//   }
+// }
+// car.prototype.info = function(){
+//   return this.props;
+// }
+
+// let c1 = car('Honda', 'Accord');
+// let c2 = new car('Tesla', 'Model 3');
+
+
+// //log(c1.props);        //undefined
+// log(c2.info() );   
+
+// js object creat method
+
+
+let obj = {
+  name: 'The Dude'
+};
+
+let car2 = Object.create(obj, {});
+// console.log(car2);
+// console.log(car2.name);
+
+let car3 = Object.create(car2, {
+  fullName: {
+      configurable: true,
+      writable: true,
+      enumerable: true,
+      value: 'Jeff Lebowski'
+  },
+  canBowl: {
+      configurable: true,
+      writable: true,
+      enumerable: true,
+      value: true
+  }
+});
+console.log(car3);
+console.log(car3.name);
+
+// This keyWords
+// "use strict";
+let box = document.querySelector('.box');
+let myFunc = function(){
+   console.log('1', this);
+    setTimeout( ()=> {
+        console.log('3', 'timed out', this);
+    }, 250)
+};
+let myFunc2 = () => {
+    console.log('2', this);
+    setTimeout( ()=> {
+        console.log('3', 'timed out', this);
+    }, 250)
+};
+
+box.addEventListener('mousedown', myFunc);
+box.addEventListener('mouseup', myFunc2);
+
+// myFunc();
+// myFunc.call(window);
+myFunc.apply(box);
+// myFunc2()
