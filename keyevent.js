@@ -1,35 +1,35 @@
 // // keyboard Events
 
-document.addEventListener('DOMContentLoaded', init);
+// document.addEventListener('DOMContentLoaded', init);
 
-function init(){
+// function init(){
     
-    let txt = document.getElementById('txt');
-    // txt.addEventListener('keydown', anyKey);
-    document.addEventListener('keydown', anyKey);
-    // txt.addEventListener('change',changeEvent)
-    // log(txt)
+//     let txt = document.getElementById('txt');
+//     // txt.addEventListener('keydown', anyKey);
+//     document.addEventListener('keydown', anyKey);
+//     // txt.addEventListener('change',changeEvent)
+//     // log(txt)
     
-}
+// }
 
-function anyKey(ev){
-    log( ev.type, ev.target);
-    let target = ev.currentTarget;
-    let tag = target.tagName;
-    let char = ev.char || ev.charCode || ev.which;
-    log(char, tag);
-    let s = String.fromCharCode(char);
-    //log(s);
-    switch(char){
-        case 37:
-            log('LEFT');
-            break;
-        case 40:
-            log('DOWN');
-            break;
-    }
+// function anyKey(ev){
+//     log( ev.type, ev.target);
+//     let target = ev.currentTarget;
+//     let tag = target.tagName;
+//     let char = ev.char || ev.charCode || ev.which;
+//     log(char, tag);
+//     let s = String.fromCharCode(char);
+//     //log(s);
+//     switch(char){
+//         case 37:
+//             log('LEFT');
+//             break;
+//         case 40:
+//             log('DOWN');
+//             break;
+//     }
   
-}
+// }
 // Input eventlisteners
 // change
 // blur event

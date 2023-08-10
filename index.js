@@ -1,4 +1,4 @@
-"use strict";
+
 // let dog = {
 //     name: 'puppy', 
 //     age : 1
@@ -23,7 +23,7 @@
 // pets[0].type = 'white'
 
 // pets[2].type = 'white'
-// console.log(pets);
+// console.console.log(pets);
 // console.log(cat);
 
 
@@ -255,25 +255,25 @@
 
 // callback Hell
 // hoisting in this because it is an arrow function
-let words = document.querySelectorAll(".word");
+// let words = document.querySelectorAll(".word");
 
-const animateAll = (animate) => {
-    setTimeout(function(){
-        animate(words[0]);
-        setTimeout(function() {
-            animate(words[1]);
-            setTimeout(() => {
-                animate(words[2]);
-            }, 1000)
-        }, 1000)
-    }, 1000)
-}
+// const animateAll = (animate) => {
+//     setTimeout(function(){
+//         animate(words[0]);
+//         setTimeout(function() {
+//             animate(words[1]);
+//             setTimeout(() => {
+//                 animate(words[2]);
+//             }, 1000)
+//         }, 1000)
+//     }, 1000)
+// }
 
-const animate = (word) => {
-    word.classList.add("animate");
-}
+// const animate = (word) => {
+//     word.classList.add("animate");
+// }
 
-animateAll(animate);
+// animateAll(animate);
 
 
 // Block scope
@@ -765,9 +765,9 @@ animateAll(animate);
 
 
 // // Ajax Technology
-const btn = document.getElementById('btn');
-btn.addEventListener('click', showCountries);
-function showCountries(){
+// const btn = document.getElementById('btn');
+// btn.addEventListener('click', showCountries);
+// function showCountries(){
 
 
 // let xhr = new XMLHttpRequest();
@@ -825,30 +825,30 @@ function showCountries(){
 // })
 // })
 // }
-fetch('https://restcountries.com/v3.1/all')
-  .then((response) => response.json())
-  .then(function(data) {
-    data.forEach(function(country) {
+// fetch('https://restcountries.com/v3.1/all')
+//   .then((response) => response.json())
+//   .then(function(data) {
+//     data.forEach(function(country) {
 
 // DOM manipulation
       // Creating Element for DOM
-      const countryName = document.getElementById('country');
-      const userName = document.createElement('div');
-      const textH1 = document.createElement('h1');
-      const flagCountry = document.createElement('img');
-      countryName.classList.add('flags');
+    //   const countryName = document.getElementById('country');
+    //   const userName = document.createElement('div');
+    //   const textH1 = document.createElement('h1');
+    //   const flagCountry = document.createElement('img');
+    //   countryName.classList.add('flags');
        // Use the 'common' property for the country name
       
-      textH1.textContent = country.name.common;
-      userName.appendChild(textH1);
+    //   textH1.textContent = country.name.common;
+    //   userName.appendChild(textH1);
 
      // Use the 'png' property for the country flag URL
-      flagCountry.src = country.flags.png; 
-      userName.appendChild(flagCountry);
-      countryName.appendChild(userName);
+    //   flagCountry.src = country.flags.png; 
+    //   userName.appendChild(flagCountry);
+    //   countryName.appendChild(userName);
 
     
-    });
+    // });
 //      // form
 //       let down = document.getElementById("GFG_DOWN");
            
@@ -922,8 +922,8 @@ fetch('https://restcountries.com/v3.1/all')
 //                 form.appendChild(s);
  
 //                 down.appendChild(form);
-  });
-}
+//   });
+// }
 
 
 
@@ -1204,20 +1204,20 @@ fetch('https://restcountries.com/v3.1/all')
   // Object assign method
   // is just writing the copy of the object to a new variable
   // It is merged of the original to the new
-  let obj1 = {"arms":true, "armCount":2};
-  let obj2 = {"weapons":['missle launcher', 'reciprocating saw']};
-  let obj3 = {"canMove":true, "legs":0, "treads":2};
-  let objA =[ 1, 2,]
-  let objB =[7,8,9]
+//   let obj1 = {"arms":true, "armCount":2};
+//   let obj2 = {"weapons":['missle launcher', 'reciprocating saw']};
+//   let obj3 = {"canMove":true, "legs":0, "treads":2};
+//   let objA =[ 1, 2,]
+//   let objB =[7,8,9]
 
-  let merged = Object.assign([3,3,10],  objB);
-  console.log(merged);
-  let copying = Object.assign({"name":"Hark" ,"arms":false}, obj1);
-  console.log(copying);
+//   let merged = Object.assign([3,3,10],  objB);
+//   console.log(merged);
+//   let copying = Object.assign({"name":"Hark" ,"arms":false}, obj1);
+//   console.log(copying);
 
-  // merge
-  let obj4 = Object.assign({}, obj1, obj2, obj3);
-  console.log(obj4);
+//   // merge
+//   let obj4 = Object.assign({}, obj1, obj2, obj3);
+//   console.log(obj4);
 
 
   // DEBUGGING
@@ -1250,26 +1250,26 @@ fetch('https://restcountries.com/v3.1/all')
 // console.timeEnd(R);
 
 // isNaN and NaN
-let log = console.log;
+// let log = console.log;
 
-let t = isNaN(true);    //1 - false
-let f = isNaN(false);   //0 - false
-let n = isNaN(null);    //0 - false
-let u = isNaN(undefined);   // NaN - true
-let b = isNaN(23);      //false
-let c = isNaN('45');    // false
-let d = isNaN('45.45'); // false
-let e = isNaN(new Date() ); //timestamp false
-let z = isNaN('');          // 0 false
-let g = isNaN('   ');       //0  false
-let h = isNaN(new Date('28 August, 2017'));  //integer timestamp returned by new Date() so... false
+// let t = isNaN(true);    //1 - false
+// let f = isNaN(false);   //0 - false
+// let n = isNaN(null);    //0 - false
+// let u = isNaN(undefined);   // NaN - true
+// let b = isNaN(23);      //false
+// let c = isNaN('45');    // false
+// let d = isNaN('45.45'); // false
+// let e = isNaN(new Date() ); //timestamp false
+// let z = isNaN('');          // 0 false
+// let g = isNaN('   ');       //0  false
+// let h = isNaN(new Date('28 August, 2017'));  //integer timestamp returned by new Date() so... false
 
 
-let a = Number(true);
-log(t);
-log(f);
-log(n);
-log(u);
+// let a = Number(true);
+// log(t);
+// log(f);
+// log(n);
+// log(u);
 
 // new key word
 
@@ -1298,75 +1298,75 @@ log(u);
 // js object creat method
 
 
-let obj = {
-  name: 'The Dude'
-};
+// let obj = {
+//   name: 'The Dude'
+// };
 
-let car2 = Object.create(obj, {});
+// let car2 = Object.create(obj, {});
 // console.log(car2);
 // console.log(car2.name);
 
-let car3 = Object.create(car2, {
-  fullName: {
-      configurable: true,
-      writable: true,
-      enumerable: true,
-      value: 'Jeff Lebowski'
-  },
-  canBowl: {
-      configurable: true,
-      writable: true,
-      enumerable: true,
-      value: true
-  }
-});
-console.log(car3);
-console.log(car3.name);
+// let car3 = Object.create(car2, {
+//   fullName: {
+//       configurable: true,
+//       writable: true,
+//       enumerable: true,
+//       value: 'Jeff Lebowski'
+//   },
+//   canBowl: {
+//       configurable: true,
+//       writable: true,
+//       enumerable: true,
+//       value: true
+//   }
+// });
+// console.log(car3);
+// console.log(car3.name);
 
 // This keyWords
 // "use strict";
-let box = document.querySelector('.box');
-let myFunc = function(){
-   console.log('1', this);
-    setTimeout( ()=> {
-        console.log('3', 'timed out', this);
-    }, 250)
-};
-let myFunc2 = () => {
-    console.log('2', this);
-    setTimeout( ()=> {
-        console.log('3', 'timed out', this);
-    }, 250)
-};
+// let box = document.querySelector('.box');
+// let myFunc = function(){
+//    console.log('1', this);
+//     setTimeout( ()=> {
+//         console.log('3', 'timed out', this);
+//     }, 250)
+// };
+// let myFunc2 = () => {
+//     console.log('2', this);
+//     setTimeout( ()=> {
+//         console.log('3', 'timed out', this);
+//     }, 250)
+// };
 
-box.addEventListener('mousedown', myFunc);
-box.addEventListener('mouseup', myFunc2);
+// box.addEventListener('mousedown', myFunc);
+// box.addEventListener('mouseup', myFunc2);
 
 // myFunc();
 // myFunc.call(window);
-myFunc.apply(box);
+// myFunc.apply(box);
 // myFunc2()
 
 // Apply call and bind methods
 
-let bob = function(num, str, x){
-  console.log('bob', num, str, this, x);
-  return true;
-}
-let bill = {
-  name: 'Bill Murray',
-  movie: 'Lost in Translation',
-  myMethod: function(fn){
-      //fn(2, 'hello');
-      let n = arguments[1];
-      let s = arguments[2];
-      fn.apply(bill, [n, s]);
-      //fn.call(bill, n, s);
-  }
-}
-
-let fred = bob.bind(bill, 5, 'hasta la vista');
-fred('x');
+// let bob = function(num, str, x){
+//   console.log('bob', num, str, this, x);
+//   return true;
+// }
+// let bill = {
+//   name: 'Bill Murray',
+//   movie: 'Lost in Translation',
+//   myMethod: function(fn){
+//       //fn(2, 'hello');
+//       let n = arguments[1];
+//       let s = arguments[2];
+//       fn.apply(bill, [n, s]);
+//       //fn.call(bill, n, s);
+//   }
+// }
+// // Borrowing a function
+// let fred = bob.bind(bill, 5, 'hasta la vista');
+// fred('x');
 
 //bob(1, 'hello');
 //bill.myMethod(bob);
@@ -1374,3 +1374,528 @@ fred('x');
 //let arr = [3, 'hi'];
 //bob.apply(bill, arr);
 //bill.myMethod(bob, 4, 'ciao');
+
+
+// // Object Descriptors 
+
+// Property Descriptors Methods and Usage
+// Object.defineProperty(obj, propName, {} )
+// Object.defineProperties(obj, props)
+// Object.getOwnPropertyNames(obj)
+// Object.getOwnPropertyDescriptor(obj, prop)
+// Object.getOwnPropertyDescriptors(obj)
+// Object.keys(obj) - list of enumerable properties
+// Object.values(obj) - list of enumerable prop values
+// obj.propertyIsEnumerable(prop)
+// obj.hasOwnProperty(prop)
+// Objects can be
+// 1. Extensible - new properties added
+// 2. Frozen - props cannot be changed in any way
+// 3. Sealed - props can't be deleted or configured
+//           but are still writable
+// Object PROPERTIES can be 
+// 1. Writable - change the value
+// 2. Enumerable - seen through a for...in loop
+// 3. Configurable - change the property descriptors
+// Object.isExtensible(obj)
+// Object.isFrozen(obj)
+// Object.isSealed(obj)
+// Object.preventExtensions(obj)
+// Object.freeze(obj)
+// Object.seal(obj)
+// Descriptor Groups
+// DATA            ACCESSOR          
+// value           get
+// writable        set
+// configurable    configurable
+// enumerable      enumerable
+
+
+
+// let object = {
+//     name: 'Bob',
+//     age: 45
+// };
+// Object.defineProperty(obj, 'test', {
+//     value: 'Shagadelic',
+//     writable: true,
+//     configurable: true,
+//     enumerable: false
+// } );
+
+// Object.defineProperty(obj, 'frank', {
+//    configurable:true,
+//     enumerable: true,
+//     get: () => this.value,
+//     set: (_val) => {
+//         this.value = _val + " baby!";
+//     }
+// });
+
+
+
+// for( let prop in obj){
+//    console.log(prop);
+// }
+// console.log("object descriptors", obj, obj.test, obj.frank );
+// obj.frank = 'Shagadelic';
+// console.log(obj.frank);
+
+// Object private variables
+
+// let projo = (function(){
+//   let _prop1 = 'Starman';//private variable / local variable
+//   return {
+//       prop2: 1981,
+//       get prop1(){
+//           return 'Movie:' + _prop1;
+//       },
+//       set prop1(_val){
+//           _prop1 = _val;
+//       }
+//   }
+// })();
+
+// for(let prop in projo){
+//   console.log(prop);
+// }
+// console.log( projo.prop2 );
+// console.log( projo.prop1 ); 
+// projo.prop1 = 'The Big Lebowski';
+// console.log( projo.prop1 );
+// // console.log( projo._prop1);
+
+
+
+// // Double Bang .JavaScript
+// // casting boolean !!
+// // casting str to number +
+
+// // if(num) truthy value
+// let num   = 13
+// let bool = !!num;//back to boolean
+// console.log(bool);
+
+// let str = '13';
+// let value = + str;
+// console.log(typeof str);
+// console.log(typeof value);
+
+
+// // Namespace and IIFE functions
+// let objNS = {
+//     name : 'Object Namespace',
+//     init: function(){
+//         //start the ball rolling
+//         objNS.name = "New value";
+//         objNS.action();
+//         this.action();
+//     },
+//     action: function(){
+//         //do some task
+//     }
+// };
+// // objNS.init();
+
+// let objIIFE = (function(){
+//     let myPrivateVar = 'hidden value';
+//     let myPrivateFunc = function(){
+//         console.log('Private function running')
+//     };
+//     let x = function(){
+//             //start the ball rolling
+//             console.log(myPrivateVar);
+//         };
+//     x();
+//     return {
+//         name : 'Object IIFE',
+//         init: x,
+//         action: function(){
+//             //do some task
+//             myPrivateFunc();
+//         }
+//     }
+// })();
+// objIIFE.init();
+// objIIFE.action();
+
+
+// composition and Inheritance
+
+
+
+//INHERITANCE
+//  Character > Human > Sam
+//  Character > Robot > x73
+//  Character > Cyborg > Dolph
+
+const Character = {
+    talk: function(...msg){ 
+        console.log( msg.join(' ') ) 
+    }
+}
+
+const Human = Object.create(Character, {
+    speed: {value:3},
+    name: {value:'Hector'}
+});
+Human.walk= function(){ 
+    this.talk(this.name, 'walking') 
+};
+Human.eat= function(){ 
+    this.talk(this.name, 'eating') 
+};
+
+const Robot = Object.create(Character, {
+    speed: {value:8},
+    id: {value:'THX1138'}
+});
+Robot.drive= function (){ 
+    this.talk(this.id, '\u26A1', 'driving')
+};
+Robot.wifi= function (){ 
+    this.talk(this.id, '\u26A1', 'connecting')
+};
+
+const sam = Object.create(Human, 
+                          {name:{value: 'Samuel'}});
+sam.walk();
+sam.talk('Hello from Samuel.');
+
+const x73 = Object.create(Robot, 
+                          {id:{value: 'x73'}});
+x73.drive();
+x73.wifi();
+
+// ????What about a Cybernetically enhanced human with wifi?
+
+
+
+//COMPOSITION
+const talker = (state)=>({ 
+    talk: (...msg) => console.log(msg, state)
+});
+const walker = (state) => ({
+    walk: () => {
+        let nm = state.name || state.id;
+        console.log(nm,  'walking');
+    }
+});
+const eater = (state) => ({
+    eat: ()=> {
+        let nm = state.name || state.id;
+        console.log(`${nm} is eating pizza`);
+    }
+});
+const driver = (state) => ({
+    drive: ()=>{
+        let nm = state.name || state.id;
+        console.log(nm, '\u26A1', 'driving');
+    }
+});
+const wifier = (state) => ({
+    wifi: ()=>{
+        let nm = state.name || state.id;
+        console.log(nm, '\u26A1', 'connecting');
+    }
+});
+
+const Person = (name, speed=3) => {
+    let state = {
+        name,
+        speed
+    }
+    return Object.assign({}, 
+                         talker(state), 
+                         walker(state), 
+                         eater(state));
+};
+let Bob = Person('Bob');
+Bob.talk('Hello from Bob.');
+Bob.eat();
+Bob.walk();
+
+const Android = (id, speed=6) => {
+    let state = {
+        id,
+        speed
+    }
+    return Object.assign({}, 
+                         talker(state), 
+                         driver(state), 
+                         wifier(state));
+};
+let k45 = Android('k45');
+k45.drive();
+k45.wifi();
+
+const Cyborg = (name, speed) => {
+    let state = {
+        name,
+        speed
+    };
+    return Object.assign({},
+                        talker(state),
+                        walker(state),
+                        wifier(state));
+};
+let Dolph = Cyborg('Dolph', 9);
+Dolph.walk();
+Dolph.wifi();
+
+
+// Timestamps Date and ValueOf
+// let timestamp = new Date ()
+// let date =timestamp.valueOf();
+// console.log(date);
+
+// // Binary and Bitwise Operations
+
+// // bitwise.js
+// // JavaScript Bitwise operators
+// // AND &
+// // OR  |
+// // XOR ^
+// // NOT ~
+// // Shift Left <<
+// // Shift Right >>
+// let y = 10;     //1010
+// let i = 6;      // 110
+// console.log( y.toString(2), i.toString(2) );
+// // 1010
+// //  110
+// // 0010  2
+// console.log("AND &",  (y & i) )
+// let temp = 2;
+// console.log( temp.toString(2) )
+
+// //  1010
+// //   110
+// //  1110
+// console.log("OR | ",  (y | i) );
+// let tem = 14;
+// console.log( tem.toString(2) )
+// // 1010
+// //  110
+// // 1100  12 XOR
+// console.log('XOR ^', (y^i) );
+
+// // ~ 1010
+// //   0101
+// //  x  = -(x+1)  
+// console.log('NOT ~', (~y) );  -11
+
+// //PERMISSIONS
+// // read, write, delete
+// let perm = 6;
+
+// let allowedToRead = (perm & 4)?true:false;
+// let allowedToWrite = (perm & 2)?true:false;
+// let allowedToDelete = (perm & 1)?true:false;
+// //  0110  6
+// //  0100  AND 4
+// //  0100  4
+// //  0010  6
+// //  0100  AND 4
+// //  0000  0
+
+// for(let c = 0; c < 50; c++){
+//     if(c&1){
+//         //console.log('Odd');
+//     }else{
+//         //console.log('\t\tEven');
+//     }
+// }
+
+// //101010 >> 4  = 10
+// //  111  >> 1  = 3
+// console.log( 7 >> 1 );
+
+// //  111 << 1 = 1110   (14)
+// //  1000 << 1 = 10000  (16)
+// console.log( 7 << 1);
+// console.log( 8 << 1);
+
+// //  FF3300  - 24bit values  8bits Red, 8bits Green, 8 bits Blue
+// // GREEN  - Shift 8 >>, AND 11111111  (255)
+// //  111111110011001100000000  >> 8 = 1111111100110011
+// //  1111111100110011
+// //  0000000011111111
+// //          00110011
+
+// var color = 0xFF3300;
+// var noBlue = color >> 8;
+// var green = noBlue & 255;
+// console.log('GREEN', green, green.toString(16))
+
+
+// counting in decimal, binary
+//  0      0       
+//  1      1       2^0
+//  2     10       2^1
+//  3     11
+//  4    100       2^2
+//  5    101
+//  6    110
+//  7    111
+//  8   1000       2^3
+//  9   1001
+// 10   1010
+// 11   1011
+// 12   1100
+// 13   1101
+// 14   1110
+// 15   1111
+// 16  10000       2^4
+
+
+// logical operators &&
+// let dogs = {
+//     name: 'Luna',
+//     age: 2,
+//     isHappy: true,
+// }
+// if (!!dogs.isHappy && dogs.name){
+//     console.log ( dogs.name, 'is not happy')
+// }else{
+//     console.log(dogs.name, 'is happy')
+// }
+
+
+//Removing  duplicate from Array
+// let names = ['John', 'Paul', 'George', 'Ringo'];
+// let nums = [63, 69, 72, 88, 92, 93, 96, 98];
+
+// for (let i = 0; i < 4; i++){
+//     let rnd = Math.floor(Math.random()*names.length) ; 
+    // console.log(names[rnd]);
+// }
+// solving the problem
+
+// for (let i = 0; i < 4, names.length ; i++) {
+//     let nametemp = names
+    
+//     let rnd = Math.floor(Math.random() * nametemp.length);
+
+//     console.log(nametemp[rnd]);
+//     nametemp.splice(rnd, 1);
+    
+// }
+
+// console.log('\n');
+// let min = 50;
+// let max = 100;
+// let range = max - min;
+// for(let i = 0; i < 9; i++){
+//     let rnd = Math.floor( Math.random() * range) + min;
+//     // nums.push(rnd);
+//     // console.log( nums.sort() );
+// }
+
+// while( nums.length < 17 ){
+//     let rnd = Math.floor( Math.random() * range) + min;
+//     if( !nums.includes(rnd) ){
+//         nums.push(rnd);
+//        console.log( nums.sort() );
+//     }else{
+//         log('skipped duplicate');
+//     }
+// }
+// let arr = [63, 69, 72, 88, 92, 93, 96, 98];
+// function getRandomNumber(min, max) {
+//      min = 50
+//      max = 100
+//     return Math.random() * (max - min) + min;
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//    arr.push(getRandomNumber())
+    
+//   }
+//   const randomNum = getRandomNumber(0, 100);
+//   console.log(randomNum)
+
+const obj1 = { foo: "bar", x: 42 };
+const obj2 = {  y: 13 };
+const obj3 = {  z: 23 };
+
+const merge = (...objects) =>
+  objects.reduce((acc, cur) => ({ ...acc, ...cur }));
+
+const mergedObj1 = merge(obj1, obj2, obj3);
+console.log(mergedObj1)
+// { foo: 'baz', x: 42, y: 13 }
+
+// Math.floor(Math.random() * (range + 1)) + minimum
+// Number line
+// 0---------1---------2---------3
+
+let num;
+let classes = ['highlight', 'active', 'sale'];
+let people = ['John Bonham', 
+              'Robert Plant', 
+              'John Paul Jones', 
+              'Jimmy Page'];
+
+//Number between 1 and 3
+num = Math.floor(Math.random() * (2+1)) + 1;
+console.log(num);
+
+//Random person
+let max = people.length-1; //4-1 = 3
+let min = 2;
+num = Math.floor(Math.random() * (max-min+1) );// +min;
+console.log( people[num] )
+
+//Random CSS class
+let max2 = classes.length-1;
+let min2 = 0;
+num = Math.floor(Math.random()* (max2+1))+min2;
+console.log( classes[num] );
+
+//Number between 500 and 1000
+num = Math.floor(Math.random() * (500 + 1) ) + 500;
+console.log(num);
+
+// Looping and Recursion
+let count = 0;
+const SIZE = 60;
+// //Looping
+// console.log('Starting the loop');
+// for(let i=0; i<10; i++){
+//     console.log('inside loop', i);
+// }
+// console.log('Ended the loop');
+
+// // Recursion
+let recky = function(){
+    console.log('inside recky', count);
+    count++;
+    if(count<10){
+        recky();
+    }
+}
+console.log('Starting the recursion');
+recky();
+console.log('ending the recursion');
+
+// Recursion countdown
+// let countdown = function(size){
+//     console.log('x'.repeat(size));
+//     size = Math.floor( size * 0.95);
+//     if(size > 2){
+//         countdown(size);
+//     }
+// }
+// countdown(SIZE);
+
+//Asynchronous methods
+// AJAX, Database, Promises, Timers...
+
+// console.log('about to fetch');
+// for(let c=0; c<2; c++){
+//     let d = fetch(url)
+//     .then(response=>response.json())
+//     .then(data=>{ log('data', JSON.stringify(data) ) })
+//     console.log(c, d);
+// }
+// console.log('after fetch???');
