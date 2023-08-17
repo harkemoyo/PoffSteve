@@ -381,21 +381,25 @@
 
 // // bind()
 // // function Borrowing
-// const person = {
-//   firstName:"John",
-//   lastName: "Doe",
-//   fullName: function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// }
+const person = {
+  firstName:"John",
+  lastName: "Doe",
 
-// const member = {
-//   firstName:"Wiz",
-//   lastName: "Kizo",
-// }
+  fullName: function(middleName, nickName) {
+    return this.firstName + " " + this.lastName + " "  + nickName + " " + middleName;
+  }
+}
 
-// const fullName = person.fullName.bind(member);
-// console.log(fullName());
+
+const member = {
+  firstName:"Wiz",
+  lastName: "Kizo",
+  middleName: "chesoni"
+}
+
+const fullMember = person.fullName.bind(member, "Kalibo", "Chesoni");
+console.log(fullMember());
+
 
 
 // // map()method
@@ -824,25 +828,25 @@
 
 // })
 // })
-// }
 // fetch('https://restcountries.com/v3.1/all')
 //   .then((response) => response.json())
 //   .then(function(data) {
+//     console.log(data)
 //     data.forEach(function(country) {
 
 // DOM manipulation
-      // Creating Element for DOM
+    //   Creating Element for DOM
     //   const countryName = document.getElementById('country');
     //   const userName = document.createElement('div');
     //   const textH1 = document.createElement('h1');
     //   const flagCountry = document.createElement('img');
     //   countryName.classList.add('flags');
-       // Use the 'common' property for the country name
+    // //    Use the 'common' property for the country name
       
     //   textH1.textContent = country.name.common;
     //   userName.appendChild(textH1);
 
-     // Use the 'png' property for the country flag URL
+    // //  Use the 'png' property for the country flag URL
     //   flagCountry.src = country.flags.png; 
     //   userName.appendChild(flagCountry);
     //   countryName.appendChild(userName);
@@ -1529,119 +1533,224 @@
 //  Character > Robot > x73
 //  Character > Cyborg > Dolph
 
-const Character = {
-    talk: function(...msg){ 
-        console.log( msg.join(' ') ) 
-    }
-}
+// const Character = {
+//     talk: function(...msg){ 
+//         console.log( msg.join(' '), msg) 
+//     }
+// }
 
-const Human = Object.create(Character, {
-    speed: {value:3},
-    name: {value:'Hector'}
-});
-Human.walk= function(){ 
-    this.talk(this.name, 'walking') 
-};
-Human.eat= function(){ 
-    this.talk(this.name, 'eating') 
-};
-
-const Robot = Object.create(Character, {
-    speed: {value:8},
-    id: {value:'THX1138'}
-});
-Robot.drive= function (){ 
-    this.talk(this.id, '\u26A1', 'driving')
-};
-Robot.wifi= function (){ 
-    this.talk(this.id, '\u26A1', 'connecting')
-};
-
-const sam = Object.create(Human, 
-                          {name:{value: 'Samuel'}});
-sam.walk();
-sam.talk('Hello from Samuel.');
-
-const x73 = Object.create(Robot, 
-                          {id:{value: 'x73'}});
-x73.drive();
-x73.wifi();
-
-// ????What about a Cybernetically enhanced human with wifi?
+// const Human = Object.create(Character, {
+//     speed: {value:3},
+//     name: {value:'Hector'}
+// });
+// Human.walk = function(){ 
+//     this.talk(this.name, 'walking') 
+    
+// };
+// Human.eat = function(){ 
+//     this.talk(this.name, 'eating',this.speed) 
+// };
 
 
+// const Robot = Object.create(Character, {
+//     speed: {value:8},
+//     id: {value:'THX1138'}
+// });
+// Robot.drive = function (){ 
+//     this.talk(this.id, '\u26A1', 'driving')
+// };
+// Robot.wifi= function (){ 
+//     this.talk(this.id, '\u26A1', 'connecting')
+// };
 
-//COMPOSITION
-const talker = (state)=>({ 
-    talk: (...msg) => console.log(msg, state)
-});
-const walker = (state) => ({
-    walk: () => {
-        let nm = state.name || state.id;
-        console.log(nm,  'walking');
-    }
-});
-const eater = (state) => ({
-    eat: ()=> {
-        let nm = state.name || state.id;
-        console.log(`${nm} is eating pizza`);
-    }
-});
-const driver = (state) => ({
-    drive: ()=>{
-        let nm = state.name || state.id;
-        console.log(nm, '\u26A1', 'driving');
-    }
-});
-const wifier = (state) => ({
-    wifi: ()=>{
-        let nm = state.name || state.id;
-        console.log(nm, '\u26A1', 'connecting');
-    }
-});
+// const sam = Object.create(Human, 
+//                           {name:{value: 'Samuel'},
+//                             speed:{value: 4}    });
+// sam.walk();
+// sam.eat();
+// sam.talk('Hello from Samuel.', 'Are you sure you want to');
 
-const Person = (name, speed=3) => {
-    let state = {
-        name,
-        speed
-    }
-    return Object.assign({}, 
-                         talker(state), 
-                         walker(state), 
-                         eater(state));
-};
-let Bob = Person('Bob');
-Bob.talk('Hello from Bob.');
-Bob.eat();
-Bob.walk();
+// const x73 = Object.create(Robot, 
+//                           {id:{value: 'x73'}});
+// x73.drive();
+// x73.wifi();
 
-const Android = (id, speed=6) => {
-    let state = {
-        id,
-        speed
-    }
-    return Object.assign({}, 
-                         talker(state), 
-                         driver(state), 
-                         wifier(state));
-};
-let k45 = Android('k45');
-k45.drive();
-k45.wifi();
+// // // ????What about a Cybernetically enhanced human with wifi?
 
-const Cyborg = (name, speed) => {
-    let state = {
-        name,
-        speed
-    };
-    return Object.assign({},
-                        talker(state),
-                        walker(state),
-                        wifier(state));
-};
-let Dolph = Cyborg('Dolph', 9);
-Dolph.walk();
-Dolph.wifi();
+
+
+// // //COMPOSITION
+// const talker = (state)=>({ 
+//     talk: (...msg) => console.log(msg, state)
+// });
+// const walker = (state) => ({
+//     walk: () => {
+//         let nm = state.name || state.id;
+//         console.log(nm,  'walking');
+//     }
+// });
+// const eater = (state) => ({
+//     eat: ()=> {
+//         let nm = state.name || state.id;
+//         console.log(`${nm} is eating pizza`);
+//     }
+// });
+// const driver = (state) => ({
+//     drive: ()=> {
+//         let nm = state.name || state.id;
+//         console.log(nm, '\u26A1', 'driving');
+//     }
+// });
+// const wifier = (state) => ({
+//     wifi: ()=>{
+//         let nm = state.name || state.id;
+//         console.log(nm, '\u26A1', 'connecting');
+//     }
+// });
+
+// const Person = (name, speed=3) => {
+//     let state = {
+//         name,
+//         speed
+//     }
+//     return Object.assign({}, 
+//                          talker(state), 
+//                          walker(state), 
+//                          eater(state));
+// };
+// let Bob = Person('Bob');
+// Bob.talk('Hello from Bob.');
+// Bob.eat();
+// Bob.walk();
+
+// const Android = (id, speed=6) => {
+//     let state = {
+//         id,
+//         speed
+//     }
+//     return Object.assign({}, 
+//                          talker(state), 
+//                          driver(state), 
+//                          wifier(state));
+// };
+// let k45 = Android('k45');
+// k45.drive();
+// k45.wifi();
+
+// const Cyborg = (name, speed) => {
+//     let state = {
+//         name,
+//         speed
+//     };
+//     return Object.assign({},
+//                         talker(state),
+//                         walker(state),
+//                         wifier(state));
+// };
+// let Dolph = Cyborg('Dolph', 9);
+// Dolph.walk();
+// Dolph.wifi();
+
+// const Cyborg = {
+//     state(name, speed) {
+//         this.speed = speed;
+//         this.name = name;
+//     }
+
+//     // Cyborg has both walking and wifi capabilities
+//     walk() {
+//         this.talk(this.name, 'walking');
+//     }
+
+//     wifi() {
+//         this.talk(this.name, '\u26A1', 'connecting');
+//     }
+// }
+
+// const Dolph = new Cyborg('Dolph', 9);
+// Dolph.walk();
+// Dolph.wifi();
+
+
+
+// const PersonDet = function (name, address,birthyear,gender){
+//     this.name = name;
+//     this.address = address;
+//     this.birthyear = birthyear;
+//     this.gender = gender;
+// }
+// PersonDet.prototype.calcAge = function(){
+//     let age = new Date().getFullYear() - this.birthyear
+//     console.log(age)
+// };
+
+// let john = new PersonDet("John",'Shauri',1990,'male');
+// console.log(john);
+// // Job Details
+// // Mark to inherit from parent / this.mark as a child
+
+// const JobDet = function (name, address,birthyear,gender, employeeId, employeeSalary) {
+//     // use of call method to borrow for Code to be D.R.Y
+//     // is how to inherit from parent / this.mark as a child
+//     // if you don't use this keyword in  inherit from parent this keyword represents window object
+//     PersonDet.call(this,name,address,birthyear,gender);
+//     this.employeeSalary = employeeSalary;
+//     this.employeeId = employeeId;
+    
+// }
+// // setting prototype
+// JobDet.prototype = PersonDet.prototype;
+
+// JobDet.prototype.calcSalary = function () {
+// return this.employeeSalary * 12;
+// };
+// JobDet.prototype.emplDet = function () {
+//     console.log(this.name)
+//     console.log(this.employeeId);
+// }
+
+
+// let mark = new JobDet( 'Mark',"shauri",1995,"Male",101,12000);
+// console.log(mark);
+
+
+// // using classes 
+// class Employee {
+//  constructor(name, birthyear, gender){
+//     this.name = name;
+//     this.birthyear = birthyear;
+//     this.gender = gender;
+//  }
+//  calcAge() {
+// console.log(new Date().getFullYear() - this.birthyear);
+//  }
+// }
+
+// class markDetail extends Employee {
+//     constructor(name, birthyear, gender, Id, salary){
+//         // create a new instanceof 
+//         super(name, birthyear, gender);
+//         this.Id = Id;
+//         this.salary = salary;
+//     }
+
+//     calcSalary(){
+//         return this.salary * 2;
+
+//     }
+//     emplDetails() {
+//         console.log(this.name)
+//         console.log(this.salary)
+//     }
+
+// }
+
+ 
+// const Hark = new markDetail("Hark", 1994,"male", 201, 50000);
+
+// Hark.calcAge()
+// Hark.calcSalary()
+// Hark.emplDetails()
 
 
 // Timestamps Date and ValueOf
@@ -1814,51 +1923,51 @@ Dolph.wifi();
 //   const randomNum = getRandomNumber(0, 100);
 //   console.log(randomNum)
 
-const obj1 = { foo: "bar", x: 42 };
-const obj2 = {  y: 13 };
-const obj3 = {  z: 23 };
+// const obj1 = { foo: "bar", x: 42 };
+// const obj2 = {  y: 13 };
+// const obj3 = {  z: 23 };
 
-const merge = (...objects) =>
-  objects.reduce((acc, cur) => ({ ...acc, ...cur }));
+// const merge = (...objects) =>
+//   objects.reduce((acc, cur) => ({ ...acc, ...cur }));
 
-const mergedObj1 = merge(obj1, obj2, obj3);
-console.log(mergedObj1)
-// { foo: 'baz', x: 42, y: 13 }
+// const mergedObj1 = merge(obj1, obj2, obj3);
+// console.log(mergedObj1)
+// // { foo: 'baz', x: 42, y: 13 }
 
-// Math.floor(Math.random() * (range + 1)) + minimum
-// Number line
-// 0---------1---------2---------3
+// // Math.floor(Math.random() * (range + 1)) + minimum
+// // Number line
+// // 0---------1---------2---------3
 
-let num;
-let classes = ['highlight', 'active', 'sale'];
-let people = ['John Bonham', 
-              'Robert Plant', 
-              'John Paul Jones', 
-              'Jimmy Page'];
+// let num;
+// let classes = ['highlight', 'active', 'sale'];
+// let people = ['John Bonham', 
+//               'Robert Plant', 
+//               'John Paul Jones', 
+//               'Jimmy Page'];
 
-//Number between 1 and 3
-num = Math.floor(Math.random() * (2+1)) + 1;
-console.log(num);
+// //Number between 1 and 3
+// num = Math.floor(Math.random() * (2+1)) + 1;
+// console.log(num);
 
-//Random person
-let max = people.length-1; //4-1 = 3
-let min = 2;
-num = Math.floor(Math.random() * (max-min+1) );// +min;
-console.log( people[num] )
+// //Random person
+// let max = people.length-1; //4-1 = 3
+// let min = 2;
+// num = Math.floor(Math.random() * (max-min+1) );// +min;
+// console.log( people[num] )
 
-//Random CSS class
-let max2 = classes.length-1;
-let min2 = 0;
-num = Math.floor(Math.random()* (max2+1))+min2;
-console.log( classes[num] );
+// //Random CSS class
+// let max2 = classes.length-1;
+// let min2 = 0;
+// num = Math.floor(Math.random()* (max2+1))+min2;
+// console.log( classes[num] );
 
-//Number between 500 and 1000
-num = Math.floor(Math.random() * (500 + 1) ) + 500;
-console.log(num);
+// //Number between 500 and 1000
+// num = Math.floor(Math.random() * (500 + 1) ) + 500;
+// console.log(num);
 
 // Looping and Recursion
-let count = 0;
-const SIZE = 60;
+// let count = 0;
+// const start = 60;
 // //Looping
 // console.log('Starting the loop');
 // for(let i=0; i<10; i++){
@@ -1867,16 +1976,16 @@ const SIZE = 60;
 // console.log('Ended the loop');
 
 // // Recursion
-let recky = function(){
-    console.log('inside recky', count);
-    count++;
-    if(count<10){
-        recky();
-    }
-}
-console.log('Starting the recursion');
-recky();
-console.log('ending the recursion');
+// let recky = function(){
+//     console.log('inside recky', count);
+//     count++;
+//     if(count<10){
+//         recky();
+//     }
+// }
+// console.log('Starting the recursion');
+// recky();
+// console.log('ending the recursion');
 
 // Recursion countdown
 // let countdown = function(size){
@@ -1886,16 +1995,273 @@ console.log('ending the recursion');
 //         countdown(size);
 //     }
 // }
-// countdown(SIZE);
+// countdown(start);
 
 //Asynchronous methods
 // AJAX, Database, Promises, Timers...
 
-// console.log('about to fetch');
+// console.log('Start:','about to fetch');
 // for(let c=0; c<2; c++){
-//     let d = fetch(url)
+//     let d = fetch('https://restcountries.com/v3.1/all')
 //     .then(response=>response.json())
-//     .then(data=>{ log('data', JSON.stringify(data) ) })
-//     console.log(c, d);
+//     .then(data=>{ console.log('data', JSON.stringify(data) ) })
+//     console.log('Promises:',c, d);
 // }
 // console.log('after fetch???');
+
+// Synchronous And Asynchronous
+// let a = 5;
+// let b = 50;
+
+// let a1 = (function (){ return 5 })()
+
+// let b1 = (function (){ return 50 })()
+
+// console.log( a1 );
+// console.log( b1 );
+
+// let a2 = function(num){ return 5*num }
+// let b2 = function() { return 50 }
+
+// console.log("syn: ", a2(b2()) );
+
+// /**
+// setTimeout, callbacks for geolocation, Promises, fetch, ajax, filesystem interaction, database calls, even DOM event listeners
+// **/
+
+// let a3 = 100;
+// setTimeout( function(){ a3++;  }, 0);
+// console.log(a3);
+// setTimeout( function(){ console.log(a3) }, 0)
+
+// let p = new Promise(function(resolve, reject){
+//     setTimeout( function(){
+//         resolve("Yo!");
+//     }, 0)
+    
+// });
+// console.log(p);
+// setTimeout(function(){
+//     console.log(p);
+// }, 10);
+// console.log(p);
+// p.then(function(val){
+//     console.log(val);
+// })
+
+
+// // Callbackfunction
+
+// const app = {
+//     geolocation: (good, bad) => {
+//     //requires two functions be passed in
+//     try{
+//         //try to do something
+//         let pos = {
+//             latitude:0, longitude: 0
+//         }
+//         pos.latitude = (Math.random() * 180) - 90;
+//         pos.longitude = (Math.random() * 360) - 180;
+//         //latitude and longitude were backwards in the video
+//         if(Math.round(Math.random()) === 1){
+//             throw new Error("my simulated geolocation failure")
+//         }else{
+//             good.call(app.geolocation, pos, 17);
+//         }
+//     }catch(errOR){
+//         //if it fails we will call the bad function
+//         //and pass along the error object
+//         bad.call(app.geolocation, errOR, 42);
+//     }
+// }
+// }
+
+// let success = (position, num) => {
+// console.log(`You are "at" position ${num} latitude: ${position.latitude}, longitude: ${position.longitude})`);
+// }
+
+// let fail = (err, num) => {
+// console.warn('Something bad happened', err.message, num);
+// }
+
+// app.geolocation(success, fail);
+
+// Switch statement 
+
+// let fetch = () => {
+//     let codes = [
+//         {'code': 200, 'text': 'Ok'},
+//         {'code': 201, 'text': 'Created'},
+//         {'code': 304, 'text': 'Not Modified'},
+//         {'code': 400, 'text': 'Bad Request'},
+//         {'code': 401, 'text': 'Unauthorized'},
+//         {'code': 403, 'text': 'Forbidden'},
+//         {'code': 404, 'text': 'File Not Found'},
+//         {'code': 405, 'text': 'Method Not Allowed'},
+//         {'code': 500, 'text': 'Internal Server Error'},
+//         {'code': 503, 'text': 'Service Unavailable'},
+//         {'code': 600, 'text': 'Not a real code'}];
+//     let num = Math.floor(Math.random() * codes.length);
+//     return codes[num];
+// }
+
+// let response = fetch();
+// console.log(response);
+// switch(response.code){
+//     case 200:
+//     case 201:
+//         console.log('All is good', response.text);
+//         break;
+//     case 304:
+//         console.log('Redirect', response.text);
+//         break;
+//     case 400:
+//     case 401:
+//     case 403:
+//     case 404:
+//     case 405:
+//         console.log('Problem', response.text);
+//         break;
+//     case 500:
+//     case 503:
+//         console.log('Server Error', response.text);
+//         break;
+//     default:
+//         console.log(response.code, response.text);
+// }
+
+
+
+// let names = ['Walter', 'Jesse', 'Saul', 'Gus', 'Skylar', 'Marie', 'Todd', 'Badger', 'Pete'];
+
+
+// //1. Find out if 'Todd' or 'Steve' is in the Array
+// let bool = names.includes('Steve');
+// //log(bool);
+
+// //2. Find out what positions in the Array are 'Gus' or 'Tuco'
+// let pos = names.indexOf('Tuco');
+// //log(pos)
+
+// //3. Find out whether anyone in the list has a capital letter 'M' in their name
+// let some = names.some((name)=>{
+//     if(name.indexOf('R') > -1){
+//         return true;
+//     }
+//     //return false;  //undefined will be return
+// });
+// //log(some);
+
+// //4. Find the first name in the list that is more than 5 characters plus after 'Walter'
+// let find = names.find((name)=>{
+//     if( name.length > 6){
+//         return name;
+//     }
+// })
+// console.log(find)
+
+// substring and substr methods
+
+// let str = "Nobody calls me Lebowski, you got the wrong guy, I'm the Dude, man.";
+
+
+// console.log( str.substring(16, 24)  );
+// console.log( str.substring(16)  );
+// console.log( str.substring(16, 0)  );
+
+// console.log( str.substr(16, 0)  );
+// console.log( str.substr(16, 1)  );
+// console.log( str.substr(16, 10)  );
+// console.log( str.substr(-16, 10)  );
+
+// finding and replace in js
+
+// let paragraph = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae suscipit optio ab et soluta illo numquam at, eos qui similique voluptates sapiente quis quisquam libero, dicta neque consequuntur. Asperiores, temporibus.';
+
+// let find = ' ';
+// let replace = '';
+
+// //let counter =0;
+// let newPara = "".concat(paragraph);
+
+// while( newPara.indexOf(find) > -1 ){
+//     newPara = newPara.replace(find, replace);
+
+// }
+// console.log( newPara);
+
+
+
+//Trimming and padding strings
+// trim(), trimLeft(), trimRight()
+// padStart(minLength [,padString]), padEnd()
+
+
+// let space = 'Sterling';
+// let longname = '    Sterling Archer     ';
+
+
+
+// console.log(longname.trim() );
+
+
+// console.log( space.padStart(25, 'asdf')  );
+// console.log( space.padEnd(25, 'asdf')  );
+// console.log( space.padEnd(5));
+// console.log( space.padEnd(25));
+
+// rounding numbers in js
+// Math.round(), floor(), ceil() - returns Number
+// Number.toFixed(), toExponential(), toPrecision() -returns String
+// Number.parseInt(), parseFloat() - returns Number
+// 
+
+// let number1 = 1111.467;
+// let str1 = "1111.567 tonnes of apple sauce";
+// let dec1 = 0.000161;
+// let log = console.log;
+
+// //log( Math.round(number1) );
+// //log( Math.floor(number1) );
+// //log( Math.ceil(number1) );
+
+// //log( number1.toFixed(1) );
+// //log( number1.toExponential(6) );
+// //log( dec1.toPrecision(5) );
+
+// log( parseInt(str1) );
+// log( parseFloat(str1) );
+
+// Primitives and Objects
+// Data Types in JS
+// 
+// boolean, null, undefined, number, string, symbol
+//
+// Objects - values in memory that can be reference by an identifier
+
+// let nm = 'bob';
+// //String
+// let nm2 = new String('bob');
+// nm2.toUpperCase();
+// let nm3 = nm.toUpperCase(); // 'BOB'
+
+// console.log( typeof nm);   //string - tells us what kind of auto-box wrapper we get
+
+// //let o = new Object();
+// let o = {
+//     prop1: 1,
+//     prop2: false,
+//     prop3: 'string',
+//     prop4: function(){
+        
+//     }
+// };
+
+// //auto-boxing - putting a primitive value into a wrapper of the correct type
+
+// let s1 = 'string';
+// let s2 = s1;       //the primitive value gets COPIED into the new variable
+// console.log(s1, s2);  //actually two different spots in memory
+// s2 = 'gnirts';   
+// console.log(s1, s2);
+
