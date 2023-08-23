@@ -158,7 +158,7 @@
 // // it's high order function / has argument
 // // Can be used in object / i.e json
 // // calling a function using forEach
-// const log = console.log
+// constconsole.log = console.log
 //  const colors = ['blue', 'green', 'white']
 // function iterate(item, index, array) {
 // log(item);
@@ -2265,3 +2265,1033 @@ console.log(fullMember());
 // s2 = 'gnirts';   
 // console.log(s1, s2);
 
+//Array custom sort() function
+// let log = console.log;
+
+// let movies = ['Star Wars', 'Star Trek', 'Jaws', 'Jurassic Park', 'Gross Pointe Blank', 'Eternal Sunshine of the Spotless Mind', 'Memento', 'Dog Soldiers', 'The Host', 'Gran Torino', 'Close Encounters of the Third Kind', 'Good Will Hunting', 'Layer Cake', 'Casino Royale', 'Almost Famous'];
+
+// let numbers = [40,16,67,345,22,23,142,63,59,283];
+
+// let people = [
+//     {"id":123, "name":"Rick Deckard", "email":"rick@bladerunner.org"},
+//     {"id":456, "name":"Roy Batty", "email":"roy@replicant.io"},
+//     {"id":789, "name":"J.F. Sebastian", "email":"j.f@tyler.com"},
+//     {"id":258, "name":"Pris", "email":"pris@replicant.io"}
+// ];
+
+// //the problem with numbers
+// log( movies.sort() );  //ok
+// log( numbers.sort() );  //NOT ok
+
+// //the solution - using a custom sort
+// let sortedNum = numbers.sort( (a, b)=>{
+//     log( 'sorting', a, b);
+//     if( a > b) return 1;
+//     else if(b > a) return -1;
+//     else return 0;
+// } );
+// log(sortedNum);
+
+// //sorting array of objects - using a custom sort
+// //sort by person name
+// let sortedPeople = people.sort( (a, b) => {
+//     if( a.id > b.id) return 1;
+//     else if(b.id > a.id) return -1;
+//     else return 0;
+// } );
+// log( sortedPeople );
+
+
+// Iterable and Enumerable
+// let joe = ['grandchild', 'child', 'kid', 'son', 'daughters']
+// joe.elf = 'firstChild'
+// Object.defineProperty( joe, 'children', {
+//   value: 'father',
+//   enumerable: true
+// } );
+
+// let joe2 = {
+//   'town':['Nairobi', 'Mombasa', 'Nakuru', 'Eldoret'],
+//   'race':['kenya', 'sports','music']
+// }
+
+// joe2.creator = 'J.N Hudson';
+// Object.defineProperty( joe2,'age', {
+//   value:'first',
+//   enumerable: false
+// })
+
+// // This are Iterable work with values inside the Array
+// // for (const man of joe ) {
+// //   console.log( man)
+// // }
+
+// // // This is an Enumerable
+// // for (const man in joe) {
+// //   console.log(man);
+
+// // }
+
+// for (const county of joe2.town) {
+//   console.log(county);
+// }
+// for (const county of joe2.creator) {
+//   console.log(county);
+// }
+
+/****************************************
+ES6 Iterators and Generators
+Arrays, Strings, Maps, Sets, NodeLists - built-in iterators
+{Object} => Iterator => Generator
+****************************************/
+// let log = console.log;
+// let characters = ['Finn','Poe', 'Rey', 'Kylo', 'Luke', 'Leia']
+
+// function* genny(){
+//     let i = 0;
+//    yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+//     i++;
+//     yield characters[i];
+// }
+
+//let iter = genny();
+
+// Basic iterator
+// 
+//log(iter)
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+//log(iter.next());
+
+// custom iterator
+// let starwars8 = {
+//     title: 'The Last Jedi',
+//     director: 'Rian Johnson',
+//     year: 2017,
+//     boxOffice: '1.3B'
+// }
+
+
+// let count = -1;
+// let SW8 = {
+//     [Symbol.iterator]: function(obj){
+//         return {
+//             next: ()=>{
+//                 count++;
+//                 switch(count) {
+//                     case 0:
+//                         return {
+//                             value: obj.title, 
+//                             done: false}
+//                     case 1:
+//                         return {
+//                             value: obj.year,
+//                             done: false
+//                         }
+//                     case 2:
+//                         return {
+//                             value: obj.director,
+//                             done: false
+//                         }
+//                     case 3 :
+//                         return { value: undefined, done: true}
+//                     default:
+//                         return { value: undefined, done: true}
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// let data = SW8[Symbol.iterator](starwars8);
+// log( data.next() );
+// log( data.next() );
+
+// log( data.next() );
+// log( data.next() );
+// log( data.next() );
+
+// //
+// //for(let p of starwars8){
+// //    for of loops are using the .next( ) method behind the scenes
+// //}
+
+
+
+
+// let Obj1 = {
+//   title: 'The Last Jedi',
+//   director: 'Rian Johnson',
+//   year: 2017,
+// };
+
+// let Obj2 = {
+//   title: 'The Hobbit',
+//   director: 'Peter Jackson',
+//   boxOffice: '1.017B',
+// };
+
+// let myGenerator = {
+//   [Symbol.iterator]: function () {
+//     let count = -1; //reset the count
+//     return {
+//       next: () => {
+//         count++;
+//         switch (count) {
+//           case 0:
+//             return {
+//               value: this.title ? this.title : 'No title property',
+//               done: false,
+//             };
+//           case 1:
+//             return {
+//               value: this.year ? this.year : 'No year property',
+//               done: false,
+//             };
+//           case 2:
+//             return {
+//               value: this.director ? this.director : 'No director property',
+//               done: false,
+//             };
+//           default:
+//             return { value: undefined, done: true };
+//         }
+//       },
+//     };
+//   },
+// };
+
+// Object.setPrototypeOf(Obj1, myGenerator);
+// Object.setPrototypeOf(Obj2, myGenerator);
+
+// let data1 = Obj1[Symbol.iterator](); //create the iterator for Obj1
+// //this sets count to -1
+// for (let prop of Obj1) {
+//   console.log(prop);
+// }
+// console.log('\n\n');
+
+// let data2 = Obj2[Symbol.iterator](); //create the iterator for Obj2
+// //this sets count to -1 again
+// for (let prop of Obj2) {
+//   console.log(prop);
+// }
+
+
+/****************************
+What is a Polyfill
+How to create a Polyfill
+NOT recommended on DOM Objects
+Array - justLetter - only keep 
+    Strings with a specific letter
+    
+// Date - f$$kinDay - return the day
+//     of the week with prefix
+// ****************************/
+
+
+// if(! Array.prototype.sort){
+//   console.log('sort does not exist');
+// }
+
+// if(! Array.prototype.justLetter ){
+//     //log('justLetter method missing')
+//     Array.prototype.justLetter = function(letter){
+//         let arr = this.filter((item)=>{
+//             if(typeof item != 'string') return false;
+//             return item.indexOf(letter) > -1;
+//         });
+//         return arr;
+//     }
+// }
+// let names = ['abc', 'def', {'a':1}, 'cab', 'dac', 123];
+// console.log( names );
+// console.log( names.justLetter('d') );
+
+// if( ! Date.prototype.f$$kinDay ){
+//    //console.log('f$$kinDay method missing')
+//     Date.prototype.f$$kinDay = function(){
+//         switch(this.getDay()){
+//             case 0:
+//                 return 'Today is f$$ckin Sunday';
+//             case 1:
+//                 return 'Today is f$$ckin Monday';
+//             case 2:
+//                 return 'Today is f$$ckin Tuesday';
+//             case 3:
+//                 return 'Today is f$$ckin Wednesday';
+//             case 4:
+//                 return 'Today is f$$ckin Thursday';
+//             case 5:
+//                 return 'Today is f$$ckin Friday';
+//             case 6:
+//                 return 'Today is f$$ckin Saturday';
+            
+//         }
+//     }
+// }
+
+// console.log( new Date().f$$kinDay() )
+
+
+        /***********************
+        In NodeJS we only have the JSON methods.
+        Beyond that you will have to bring in
+        an NPM module or write your own
+        custom method.
+        ***********************/
+        /***********************
+        Deep Copy methods
+        1. JSON.parse(JSON.stringify())
+        2. Service Workers postMessage() onmessage
+        3. History API history.pushState(obj, title) history.state
+        4. Notification API new Notification("title", {data: obj} ).data
+        5. Build a custom recursive function
+        ***********************/
+        
+//         let shallowArr = [123, 
+//             'bob', 
+//             true, 
+//             null, 
+//             undefined];
+
+// let deepArr = [123, 
+//          'bob', 
+//          true, 
+//          ['Hank', 'Brent', 'Lacy'], 
+//          {'Rouleau':'Dog River', 
+//           'Wilcox': 'Woolerton'}
+//         ];
+
+// let deepObj = {
+// 'characters': ['Wanda','Davis','Emma','Karen'],
+// 'places': ['Corner Gas','Ruby','Foo Mart'],
+// 'grad68': false,
+// 'seasons': 5
+// }
+
+// let newObj = {...deepObj};
+// //newObj.places[0] = 'Ottawa'; //changed inside ref.
+// //newObj.places = ['Ottawa', 'Calcutta']; //new ref
+// console.log(newObj, deepObj);
+// let otherObj = JSON.parse(JSON.stringify(deepObj));
+// otherObj.places[0] = 'Ottawa';
+// console.log(otherObj, deepObj);
+
+// /*********************
+// Shallow Copy Method examples
+// 1. arr1.slice(0)
+// 2. [].concat(arr1)
+// 3. Spread Operator
+// 4. Object.create({}, obj)
+// 5. Object.assign({}, obj)
+// 6. Array.from(arr1)
+// *********************/
+// let s = 'steve';
+// let g = s;
+// s = 'new value';
+// //console.log(s, g);
+
+// let arr = Array.from(shallowArr);
+// //let arr1 = [...shallowArr];
+// shallowArr[0] = 456;
+// //console.log(arr, shallowArr);
+
+/*************************************
+Using async and await with Promises
+and error handling with Promises
+*************************************/
+
+
+// dothings();
+
+// async function dothings(){
+//     //delay(1000).then(()=>{}).catch(err=>{})
+//     let p = await delay(1000);
+    
+//     if(p){
+//        console.log('response from Promise', p);
+//     }else{
+//        console.log('No result the Promise must have rejected')
+//     }
+    
+// }
+
+// function delay(ms) {
+//     //fetch() is just a Promise too
+//     return new Promise((resolve, reject)=>{
+//         //resolve(ms);
+//         //reject( new Error('bad things happened') )
+//         setTimeout(resolve, ms, 42);
+//         //setTimeout(reject, ms, new Error('bad things happened'));
+//     }).catch(err=>log('err', err.message))
+// }
+
+/********************************************
+Maps - Like Objects they have keys and values
+    (unique keys)
+    .size
+    .set(key, value)
+    .delete(key)
+    .get(key)
+    .has(key)
+    .keys() - returns Iterator with array of keys
+    .values() - returns Iterator with array of values
+    .entries() - returns Iterator with array of [key, value]
+    .clear()
+    .forEach()
+Sets - Like Arrays they have values
+    (unique values) - remove non-unique values from array
+    .size
+    .add(value)
+    .delete(value)
+    .entries() - returns Iterator with array of [value, value]
+    .values() - returns Iterator with array of values
+    .has(value)
+    .clear()
+    .forEach()
+********************************************/
+
+
+// let obj = {
+//     prop1: 123,
+//     prop2: 'abc'
+// }
+// obj.prop2 = 'def'
+// console.log( obj)
+
+// //let map = new Map(obj); //fails - Objects are not iterable
+// let map = new Map();
+// map.set('prop1', 123)
+// map.set('prop2', 'abc');
+// map.set('prop2', 'def');
+// console.log(map)
+
+// let names = ['Rob', 'Bran', 'Arya', 'Sansa', 'Rickard'];
+// names.push('Bernard');
+// let set1 = new Set(names);
+// //easy way to remove duplicates from an Array
+// console.log(names);
+// console.log(set1);
+
+// const myMap = new Map();
+
+// // // Add new elements to the map
+// // myMap.set("bar", "foo");
+// // myMap.set(1, "foobar");
+
+// // // Update an element in the map
+// // myMap.set("bar", "baz");
+
+// // myMap.set("bar", "foo").set(1, "foobar").set(2, "baz");
+// // console.log(myMap);
+
+
+// /*****************************************
+// Chaining Objects and Methods together
+// How it works and why you want to do it
+// *****************************************/
+
+// // let myObj = function(nm){
+// //     this.name = nm;
+// //     //when used with 'new' it will return an instance
+// // }
+
+// // myObj.prototype.capitalize = function(){
+// //     this.name = this.name.substring(0,1).toUpperCase() + this.name.substring(1);
+// //     return this;
+// // }
+
+// // myObj.prototype.upper = function(){
+// //     this.name =  this.name.toUpperCase();
+// //     return this;
+// // }
+
+// // myObj.prototype.getName = function(){
+// //     console.log(this.name);
+// // }
+
+// // let bob = new myObj('bob');
+// // let cole = new myObj('cole');
+
+// // let x = bob.getName();
+// // console.log(x)
+// // cole.getName();
+
+// // bob.capitalize().upper().getName();
+// // cole.capitalize().getName();
+
+// // let arr = ['Cole', 'Cara', 'Bree', 'Riley', 'Alex', 'Devon'];
+// // arr.sort().forEach( item => {
+// //     console.log(item)
+// // })
+
+// let posts = {};
+// posts[Symbol.iterator] = function(){
+//     const URL = "//jsonplaceholder.typicode.com/posts";
+//     return {
+//         next: async function(){
+//             //early pre-emptive move
+//             let rand = Math.random();
+//             if(rand > 0.7){
+//                 return {
+//                     value: undefined,
+//                     done: true
+//                 };
+//             }
+//             let request = new Request(URL+`?r=${rand}`, {
+//                 method: 'GET',
+//                 mode: 'cors'
+//             });
+            
+//             let response = await fetch(request);
+//             //need to add catch()
+//             let data = await response.json();
+//             console.log('array of posts fetched', data);
+//             return {
+//                 value: data,
+//                 done: false
+//             }
+//         }
+//     }
+// }
+
+// let output = document.getElementById('output');
+// let main = document.querySelector('main');
+// main.addEventListener('click', d);
+
+// function d(ev){
+//     //start getting data
+//     //output.textContent += JSON.stringify(d);
+//     let iterator = posts[Symbol.iterator]();
+    
+//     (async function getData(){
+//         let data = await (iterator.next());
+//         if(data.value && !data.done){
+//             output.textContent += '\r\n' + JSON.stringify(data.value);
+//             console.log('getData', data.value);
+//             setTimeout(getData, 2000);
+//         }else{
+//             console.log( 'Done:', data.done );
+//             output.textContent += '\r\n DONE.';
+//         }
+//     })();
+//     // IIFE
+//     //  for await( let val of obj){ }
+// }
+
+
+/***********************************
+Typed Arrays in JavaScript
+Int8Array - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array
+-128 to 127
+Uint8Array - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+0 - 255
+Uint8ClampedArray - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray
+0 - 255
+Int16Array - like Int8Array but 16 bits in length
+-32768 to 32767
+Uint16Array - like Uint8Array but 16 bits in length
+0 to 65535
+Int32Array - like Int8Array but 32 bits in length
+-2147483648 to 2147483647
+Uint32Array - like Uint8Array but 32 bits in length
+0 to 4294967295
+Float32Array - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
+1.2x10-38 to 3.4x10 38
+Float64Array - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
+5.0x10 -324 to 1.8x10 308
+ArrayBuffer - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+- used to represent a generic, fixed-length raw binary data buffer.
+DataView - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
+Typed Arrays are used by: WebGL, Canvas, Web Audio API, XMLHttpRequests, Fetch API,  WebSockets, Web Workers, Media Source API and File APIs. 
+***********************************/
+
+//new Int8Array(length(bytes) | buffer | TypedArray);
+// array of 8-bit integers
+// most Array methods are available on TypedArrays too
+
+// let buffer = new ArrayBuffer(16);
+// //create a 16 byte buffer
+
+// let dv1 = new DataView(buffer);
+// //create a DataView to be able to access/set whole buffer
+// let dv2 = new DataView(buffer, 10, 3);
+// //start at slot 10, get 3 bytes
+
+
+// dv1.setInt8(11, 42);
+// //put "42" in slot 11 of the buffer through view1
+// let num = dv2.getInt8(1);
+// console.log(num)
+// console.log( dv2.getInt8(0))
+// console.log( dv2.getInt8(2))
+// // retrieve the 42 from the 2nd byte in view2 which was 
+// // the 11th byte in the buffer
+
+// const int16View = new Int16Array(buffer);
+
+// for (let i = 0; i < int16View.length; i++) {
+//   console.log(`Entry ${i}: ${int16View[i]}`);
+// }
+
+// const typedArray = new Uint8Array([1, 2, 3, 4]);
+// const normalArray = Array.from(typedArray);
+// console.log(typedArray);
+// console.log(normalArray);
+
+/****************************************
+Creating Objects
+1. Object literals
+2. Object.create() with descriptors
+3. function + new
+4. factory function with closures
+5. JS Class
+****************************************/
+// let log = console.log;
+
+
+// // 1. Object literals ////////////////////////////////////
+// let obj1 = {
+//     prop1: 'value1',
+//     prop2: 'value2',
+//     prop3: function(){
+//         console.log(this.prop1);
+//     }
+// }
+// log(1, obj1);
+// obj1.prop3();
+// log('------------------------------')
+
+
+// // 2. Object.create ////////////////////////////////////
+// let proto = {
+//     prop3: function(){
+//         console.log(this.prop1);
+//     }
+// }
+// let obj2 = Object.create({}, {
+//     prop1: {
+//         writable: true,
+//         enumerable: true,
+//         configurable: true,
+//         value: 'value1'
+//     },
+//     prop2: {
+//         writable: true,
+//         enumerable: false,
+//         configurable: true,
+//         value: 'value2'
+//     }
+// });
+// obj2.prop3 = function(){
+//     console.log(this.prop1);
+// }
+// log(2, obj2);
+// obj2.prop3();
+// log('------------------------------')
+
+
+// // 3. new + function ////////////////////////////////////
+// let Obj = function(v1, v2){
+//     this.prop1 = v1;
+//     this.prop2 = v2;
+//     this.prop3 = function(){
+//         console.log( this.prop1 );
+//     }
+// }
+// let obj3 = new Obj('value1', 'value2');
+// log(3, obj3);
+// obj3.prop3();
+// log('------------------------------')
+
+
+// // 4. factory function with closures
+// let ObjFF = function(v1, v2){
+//     let _prop1 = v1;
+//     let _prop2 = v2;
+//     return {
+//         prop1: _prop1,
+//         prop2: _prop2,
+//         prop3: function(){
+//             console.log(_prop1);
+//         }
+//     }
+// }
+// let obj4 = ObjFF('value1', 'value2');
+// log(4, obj4);
+// obj4.prop3();
+// log('------------------------------')
+
+
+// // 5. JS Class
+// class ObjC{
+//     constructor(v1, v2){
+//         this.prop1 = v1;
+//         this.prop2 = v2;
+//     }
+//     prop3() {
+//         console.log( this.prop1 );
+//     }
+// }
+// let obj5 = new ObjC('value1', 'value2');
+// log(5, obj5);
+// // obj5.prop3();
+
+
+// JSON file 
+// {
+//     "prop1": "string",
+//     "prop2": "string",
+//     "prop3": 123,
+//     "prop4": ["array", "value", "obj2", 123],
+//     "prop5": {
+//         "p1": "v1",
+//         "p2": "v2",
+//         "p3": false,
+//         "p4": 654,
+//         "p5": null
+//     },
+//     "prop6": null,
+//     "prop7": true
+// }
+
+
+
+//JavaScript
+//Object literals
+
+// let Obj2 = {
+//     'prop1': "string",
+//     "prop2": 'string',
+//     prop3: 123,
+//     prop4: ['array', "value", obj2, 123],
+//     prop5: function(){
+//         console.log('message');
+//     },
+//     prop6: null,
+//     prop7: true
+// }
+
+// let obj2 = function(){
+//     console.log('obj2');
+// }
+
+
+
+// closure functions
+// let counter = 0;
+// let names = ['Bob','Tina','Gene','Mort','Louise','Ollie'];
+
+
+// //closure so we are good
+// names.forEach( looper );
+
+
+// //closure so we are good
+// for(let i=0; i<names.length; i++){
+//     looper(names[i], i, names);
+// }
+
+
+// //closure so we are good
+// for(var i=0; i<names.length; i++){
+//     looper(names[i], i, names);
+// }
+
+
+// function looper(item, index, arr){
+//     setTimeout(function(){ console.log(index, item)}, 1000*index);
+//     //this function creates the closure
+//     if(counter<6)
+//         console.log('forEach', index, item);
+//     else if(counter>5 && counter < 12)
+//         console.log('for let', index, item);
+//     else
+//         console.log('for var', index, item);
+    
+//     counter++;
+// }
+
+
+// //no closure. Sad face.
+// for(var i=0; i<names.length; i++){
+//     setTimeout(function(){ console.log('SAD', i, names[i])}, 1000*i);
+//     //this bit fails
+// }
+
+// //rework to create closure
+// for(var i=0; i<names.length; i++){
+//     //version one - works
+//     setTimeout( (function(num){ 
+//         console.log('ONE', num, this[num])}).bind(names, i) 
+//     , 1000*i);
+//     //version two - works
+//     setTimeout( (function(num){ 
+//         console.log('TWO', num, names[num])
+//     }), 1000*i, i);
+//     //the key is to pass a copy of i into the function to be used later... the closure
+// }
+
+
+/**********************************
+Shallow Copying and chained shift()
+**********************************/
+
+// let a = [[1], [2], [3]];
+// let b = [...a];
+// console.log('1a',a);
+// console.log('1b',b);
+
+// //let c = b.shift().shift(); 
+// //console.log(c);
+
+
+
+// let d = b.shift();
+// console.log('2a',a);
+// console.log('2b',b);
+// //
+// let e = d.shift();
+// console.log('3a',a);
+// console.log('3b',b);
+// //
+// console.log(d);
+// console.log(e);
+
+// d.push(123);
+// console.log(d);
+// console.log(a);
+
+
+
+// // Finding array that matches in an Object 
+
+// // Shortcut for looping over array
+
+// // Array.prototype.indexOf()   //returns index number
+// // Array.prototype.contains()  //returns boolean
+// // Array.prototype.filter()    //returns array
+// // Array.prototype.some()      //returns boolean
+
+
+
+// let names = ['Archer', 'Lana', 'Cyril', 'Pam', 'Cheryl'];
+
+// let pos = names.indexOf('Pam');
+// //log( pos, names[pos] );
+
+// //remove the element
+// names.splice(pos, 1);
+// //log(names);
+
+// let movies = [
+//     {id:1, title:'Shaun of the Dead'},
+//     {id:2, title:'Man Up'},
+//     {id:3, title:'Terminal'},
+//     {id:4, title:'The End of the World'},
+//     {id:5, title:'Hot Fuzz'},
+// //     {id:6, title:'Mission Impossible: Fallout'}
+// // ]
+
+// // let manUp = {id:2, title:'Man Up'};
+// // pos = movies.indexOf(manUp);
+// // console.log('Man Up in position', pos);
+
+// // let iterations = 0;
+
+// // let matchingMovie = movies.filter( (obj) => {
+// //     iterations++;
+// //     if(obj.id === manUp.id){
+// //         return true;
+// //     }
+// //     return false;
+// // })
+// // console.log( matchingMovie[0], 'after looping', iterations );
+// // iterations=0;
+
+// // let found = movies.some( (obj, index) => {
+// //     iterations++;
+// //     if(obj.id === manUp.id){
+// //         pos = index;
+// //         return true;
+// //     }
+// //     return false;
+// // })
+// // //console.log( found.toString(), 'after looping', iterations);
+// // log( movies[pos], 'after looping', iterations);
+
+// // Array find
+// // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+// // Array findIndex
+// // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+
+
+// let cities = ["Ankara", "Istanbul", "Antalya", "Bursa", "Trabzon"];
+// let city = "Bursa";
+// let chars = 7;
+
+// let match1 = cities.find(item => {
+//     if (city === item) return true;
+// });
+// console.log("item from cities that matched was", match1);
+
+
+// let match2 = cities.find(item => chars === item.length);
+// console.log('item with matching length was', match2);
+
+// let index = cities.findIndex(
+//     item => item.toLocaleLowerCase().indexOf("t") > -1
+// );
+// console.log(`Letter "t" found in item at index ${index}`);
+
+// let person1 = {
+//     id: 123,
+//     name: "Recep",
+//     town: "Istanbul"
+// };
+// let match3 = cities.find(function (item) {
+//     if (item === this.town) return true;
+// }, person1);
+// console.log(person1.name, "lives in matching town", match3);
+
+// trim, trimStart, trimEnd
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim
+// space, tab, no-break space, LF, CR
+
+// let nbsp = '\u00A0';
+// let cr = '\u000D';
+// let lf = '\u000A';
+// let tab = '\t';
+// let sentence = `  This is not the sentence you are looking for. ${nbsp} `;
+// let trimmed = sentence.trimEnd();
+
+// console.log('1:' + sentence + trimmed);
+// console.log('2:' + trimmed + sentence);
+
+
+/***
+ * Padding Strings
+ * 
+ * padStart(len[, filler])
+ * padEnd(len[, filler])
+ * 
+ * Create an id that needs to be a specific length
+ * Tab delimited values
+ * Hex value random colours # F10F0F
+ */
+ 
+
+// // 1. id numbers that have to be 9 digits
+// let id = 432177;
+// //log(id.toString().padStart(9, '0'))
+// //increase length to 9 characters. Use '0' to pad
+
+// // fixed length file format
+// let userid = 123456; //first 10 chars
+// let user = 'Bob'; //next 10 chars
+// let email = 'bob@work.org'; //final 30 chars
+// let fullLine = id.toString().padStart(10, '0') + user.padStart(10) + email.padStart(30);
+
+// //log(fullLine);
+
+// //random hex colours
+// for (let i = 0; i < 25; i++) {
+//     let red = Math.floor(Math.random() * 255).toString(16);
+//     let green = Math.floor(Math.random() * 255).toString(16);
+//     let blue = Math.floor(Math.random() * 255).toString(16);
+//     let colour = '#' + red.padStart(2, '0') + green.padStart(2, '0') + blue.padStart(2, '0');
+//     console.log(red, green, blue, colour);
+// }
+
+// Regex 
+
+// * 0 or more matches
+// + 1 or more matches
+// ? 0 or 1 match
+// ^ matches the start of the string or line
+// $ matches the end of the string or line
+// \ signifies an escape sequence
+// . matches any single character except newline
+// ( ) capturing group. Save to reuse later
+// | used as a logic OR inside a capturing group
+// [abc] character set. Matches one of the things in the brackets
+// [^abc] Negated character set. Matches anything except...
+// [a-zA-Z] all upper and lowercase letters. You can specify any range.
+// {1} exact number of matches. Comes after a set or group.
+// {1,5} inclusive range for number of matches
+// {1,} minimum number of matches
+// {,5} maximum number of matches
+// \s any whitespace character
+// \S any NON whitespace character
+// \d any digit. Same as [0-9]
+// \D any NON digit
+// \w any word character. Same as [a-zA-Z0-9_]
+// \W any NON word character. Same as [^a-za-z0-9_]
+// \b word boundary
+// \B NON word boundary
+// [\b] - escape sequence for a backspace character
+// \u0404 - 4 digit unicode hex value for a character
+
+
+
+// // chained  variables Declaration 
+// (function f1() {
+//     var a = 1, b = 1;
+//     var x = y = 2;
+// })();
+// (function f2() {
+//     let j = 1, k = 1;
+//     let r =
+//      s = 2;
+// })();
+
+// //what are the values for a, b, x, y, j, k, r, s in the global scope?
+// //which of these variables will exist on the window/global object?
+// console.log(global.s);
+
+
+// conditional operand selectors
+let log = console.log;
+// log(true && true); // true
+// log(false && true); // false
+// log(true || false); // true
+// log(false || true); // true
+
+// log(0 && true); //0 - && looks at the first and if it is truthy renders the second
+// log(1 && true); //true
+// log(0 || false); // false
+// log(1 || true); // 1
+
+// log(0 && "text"); // 0
+// log(1 && "text"); // text
+// log(0 || "text"); // text
+// log(1 || "text"); // 1
+
+log(false && "text"); //false
+log(true && "text"); //text
+log(false || "text"); // text
+log(true || "text"); // true
+
+//react will render the following primitives
+// 0, 1, Null, Strings, NaN
+//react will not render
+// booleans, undefined, null, empty strings, empty arrays | objects
