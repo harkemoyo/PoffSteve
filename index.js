@@ -1088,7 +1088,7 @@ console.log(fullMember());
 
 // d.addEventListener('click', (ev)=>{
 //   ev.stopImmediatePropagation();
-//   log('Hi I\'m a DIV');
+// console.log('Hi I\'m a DIV');
 // });
 
 // [m,d,p,s].forEach((element)=>{
@@ -3244,54 +3244,989 @@ Shallow Copying and chained shift()
 // \S any NON whitespace character
 // \d any digit. Same as [0-9]
 // \D any NON digit
-// \w any word character. Same as [a-zA-Z0-9_]
-// \W any NON word character. Same as [^a-za-z0-9_]
-// \b word boundary
-// \B NON word boundary
-// [\b] - escape sequence for a backspace character
-// \u0404 - 4 digit unicode hex value for a character
+// // \w any word character. Same as [a-zA-Z0-9_]
+// // \W any NON word character. Same as [^a-za-z0-9_]
+// // \b word boundary
+// // \B NON word boundary
+// // [\b] - escape sequence for a backspace character
+// // \u0404 - 4 digit unicode hex value for a character
 
 
 
-// // chained  variables Declaration 
-// (function f1() {
-//     var a = 1, b = 1;
-//     var x = y = 2;
+// // // chained  variables Declaration 
+//  (function f1() {
+//      var a = 1, b = 1;
+//      var x = y = 2;
+//  })();
+//  (function f2() {
+//      let j = 1, k = 1;
+//      let r 
+//       s = 2;
+//  })();
+
+ //what are the values for a, b, x, y, j, k, r, s in the global scope?
+// // //which of these variables will exist on the window/global object?
+//  console.log(global.s);
+
+
+// // conditional operand selectors
+
+// // log(true && true); // true
+// // log(false && true); // false
+// // log(true || false); // true
+// // log(false || true); // true
+
+// // log(0 && true); //0 - && looks at the first and if it is truthy renders the second
+// // log(1 && true); //true
+// // log(0 || false); // false
+// // log(1 || true); // 1
+
+// // log(0 && "text"); // 0
+// // log(1 && "text"); // text
+// // log(0 || "text"); // text
+// // log(1 || "text"); // 1
+
+// // log(false && "text"); //false
+// // log(true && "text"); //text
+// // log(false || "text"); // text
+// // log(true || "text"); // true
+
+// //react will render the following primitives
+// // 0, 1, Null, Strings, NaN
+// //react will not render
+// // booleans, undefined, null, empty strings, empty arrays | objects
+
+/**
+ * Creating objects with Classes
+ * Versus objects with prototypes
+ * Since JavaScript is not a Class-based language
+ * what is happening behind the class syntax?
+ */
+
+// let PersonC = class {
+//   constructor(nm, id) {
+//     this.name = nm;
+//     this.id = id;
+//   }
+//   getDetails() {
+//     return `${this.name} :: ${this.id}`;
+//   }
+// };
+// let bob = new PersonC("Bob", 123);
+// console.log(bob.getDetails(), bob.name);
+
+// let EmployeeC = class extends PersonC {
+//   // EmployeeC prototype links to PersonC prototype
+//   constructor(nm, id, salary) {
+//     super(nm, id);
+//     this.salary = salary;
+//   }
+//   employeeInfo() {
+//     //exist on the prototype of EmployeeC
+//     return `${this.name} :: ${this.id} :: ${this.salary}`;
+//   }
+// };
+// let noomi = new EmployeeC("Noomi", 456, 8500000);
+// console.log(noomi.employeeInfo());
+
+// ///////////////////////////////////////////////
+
+// let PersonP = function(nm, id) {
+//   this.name = nm;
+//   this.id = id;
+// };
+// PersonP.prototype.getDetails = function() {
+//   return `${this.name} :: ${this.id}`;
+// };
+// let fred = new PersonP("Fred", 321);
+// console.log(fred.getDetails(), fred.name);
+
+// let EmployeeP = function(nm, id, salary) {
+//   PersonP.call(this, nm, id);
+//   this.salary = salary;
+// };
+// Object.setPrototypeOf(EmployeeP.prototype, PersonP.prototype); //extends NOTE: THIS LINE WAS CHANGED
+// EmployeeP.prototype.employeeInfo = function() {
+//   return `${this.name} :: ${this.id} :: ${this.salary}`;
+// };
+// let mary = new EmployeeP("Mary", 654, 65000);
+// console.log(mary.employeeInfo());
+
+// prototype chaining 
+/**
+ * linking prototype objects to build a prototype chain
+ * __proto__ vs Object.getPrototypeOf(obj) & Object.setPrototypeOf(obj)
+//  */
+
+// 1.  obj --> otherProto.prototype  --> Object.prototype --> null
+// let otherProto = function() {
+//   this.prop1 = 456; // this means the instance of the object we are creating
+//   this.inner = function() {
+//     console.log("inner method on instance");
+//   };
+//   //automatically returns the instance of the object
+// };
+// otherProto.prototype.someMethod = function() {
+//   console.log("this is otherProto");
+// };
+// let obj = new otherProto();
+// console.log(obj.prop1); // 456
+// obj.inner();
+// obj.someMethod();
+// obj.toString();
+// obj.__proto__.inner(); // fail
+// Object.getPrototypeOf(obj).inner(); // fail
+// Object.getPrototypeOf(obj).someMethod(); //yes
+
+// 2.protoObj --> Object.prototype --> null
+// let protoObj = {
+//   prop1: 456,
+//   someMethod: function() {
+//     console.log("this is someMethod");
+//   }
+// }; // let protoObj = new Object();  protoObj.prop1 = 456; protoObj.someMethod = function(){}
+// //Object.getPrototypeOf(protoObj).otherMethod = function(){}
+// protoObj.__proto__.otherMethod = function() {
+//   console.log("this is otherMethod");
+// };
+
+// //3.  childObj --->  protoObj  --->  Object.prototype  --> null
+// let childObj = {};
+// Object.setPrototypeOf(childObj, protoObj);
+// // console.log(childObj.prop1);
+// // childObj.someMethod();
+// // childObj.otherMethod();
+// // childObj.nonmethod();
+
+// // 4. childObj2 ---> protoObj  ---> Object.prototype  --> null
+// let childObj2 = Object.create(protoObj);
+// console.log(childObj2.prop1); //456  coming from protoObj
+// childObj2.prop1 = 777; // created a new property inside childObj2 called prop1
+// console.log(childObj2.prop1, childObj2.__proto__.prop1);
+// childObj2.someMethod(); //calls the one inside protoObj
+// childObj2.someMethod = function() {
+//   console.log("new method inside childObj2");
+// };
+// childObj2.someMethod();
+// childObj2.__proto__.someMethod();
+
+// /**
+//  * strict mode vs sloppy mode
+//  */
+// "use strict";
+// function f(){
+//   "use strict";
+// }
+
+//neverDeclared = 123; //Reference
+
+//var NaN = 123; // TypeError in the browser
+//var undefined = 123;
+
+// //Silent Failure
+// let obj = {
+//   a: 123,
+//   b: 0,
+//   get x() {
+//     return this.b;
+//   }
+// };
+// Object.defineProperty(obj, "c", {
+//   value: 456,
+//   writable: false
+// });
+// //obj.x = 47; // cannot without the setter
+// //obj.c = 789;
+// console.log(obj.c);
+// Object.seal(obj); //.freeze() .preventExtensions()
+// //delete obj.c;
+
+// //function dup(a, b, c, a) {} //SyntaxError
+
+// function f1() {}
+
+// function f1(a, b) {} //allowed. Overwriting the first function
+
+// var f1 = function() {};
+// f1 = function(a, b) {};
+
+// let f2 = function() {};
+// f2 = function(a, b) {}; //FAILS. because we used let
+
+
+//  Concatination functions
+
+/**
+ * The ways to concatenate Strings in JavaScript
+ *
+ */
+
+// let greeting = "Howdy";
+// let Mark = "Buzz";
+// let str, str1, str2;
+
+// // 1. concatenation operator
+// str = greeting + " " + Mark + ".";
+
+// // 2. String.prototype.concat method
+// str1 = greeting.concat(" ", Mark, ".");
+
+// // 3. ES6 Template strings
+// str2 = `${greeting} ${Mark}.`;
+
+// console.log(str, str1, str2);
+
+
+/**
+ * Character Codes and Code Points
+ * str.charCodeAt(index) //good for UTF-8  (0 - 65535 or 0xFFFF)
+ * str.codePointAt(index) //better for UTF-16 (0 - 1114111 or 0x10FFFF)
+ * str.charAt(index)
+ *
+ * String.fromCharCode(code) //good for UTF-8 (0 - 65535 of 0xFFFF)
+ * String.fromCodePoint(code) //better for UTF-16 (0 - 1114111 or 0x10FFFF)
+ */
+
+// let emojis = "😆😀😂🍔🔥❤";
+// let str = "ab🔥C";
+
+// console.log(str.length);
+// console.log(
+//   str.charAt(0),
+//   str.charAt(1),
+//   str.charAt(2),
+//   str.charAt(3),
+//   str.charAt(4)
+// );
+
+// let cs = str.charCodeAt(0);
+// console.log(cs, cs.toString(16));
+
+// let cca = emojis.charCodeAt(0);
+// let cpa = emojis.codePointAt(0);
+// console.log(cca, cpa, cca.toString(16), cpa.toString(16));
+
+// let char3 = String.fromCharCode(cs);
+// console.log(char3);
+// let char1 = String.fromCharCode(cca);
+// let char2 = String.fromCodePoint(cpa);
+// console.log(char1, char2);
+
+
+
+/**
+ * Hoisting
+ * var vs let (and const)
+ */
+// console.log;
+// f();
+// // console.log(fe);
+// //console.log(v1); //undefined
+// var v1;
+
+// //console.log(L1); //ReferenceError - because we are inside the Temporal DeadZone
+// let L1; //undefined is assigned at this line
+// console.log(L1);
+
+// function f() {
+//   //function declaration
+//   let x; //to avoid global var called x
+//   console.log("function f");
+//   x = "hello"; //global var called x
+// }
+
+// let fe = function e() {
+//   console.log("function fe");
+// };
+// fe()
+
+// Why Should I Use const?
+
+
+
+// const obj = {
+//   a: 123
+// };
+// obj.b = "hello";
+// obj.a = 423;
+// delete obj.a;
+
+// const f = function() {};
+
+// const mediaTypes = { AUDIO: 0, VIDEO: 1, PNG: 2, JPEG: 3, WEBP: 4 };
+// const errorTypes = { NOTPAID: 0, NOTAVAILABLE: 1, PAINTBALL: 2 };
+
+// let myObj = {
+//   doSomething: function() {
+//     //do something
+//     //but an error happens
+//     let num = Math.floor(Math.random() * 3);
+//     switch (num) {
+//       case 0:
+//       console.log("Error Code ", errorTypes.NOTPAID);
+//         break;
+//       case 1:
+//       console.log("Error Code ", errorTypes.NOTAVAILABLE);
+//         break;
+//       case 2:
+//       console.log("Error Code ", errorTypes.PAINTBALL);
+//         break;
+//     }
+//   },
+//   saveMedia: function(type, data) {
+//     switch (type) {
+//       case 0:
+//       console.log("saving an audio file");
+//         break;
+//       case 1:
+//       console.log("saving a video file");
+//         break;
+//       case 2:
+//       case 3:
+//       case 4:
+//       console.log("saving an image");
+//         break;
+//     }
+//   }
+// };
+
+// //myObj.doSomething();
+// myObj.saveMedia(0, "audio.mp3");
+// myObj.saveMedia(mediaTypes.AUDIO, "audio.mp3");
+// myObj.saveMedia(mediaTypes.JPEG, "img.jpg");
+
+
+// Looping through asynchronous  objects
+
+// let myObj = {
+//   //add an asyncIterator method to my object
+//   [Symbol.asyncIterator]() {
+//     //which will return an object that contains a method called next()
+//     return {
+//       i: 0 /* my counter property */,
+//       next() {
+//         if (this.i < 3) {
+//           //return value from the next method must be an object
+//           //the object should contain a value and a done property
+//           return new Promise(resolve => {
+//             let obj = { value: this.i, done: false };
+//             this.i = this.i + 1;
+//             setTimeout(resolve, 1000, obj);
+//             //this timeout delay value is not set until next() is called by for await...of
+//           });
+//         }
+//         //once our counter value is 3 or more tell whoever called next that we are done
+//         return new Promise(resolve => {
+//           setTimeout(resolve, 3000, { done: true });
+//         });
+//       }
+//     };
+//   }
+// };
+
+// (async function() {
+//   for await (let num of myObj) {
+//     console.log(num);
+//   }
 // })();
-// (function f2() {
-//     let j = 1, k = 1;
-//     let r =
-//      s = 2;
+
+// HOW TO MAKE A FUNCTION RUN
+
+// function rick() {
+//   //function declaration
+//   console.log("Let's get Schwifty!");
+// }
+// let morty = function() {
+//   //function expression
+//   //console.log("I don't think that this is such a good idea Rick.");
+//   console.log(this);
+// };
+// let summer = f1 => {
+//   //arrow function
+//   console.log("About to call another function");
+//   f1(); // f1.call(), f1.apply()
+// };
+
+//morty(); //1. parentheses make it run
+
+// rick.call(null);  //2. using call, apply, bind
+// rick.apply(global);
+// let o = {};
+// let m = morty.bind(o);
+// // m();
+
+// //summer(m); //3. passing along function references as parameters
+
+// function Meeseeks() {
+//   //constructor function
+//   console.log("I'm Mr. Meeseeks.");
+//   this.hello = function() {
+//     console.log("hello");
+//   };
+//   this.goodbye = () => {};
+// }
+// Meeseeks.prototype.help = function() {
+//   //objects of type Meeseeks will be able to use this function
+//   console.log("Look at me.");
+// };
+// // let me = new Meeseeks(); //4. call a constructor using new
+// // console.log(me);
+// // me.help(); //5. call a method on the prototype of an object
+// // me.hello(); //6. call a method on an object
+
+// // 7.
+// //NodeJs version with EventEmitter and listener to call a function
+// // const EventEmitter = require("events");
+// // const Schwift = new EventEmitter();
+// // Schwift.on("schwifty", msg => {
+// //   console.log("SCHWIFTY:", msg);
+// // });
+// // setTimeout(function() {
+// //   Schwift.emit("schwifty", "we got schwifty");
+// // }, 1000);
+
+// //Browser version with Event Listener to call a function
+// let Schwift = new CustomEvent("schwifty");
+// class MyObj extends EventTarget {
+//   //allowed to receive / listen for events
+//   constructor() {
+//     super();
+//   }
+//   log(ev) {
+//     console.log("EVENT", ev); // Schwift Event object
+//   }
+// }
+// let obj = new MyObj();
+// obj.addEventListener("schwifty", obj.log);
+// obj.addEventListener("schwifty", ev => console.log(ev.type)); //"schwifty"
+// setTimeout(function() {
+//   obj.dispatchEvent(Schwift); //trigger the two event listeners for "schwift"
+// }, 1000);
+
+
+
+// let log = console.log;
+// let myInt = 123;
+// let myStrInt = "456";
+// let address = "456 Main Ave.";
+// let myFloat = 123.456;
+// let myStrFloat = "345.567.789.345";
+// let cost = "12.99 per box";
+// //parseInt parseFloat
+// log(parseInt(address)); //456
+// log(parseFloat(address)); //456
+// log(parseFloat(myStrFloat));
+// log(parseFloat(cost));
+// log(parseInt(cost));
+
+// let obj1 = {
+//   a: "this",
+//   b: "is",
+//   c: "an",
+//   d: "object",
+//   e: "literal"
+// };
+// let obj2 = new Object(["object", "contructor", "one"]); // new Array("", "", "")
+// let obj3 = new Object({ an: "object", literal: "again" });
+// let obj4 = new Object(obj1.a); // new Object("some string")  new String("asdfas")
+// let obj5 = new Object(); //same as new Object(null) or new Object(undefined)
+// let obj6 = new Object(true); // new Boolean(true)
+
+// console.log(
+//   "OBJ1",
+//   obj1,
+//   typeof obj1,
+//   obj1 instanceof Object,
+//   obj1.constructor,
+//   "\n"
+// );
+
+// console.log(
+//   "OBJ2",
+//   obj2,
+//   typeof obj2,
+//   obj2 instanceof Array,
+//   obj2 instanceof Object,
+//   Array.isArray(obj2),
+//   obj2.constructor,
+//   "\n"
+// );
+
+// console.log(
+//   "OBJ3",
+//   obj3,
+//   typeof obj3,
+//   obj3 instanceof Object,
+//   obj3.constructor,
+//   "\n"
+// );
+
+// console.log(
+//   "OBJ4",
+//   obj4,
+//   typeof obj4,
+//   obj4 instanceof String,
+//   obj4.constructor,
+//   "\n"
+// );
+
+// console.log(
+//   "steve",
+//   String("steve"),
+//   new String("steve"),
+//   typeof "steve",
+//   typeof String("steve"),
+//   typeof new String("steve"),
+//   "\n"
+// );
+
+// console.log(
+//   "OBJ5",
+//   obj5,
+//   typeof obj5,
+//   obj5 instanceof Object,
+//   obj5.constructor,
+//   "\n"
+// );
+
+// console.log(
+//   "OBJ6",
+//   obj6,
+//   typeof obj6,
+//   obj6 instanceof Boolean,
+//   obj6 instanceof Object,
+//   obj6.constructor,
+//   "\n"
+// );
+
+
+
+//treating Strings like Arrays
+
+// let str = "Ragnar Lothbrok";
+// log(str[0], str[1]);
+// log(str.charAt(0), str.charAt(1));
+
+// let arr = str.split("");
+// let arr2 = Array.from(str);
+// console.log(arr2.join(" "));
+//log(arr, arr2);
+// log(arr[0], arr2[1]);
+// concat() - combine two arrays OR combine two strings
+// str.concat("asdf");
+// arr.concat(arr2);
+// str.indexOf("g") //2   str.lastIndexOf("g") // 3
+// arr.indexOf("R"); //0
+// str.includes("R")  //true arr.includes("R") //true
+// slice(begin, end) - extract / shallow copy of part of the array or string
+// str.slice(1, 3) // agn  arr.slice(1, 3) . // ["a", "g", "n"]
+
+// for (let char of str) {
+//   console.log(char);
+
+// }
+// for (let char of arr) {
+//   console.log(char);
+// }
+
+
+//Why Destructuring (and ES6) is Awesome
+
+// let person2 = {
+//   id: 123,
+//   name: "Leslie",
+//   dob: new Date("1985-01-01").valueOf(),
+//   age: 44,
+//   salary: 55000,
+//   department: "Parks and Recreation",
+//   hometown: "Pawnee"
+// };
+
+// savePersonES5(person);
+
+// function savePersonES5(someObj) {
+//   let id = Date.now();
+//   if (someObj.id) {
+//     id = someObj.id;
+//   }
+//   let name = someObj.name;
+//   if (!name) {
+//     name = "Blank";
+//   }
+//   let dob = someObj.dob ? someObj.dob : new Date("2000-01-01").valueOf();
+//   //save it in localStorage for later use
+//   const KEY = "someRandomUniqueString";
+  
+//   let jsonStr = JSON.stringify({ id: id, name: name, dob: dob });
+//   localStorage.setItem(KEY, jsonStr);
+// }
+
+// function savePersonES6({
+//   id = Date.now(),
+//   name = "Blank",
+//   dob = new Date("2001-01-01").valueOf(),
+//   hometown =  ""
+// }) {
+//   const KEY = "someRandomUniqueString";
+//   console.log(KEY);
+//   let jsonStr = JSON.stringify({ id, name, dob,hometown });
+//   localStorage.setItem(KEY, jsonStr);
+// }
+// savePersonES6(person2)
+// let log = console.log;
+
+// let myObj = {}; // new Object()
+// // log(myObj.constructor); // function Object(){}
+// // log(myObj.__proto__ === myObj.constructor.prototype);
+
+// function Cat() {
+//   //constructor for kitty
+// }
+// let kitty = new Cat();
+// // log(kitty.__proto__ === Cat.prototype);
+// // log(kitty.__proto__.__proto__ === Object.prototype);
+// // log(Object.prototype.__proto__);
+
+// function Animal() {}
+
+// Object.setPrototypeOf(Cat.prototype, Animal.prototype);
+// console.log(kitty.__proto__); // Cat{}
+// console.log(kitty.__proto__.__proto__); // Animal {}
+// console.log(kitty.__proto__.__proto__.__proto__); // {}
+// console.log(kitty.__proto__.__proto__.__proto__.__proto__);
+
+// const dataArr = [
+//   { label: 'ONE' },
+//   { label: 'TWO' },
+//   { label: 'THREE' },
+//   { label: 'FOUR' },
+//   { label: 'FIVE' }
+// ];
+// const dataObj = {
+//   4: { label: 'I am Number Four' },
+//   7: { label: `What's in the box?` },
+//   m: () => {
+//     console.log('custom method');
+//   },
+//   top: { mid: { deep: 123 } }
+// };
+
+// const addPara = (num, hex) => {
+//   // let txt = 'default';
+//   // if(dataArr && dataArr[num-1]) {
+//   //   txt=dataArr[num-1].label
+//   // }
+//   // let txt = dataArr[num - 1]?.label;
+//   let txt = dataObj[num]?.label;
+
+
+//   if (txt) {
+//     let p = document.createElement('p');
+//     p.style.backgroundColor = hex; //8 digit hex
+//     p.id = `_${num}`; // _4, _5, _6, _7
+//     p.textContent = txt;
+//     document.body.appendChild(p);
+//   }
+//   //console.log(dataObj?.toplevel?.mid?.deep);
+//   //if (dataObj && dataObj.top && dataObj.top.mid && dataObj.top.mid.deep) {
+//   //}
+//   dataObj.m?.();
+//   dataObj.f?.();
+// };
+
+// const handleClick = ev => {
+//   let num = Math.floor(Math.random() * 7) + 1; // 1 - 7
+//   let id = '_'.concat(num); // _3
+//   let hex = randColour(); // 8 digit hex
+//   console.log(id, hex);
+//   let div = document.getElementById(id);
+//   div ? (div.style.backgroundColor = hex) : addPara(num, hex); // or void 0
+//   //addPara.call(null, num, hex); //addPara(num, hex)
+// };
+
+// const randColour = () => {
+//   let clr = Math.floor(Math.random() * Math.pow(2, 24));
+//   let red = (clr >> 16).toString(16).padStart(2, '0');
+//   let green = ((clr >> 8) & 255).toString(16).padStart(2, '0');
+//   let blue = (clr & 255).toString(16).padStart(2, '0');
+//   let alpha = Math.floor(Math.random() * 200 + 55)
+//     .toString(16)
+//     .padStart(2, '0'); //alpha is a value 0-100% but written as num 0-255
+//   // and in hex that means 00 - FF. 50% is 128 in decimal or 80 in Hex
+//   // https://codepen.io/chriscoyier/pen/XjbzAW - ref chart for percentages
+//   //console.log(red, green, blue, alpha);
+//   return `#${red}${green}${blue}${alpha}`;
+// };
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.body.addEventListener('click', handleClick);
+// });
+
+// const people = [
+//   { id: 12, name: 'Billy', dob: '1998-10-05' },
+//   { id: 123, name: 'Bart', dob: '1993-02-15' },
+//   { id: 45, name: 'Belinda', dob: '1996-01-31' },
+//   { id: 67, name: 'Bonnie', dob: '1998-04-09' },
+//   { id: 89, name: 'Brenda', dob: '1996-07-08' },
+//   { id: 34, name: 'Bobby', dob: '1994-09-12' },
+//   { id: 234, name: 'Blake', dob: '2000-01-01' },
+// ];
+
+// const log = console.log;
+
+// // log('\n\n built-in sort method');
+// log(people.sort()); // [Object object]
+
+// // log('\n\n sort by name');
+// log(people.sort(byName));
+
+// log('\n\n sort by id');
+// log(people.sort(byId));
+
+// log('\n\n sort by date');
+// log(people.sort(byDate));
+
+// // log('\n\n sort by birthday as it occurs during the year');
+// log(people.sort(byBirthday));
+
+// function byName(a, b) {
+//   //alphabetically by name
+//   if (a.name > b.name) {
+//     return 1;
+//   } else if (b.name > a.name) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// }
+
+// function byId(a, b) {
+//   //numerically by id
+//   return parseInt(a.id) - parseInt(b.id);
+// }
+
+// function byDate(a, b) {
+//   //chronologically by year, month, then day
+//   return new Date(a.dob).valueOf() - new Date(b.dob).valueOf(); //timestamps
+// }
+
+// function byBirthday(a, b) {
+//   //by month and then by day
+//   let d1 = new Date(a.dob); // 1993-02-15T00:00:00Z =>   1993-02-14T20:00:00EST
+//   let d2 = new Date(b.dob);
+//   log(d1.getDate(), d1.getUTCDate(), d1.getMonth(), d1.getUTCMonth());
+//   if (d1.getUTCMonth() > d2.getUTCMonth()) {
+//     return 1;
+//   } else if (d1.getUTCMonth() < d2.getUTCMonth()) {
+//     return -1;
+//   } else {
+//     //same month
+//     return d1.getUTCDate() - d2.getUTCDate();
+//   }
+// }
+
+
+// flat()
+// for compressing multiple arrays in a single list of values.
+//Array.prototype.flat()
+// let numbers = [
+//   1,
+//   2,
+//   [3, 4, 5],
+//   [6, 7],
+//   8,
+//   9,
+//   [
+//     [10, 11],
+//     [12, 13],
+//   ],
+// ];
+// let arr = numbers.flat(2);
+// console.log(arr);
+
+//Understanding Array.prototype.flatMap()
+//   myArray.map().flat(1) - equivalent
+
+// let movies = [
+//   'Dog Soldiers',
+//   ['In Bruges', 'From Paris with Love', 'Layer Cake'],
+//   'The Big Lebowski',
+//   '',
+//   '    ',
+//   'Memento, The Platform,Fight Club, ',
+//   'Hotel Rwanda, Moon, Under the Skin',
+//   'Lady Bird',
+//   ['Platoon', 'Wall-E'],
+// ];
+// let arr = movies.flatMap((entry) => {
+//   if (Array.isArray(entry)) {
+//     return entry;
+//   } else if (typeof entry === 'string' && entry.trim() === '') {
+//     return []; //remove the empty strings
+//   } else {
+//     //other strings
+//     return entry
+//       .split(',')
+//       .map((txt) => txt.trim())
+//       .filter((txt) => txt != '');
+//   }
+// });
+// console.log(arr);
+
+
+
+
+// Memoization
+
+
+/**
+ * Memoization - save the results of your function
+ * to improve performance.
+ */
+
+// const myFunc = (function buildFunc() {
+//   const memo = {};
+//   const getKey = ([a, b]) => {
+ 
+//     //we are always expecting to get two values
+//     let key = `${a}-${b}`;
+//     return key;
+//   };
+
+//   return (args) => {
+//     //this is the function that will be myFunc
+//     let key = getKey(args);
+//     if (memo[key]) {
+//       return memo[key];
+//     } else {
+//       let sum = 0;
+//       for (let i = args[0]; i > 0; i--) {
+//         sum += args[0] * args[1];
+//       }
+//       console.log(sum);
+//       memo[key] = sum;
+//       return sum;
+//     }
+//   };
+
 // })();
 
-// //what are the values for a, b, x, y, j, k, r, s in the global scope?
-// //which of these variables will exist on the window/global object?
-// console.log(global.s);
+// let start = Date.now();
+// let result1 = myFunc([9000008, 100001]);
+// let result2 = myFunc([9000008, 100001]);
+// let result3 = myFunc([9000008, 100001]);
+// let result4 = myFunc([9000008, 100001]);
+// let result5 = myFunc([9000008, 100001]);
+// let result6 = myFunc([9000008, 100001]);
+// let result7 = myFunc([9000008, 100001]);
+// let end = Date.now();
+// console.log(end - start);
+
+// start = Date.now();
+// result1 = myFunc([9000001, 100001]);
+// result2 = myFunc([9000002, 100001]);
+// result3 = myFunc([9000003, 100001]);
+// result4 = myFunc([9000004, 100001]);
+// result5 = myFunc([9000005, 100001]);
+// result6 = myFunc([9000006, 100001]);
+// result7 = myFunc([9000007, 100001]);
+// end = Date.now();
+// console.log(end - start);
 
 
-// conditional operand selectors
-let log = console.log;
-// log(true && true); // true
-// log(false && true); // false
-// log(true || false); // true
-// log(false || true); // true
 
-// log(0 && true); //0 - && looks at the first and if it is truthy renders the second
-// log(1 && true); //true
-// log(0 || false); // false
-// log(1 || true); // 1
+/***
+ * Dynamic Object properties using square brackets
+ */
+// let beverage = 'Beer';
 
-// log(0 && "text"); // 0
-// log(1 && "text"); // text
-// log(0 || "text"); // text
-// log(1 || "text"); // 1
+// const myObj = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+//   food: 'cheese',
+//   propName: 'cheese',
+//   beverage: 'Heineken', // beverage: 'Heineken'
+//   [beverage]: 'corona', // Beer: 'corona'
+// };
 
-log(false && "text"); //false
-log(true && "text"); //text
-log(false || "text"); // text
-log(true || "text"); // true
+// let addProp = (obj, propName, propValue) => {
+//   // obj.food = 'cheese';
+//   obj[propName] = propValue;
+//   obj.propName = propValue;
+// };
+// addProp(myObj, 'food', 'cheese');
 
-//react will render the following primitives
-// 0, 1, Null, Strings, NaN
-//react will not render
-// booleans, undefined, null, empty strings, empty arrays | objects
+// // Using brackets notation for Object properties
+// const dynamicKey = 'age';
+// const dynamicValue = 30;
+ 
+// const dynamicObject = {
+//     name: 'Aman',
+// };
+ 
+// // Using bracket notation to
+// //set properties dynamically
+// dynamicObject[dynamicKey] = dynamicValue;
+// dynamicObject['city'] = 'Noida';
+ 
+// console.log(dynamicObject);
+
+
+
+// // Using spread operator 
+// const obj1 = { name: 'Ankit' };
+// const obj2 = { age: 30 };
+// const obj3 = { city: 'Noida' };
+ 
+// const mergedObject = { ...obj1, ...obj2, ...obj3 };
+ 
+// console.log(mergedObject);
+
+
+//     //because Node.JS does not support it as of v14.0.0
+//       //var result = 'asdf' ? 'yes' : 'no'; //ternary - truthy or falsey
+
+//       //null or undefined
+//       let result = null ?? 'yes'; //'yes' if testing value was null or undefined
+
+//       let current;
+
+//       function f() {
+//         let result = current ?? getNum();
+//         console.log(result);
+//       }
+
+//       console.log(current);
+//       getNum();
+//       console.log(current);
+//       f();
+    
+
+//       function getNum() {
+//         current = Math.floor(Math.random() * 100);
+//         return current;
+//       }
+
+// Template literal function 
+let num = 41;
+let str1 = `"\t" and "\n" are escape sequences. ${num}`;
+let str2 = `"\\t" and "\\n" are escape sequences. ${num}`;
+let str3 = String.raw`"\t" and "\n" are escape sequences. ${num}`;
+let str4 = `The meaning of life is ${num + 1}.`;
+const log = console.log;
+
+// log(1, str1);
+// log(2, str2);
+// log(3, str3);
+// log(4, str4);
+
+let first = 'ham';
+let second = 'pineapple';
+let txt = f`I don't like pizza with ${first} and ${second}.`;
+log(txt);
+function f(strings, ...expressions) {
+  return expressions.reduce((acc, exp, idx) => {
+    return `${acc} ${exp.toUpperCase()} ${strings[idx + 1]}`;
+  }, strings[0]);
+}
