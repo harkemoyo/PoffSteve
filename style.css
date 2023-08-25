@@ -27,6 +27,13 @@ dd {
   margin: 0;
 }
 
+ 
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
 /* Set core root defaults */
 html {
   scroll-behavior: smooth;
@@ -104,6 +111,7 @@ span .word{
             /* justify-content: center;
             align-items: center; */
         }
+        
         .hour{
             width:100px;
             height: 100px;
