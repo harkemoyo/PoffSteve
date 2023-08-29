@@ -1,5 +1,5 @@
-import { PIE, f } from './modules/a.mjs';
-import someFunc, { CAKE } from './modules/b.js';
+import { PIE, f } from "./a.js";
+import someFunc, { CAKE } from './b.js';
 //g will be someFunc
 
 const APP = (function () {

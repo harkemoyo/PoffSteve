@@ -4280,15 +4280,14 @@ Shallow Copying and chained shift()
 // toString(), valueOf()
 // parseInt(), parseFloat()
 // unary plus, logical NOT, addition operator, comparison operators
-let log = console.log;
 let n = '56';
-//log(-n, +n);
+console.log(-n, +n);
 //                              String,         Number,       Boolean
 let obj = { a: 1, b: 2 }; // '[object Object]'    NaN           true
 let emptyObj = {}; //       '[object Object]'     NaN             true
 let arr = [1, 2, 3]; //     '1,2,3'              NaN              true // [1] to Number would become 1
                                                                   // If there is only one number in the array then 
-                                                                  // that becomes the numeric conversion.
+//                                                                   // that becomes the numeric conversion.
 let emptyArr = []; //       ''                   0              true
 let str = 'hello'; //       'hello'             NaN             true
 let emptyStr = ''; //         ''                 NaN           false   ('43'=>43, '0'=>0)
@@ -4311,8 +4310,8 @@ let F = false; //            'false'             0               false
  *
  */
 
-//log(F + num);
-//"234234".toLowerCase()
+console.log(F + num);
+"234234".toLowerCase()
 // Falsey values - false, 0, '', null, undefined, NaN
 // Truthy values - Everything else....
 // Boolean() != new Boolean(), String() != new String(), Number() != new Number()
@@ -4321,8 +4320,8 @@ let F = false; //            'false'             0               false
 // Number() == +  (- will flip sign too)
 // String() == .toString() unless null was set as the prototype of the Object
 
-//log(Boolean(234), Boolean(0), new Boolean(0));
-//log(true && Boolean(new Boolean(0)));
+// console.log("Boollean",Boolean(234), Boolean(0), new Boolean(0));
+// console.log("Bullean",true && Boolean(new Boolean(0)));
 
 // && compares the two operands and then actually returns
 // the second if the first is truthy
@@ -4330,11 +4329,251 @@ let F = false; //            'false'             0               false
 // Operator Precedence
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
-// log(!arr < +T || !!arr > +emptyArr);
-// //unary plus 17, logical NOT 17, less than 12, greater than 12, logical OR 6
-// // (false < 1 || true > 0)
-// // ( 0 < 1 || 1 > 0 )
-// // ( true || )
-// // true
+// console.log(!arr < +T || !!arr > +emptyArr);
+//unary plus 17, logical NOT 17, less than 12, greater than 12, logical OR 6
+// (false < 1 || true > 0)
+// ( 0 < 1 || 1 > 0 )
+// ( true || )
+// true
 
-// log(1 + -+(+(+-+1))); //2
+// console.log(1 + - + + + - + 1); //2
+
+
+
+/**
+ * Using a single integer to represent multiple permissions
+ * based on binary values using bitwise operators
+ *
+ *  & bitwise AND - if both the top and bottom bit are 1, result is 1
+ *  | bitwise OR - if either the top and bottom bit or both are 1, result is 1
+ *  ^ bitwise XOR - if only one of the bits are 1, result is 1
+ * 0101
+ * 0100 & =   0100
+ *
+ * 0100
+ * 1110 | = 1110
+ *
+ * 0101
+ * 0001 ^ = 0100
+ *
+ * 0 - 0000
+ * 1 - 0001 x
+ * 2 - 0010 x
+ * 3 - 0011
+ * 4 - 0100 x
+ * 5 - 0101
+ * 6 - 0110
+ * 7 - 0111
+ * 8 - 1000 x
+ * 9 - 1001
+ * 10 - 1010
+ */
+
+// const READ = 1; //   0001
+// const DRINK = 2; //  0010
+// const SING = 4; //   0100
+// const DELETE = 8; // 1000
+
+// class Person {
+//   constructor(name, access = 0) {
+//     this.name = name;
+//     this.access = access;
+//   }
+//   getAll() {
+//     return {
+//       [READ]: !!(this.access & READ),
+//       [DRINK]: !!(this.access & DRINK),
+//       [SING]: !!(this.access & SING),
+//       [DELETE]: !!(this.access & DELETE),
+//     };
+//   }
+//   addPerm(perm) {
+//     this.access = this.access | perm;
+//   }
+//   removePerm(perm) {
+//     if (this.getAll()[perm]) {
+//       this.access = this.access ^ perm;
+//     }
+//   }
+// }
+
+// let steve = new Person('Steve', 5);
+// let joanne = new Person('Joanne');
+// joanne.addPerm(DRINK);
+// joanne.addPerm(SING);
+// joanne.addPerm(DELETE);
+// steve.addPerm(SING);
+
+// joanne.removePerm(READ);
+// steve.removePerm(READ);
+
+// console.log(steve.access, steve.getAll());
+// console.log(joanne.access, joanne.getAll());
+
+// console.log(steve.getAll()[READ]);
+
+
+      // https://caniuse.com/#feat=mdn-javascript_builtins_globalthis
+
+      // let lll = 'declared with let';
+      // var vvv = 'declared with var';
+
+      // (function test() {
+      //   nnn = 'declared without either';
+      //   console.log(this);
+      //   console.log(window);
+      //   console.log(globalThis); //added in NodeJS 12.4
+      //   console.log(lll, globalThis.lll);
+      //   console.log(vvv, globalThis.vvv);
+      //   console.log(nnn, globalThis.nnn);
+      // })();
+
+      // Reflect in object 
+
+// Reflect Object - built-in object that provides methods for interceptable JavaScript operations
+// All methods are static
+// has no constructor cannot use `new`
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+
+
+// let alex = {
+//   name: 'Alex',
+//   id: 93,
+//   hello: function (a, b) {
+//     console.log(`Hello my name is ${this.name}. ${a} ${b}`);
+//   },
+// };
+
+// console.log(Reflect.ownKeys(alex));
+// console.log(Reflect.get(alex, 'id'));
+// console.log(Reflect.set(alex, 'id', 94));
+// console.log(Reflect.get(alex, 'id'));
+// console.log(Reflect.has(alex, 'name'));
+// Reflect.apply(alex.hello, alex, Reflect.ownKeys(alex));
+// Reflect.defineProperty(alex, 'age', { value: 30, enumerable: false });
+// console.log(Reflect.get(alex, 'age'));
+
+// /**
+// Reflect.apply(targetFunc, thisArg, argList); //for functions
+// Reflect.get(target, key, handler); //handler is Proxy. get the value of a property
+// Reflect.set(target, key, value, handler); //handler is Proxy. set the value of a property
+// Reflect.has(target, key); // check if it has a property
+// Reflect.delete(target, key); //like the delete operator
+// Reflect.ownKeys(target); // enumerate through the properties
+// Reflect.defineProperty(target, key, {propertyDescriptor}); //like Object.defineProperty
+//  */
+
+
+/**
+ * String.prototype.startsWith(str [,pos]) //returns Boolean
+ * String.prototype.endsWith(str [,pos])   //returns Boolean
+ *
+ * String.prototype.includes(str [,pos])  //returns Boolean
+ * String.prototype.indexOf(str [,pos])  //returns -1 or position index
+ * String.prototype.lastIndexOf(str [,pos])  //returns -1 or position index
+ * String.prototype.charAt(pos)  //returns the single code point at that position
+ * String.prototype.match(regExp); //returns an Array of matches or null. regex.test() and regex.exec()
+ */
+
+
+// let sentence ='How are you today?👋🏻';
+// let len = sentence.length;
+// let regexp = /[Ho]/g;
+
+//  console.log(sentence.indexOf('👋🏻')); //18
+//  console.log(sentence.lastIndexOf('👋🏻')); //18
+//  console.log(sentence.includes('x')); //false
+//  console.log(sentence.match(regexp));// []  or null
+//  console.log(regexp.test(sentence)); // true
+//  console.log(sentence.charAt(0) === 'H');
+//  console.log(sentence.charAt(18));
+//  console.log(sentence.substring(18));
+
+
+//  console.log(sentence.startsWith('H'));
+//  console.log(sentence.startsWith('h'));
+//  console.log(sentence.startsWith('👋🏻', 19));
+//  console.log(sentence.endsWith('👋🏻'));
+
+
+
+
+// Array.prototype.slice([start[, end]])
+// returns shallow copy of removed/sliced items
+
+// Array.prototype.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+// modifies original array. returns array of deleted items
+
+
+// let names = ['Barney', 'Marshall', 'Lily', 'Robin', 'Ted'];
+
+// console.log(names.slice(3, 4));
+
+// let res = names.splice(1, 'Luke', 'Leia');
+// // console.log(res);
+// console.log(names);
+
+// Immutable  
+// Primitive are immutable in JavaScript.
+// const arr = [1, 2, 3, 4]
+
+
+// console.log;
+
+// const myRecord = #{ a: 1, b: 2 }; //Object
+// const myTuple = #[1, 2, 3];  //Array
+// // const r = #{a:1, b:2, #[1, 2, 3]};
+// console.log(myRecord['b']); //myRecord.b
+
+// // console.log(typeof #{prop:1} === "record"); //fails in playground
+// // console.log(typeof #[1,2,3] === "tuple"); //fails in playground
+
+// // console.log(myTuple === #[1, 2, 3])
+
+// console.log( #[2, 4, 6, myRecord] === #[2, 4, 6, #{a:1, b:2}]);
+
+// //Object.freeze() is shallow
+// //JSON.parseImmutable() - returns Records and Tuples
+
+// //Wrapper objects
+// let s = 'Hello World'; //primitive
+// console.log(s.length, s.toUpperCase() )
+
+// myTuple.pushed(77);
+// //returns a new Tuple 1, 2, 3, 77
+
+// //spread operator for editing~~~
+// //create new thing from the old
+// let rec = #{a:1, b:2, c:3};
+// let rec2 = #{...rec, b:4, d:77};
+// console.log(rec);
+// console.log(rec2);
+
+
+let people = [
+  { id: 1, name: 'Leonard', phd: true, partner: 'Penny' },
+  { id: 2, name: 'Howard', phd: false, partner: 'Bernadette' },
+  { id: 3, name: 'Sheldon', phd: true, partner: 'Amy' },
+  { id: 4, name: 'Raj', phd: true, partner: 'Cinnamon' },
+];
+let nums = [12, 34, 56, 78, 90];
+
+let nm = nums.map((number) => {
+  console.log(number);
+});
+let ppl = people.map(({ name: nm, partner: pt }) => {
+  console.log(nm, '&', pt);
+});
+
+fetch('http://127.0.0.1:5501/people.json')
+  .then((resp) => {
+    if (!resp.ok) throw new Error(resp.statusText);
+    return resp.json();
+  })
+  .then(([first, second, ...rest]) => {
+    //...rest MUST be the last argument for desctructuring
+    // rest[rest.length-1] would be the last element.
+    console.log(first);
+    console.log(second);
+  })
+  .catch(console.log);
