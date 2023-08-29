@@ -4697,30 +4697,92 @@ https://www.youtube.com/watch?v=8FYJfEHOuY0
 // dark = reducer(dark, 'LIGHTEN');
 // log(dark);
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'DARKEN':
-      if (state.agent === 'Archer' && state.turtleneckType === 'tactical') {
-        return {
-          ...state,
-          turtleneckBlackness: state.turtleneckBlackness + 20,
-        };
-      }
-      if (state.agent !== 'Archer') {
-        return state;
-      }
-    case 'LIGHTEN':
-      return state;
-  }
-  return state;
-};
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case 'DARKEN':
+//       if (state.agent === 'Archer' && state.turtleneckType === 'tactical') {
+//         return {
+//           ...state,
+//           turtleneckBlackness: state.turtleneckBlackness + 20,
+//         };
+//       }
+//       if (state.agent !== 'Archer') {
+//         return state;
+//       }
+//     case 'LIGHTEN':
+//       return state;
+//   }
+//   return state;
+// };
 
-let state = {
-  agent: 'Archer',
-  turtleneckType: 'tactical',
-  turtleneckBlackness: 100,
-};
-state = reducer(state, { type: 'DARKEN' });
-state = reducer(state, { type: 'DARKEN' });
-state = reducer(state, { type: 'DARKEN' });
-console.log(state);
+// let state = {
+//   agent: 'Archer',
+//   turtleneckType: 'tactical',
+//   turtleneckBlackness: 100,
+// };
+// state = reducer(state, { type: 'DARKEN' });
+// state = reducer(state, { type: 'DARKEN' });
+// state = reducer(state, { type: 'DARKEN' });
+// console.log(state);
+
+/**
+ * Currying vs Partial Application
+ * Closures
+ *   A function which returns a function that
+ *   can has access to the returned function's scope.
+ *   function example(param){
+ *     let a = 123;
+ *     return function(otherParam){
+ *       //both param and otherParam and a are available here
+ *     }
+ *   }
+ *
+ * Partial Application
+ *   Uses closures.
+ *   Returned function is partially applied to a new value,
+ *   meaning that the value passed to the original function
+ *   is already attached to the returned `partially applied` function
+ *
+ * Currying
+ *   The process of taking a multiple argument function and
+ *   breaking it up into a series of single argument partially
+//  *   applied functions.
+//  */
+// const log = console.log;
+
+// //Simple demo - the things we would want to curry
+// function bakeChocolateCupcakeWithVanilla(cakeType, cakeFlavor, icingType) {
+//   return `Made a ${cakeFlavour} ${cakeType} with ${icingType} icing.`;
+// }
+// function bakeVanillaCakeWithLemon(cakeType, cakeFlavor, icingType) {
+//   return `Made a ${cakeFlavour} ${cakeType} with ${icingType} icing.`;
+// }
+// //curry it
+// function bake(cakeType) {
+//   //partially applied
+//   return function (cakeFlavour) {
+//     //partially applied
+//     return function (icingType) {
+//       return `Made a ${cakeFlavour} ${cakeType} with ${icingType} icing.`;
+//     };
+//   };
+// }
+// let bakeCake = bake('cake');
+// let bakeCupcake = bake('cupcake');
+// let bakeMuffin = bake('muffin');
+
+// let chocCake = bakeCake('chocolate');
+// let vanillaCake = bakeCake('vanilla');
+// let chocCupcake = bakeCupcake('chocolate');
+// let carrotMuffin = bakeMuffin('carrot');
+
+// log(chocCake('strawberry'));
+// log(chocCake('vanilla'));
+// log(chocCupcake('chocolate'));
+// log(chocCupcake('orange'));
+
+// log(bake('cake')('chocolate')('vanilla'));
+// log(bake('cupcake')('chocolate')('cherry'));
+// log(bake('muffin')('carrot')('vanilla'));
+
+//More realistic ex
