@@ -4280,21 +4280,21 @@ Shallow Copying and chained shift()
 // toString(), valueOf()
 // parseInt(), parseFloat()
 // unary plus, logical NOT, addition operator, comparison operators
-let n = '56';
-console.log(-n, +n);
-//                              String,         Number,       Boolean
-let obj = { a: 1, b: 2 }; // '[object Object]'    NaN           true
-let emptyObj = {}; //       '[object Object]'     NaN             true
-let arr = [1, 2, 3]; //     '1,2,3'              NaN              true // [1] to Number would become 1
-                                                                  // If there is only one number in the array then 
-//                                                                   // that becomes the numeric conversion.
-let emptyArr = []; //       ''                   0              true
-let str = 'hello'; //       'hello'             NaN             true
-let emptyStr = ''; //         ''                 NaN           false   ('43'=>43, '0'=>0)
-let num = 1; //               '1'               1              true
-let zero = 0; //            '0'                 0               false
-let T = true; //            'true'              1               true
-let F = false; //            'false'             0               false
+// let n = '56';
+// console.log(-n, +n);
+// //                              String,         Number,       Boolean
+// let obj = { a: 1, b: 2 }; // '[object Object]'    NaN           true
+// let emptyObj = {}; //       '[object Object]'     NaN             true
+// let arr = [1, 2, 3]; //     '1,2,3'              NaN              true // [1] to Number would become 1
+//                                                                   // If there is only one number in the array then 
+// //                                                                   // that becomes the numeric conversion.
+// let emptyArr = []; //       ''                   0              true
+// let str = 'hello'; //       'hello'             NaN             true
+// let emptyStr = ''; //         ''                 NaN           false   ('43'=>43, '0'=>0)
+// let num = 1; //               '1'               1              true
+// let zero = 0; //            '0'                 0               false
+// let T = true; //            'true'              1               true
+// let F = false; //            'false'             0               false
 //  null    //               'null'              0              false
 //  undefined   //      'undefined'             NaN            false
 //  NaN       //             'NaN'             NaN             false
@@ -4310,8 +4310,8 @@ let F = false; //            'false'             0               false
  *
  */
 
-console.log(F + num);
-"234234".toLowerCase()
+// console.log(F + num);
+// "234234".toLowerCase()
 // Falsey values - false, 0, '', null, undefined, NaN
 // Truthy values - Everything else....
 // Boolean() != new Boolean(), String() != new String(), Number() != new Number()
@@ -4549,31 +4549,178 @@ console.log(F + num);
 // console.log(rec);
 // console.log(rec2);
 
+// Destructuring in arrays and fetch.
 
-let people = [
-  { id: 1, name: 'Leonard', phd: true, partner: 'Penny' },
-  { id: 2, name: 'Howard', phd: false, partner: 'Bernadette' },
-  { id: 3, name: 'Sheldon', phd: true, partner: 'Amy' },
-  { id: 4, name: 'Raj', phd: true, partner: 'Cinnamon' },
-];
-let nums = [12, 34, 56, 78, 90];
 
-let nm = nums.map((number) => {
-  console.log(number);
-});
-let ppl = people.map(({ name: nm, partner: pt }) => {
-  console.log(nm, '&', pt);
-});
+// let people = [
+//   { id: 1, name: 'Leonard', phd: true, partner: 'Penny' },
+//   { id: 2, name: 'Howard', phd: false, partner: 'Bernadette' },
+//   { id: 3, name: 'Sheldon', phd: true, partner: 'Amy' },
+//   { id: 4, name: 'Raj', phd: true, partner: 'Cinnamon' },
+// ];
+// let nums = [12, 34, 56, 78, 90];
 
-fetch('http://127.0.0.1:5501/people.json')
-  .then((resp) => {
-    if (!resp.ok) throw new Error(resp.statusText);
-    return resp.json();
-  })
-  .then(([first, second, ...rest]) => {
-    //...rest MUST be the last argument for desctructuring
-    // rest[rest.length-1] would be the last element.
-    console.log(first);
-    console.log(second);
-  })
-  .catch(console.log);
+// let nm = nums.map((number) => {
+//   console.log(number);
+// });
+// let ppl = people.map(({ name: nm, partner: pt }) => {
+//   console.log(nm, '&', pt);
+// });
+
+// fetch('http://127.0.0.1:5501/people.json')
+//   .then((resp) => {
+//     if (!resp.ok) throw new Error(resp.statusText);
+//     return resp.json();
+//   })
+//   .then(([first, second, ...rest]) => {
+//     //...rest MUST be the last argument for desctructuring
+//     // rest[rest.length-1] would be the last element.
+//     console.log(first);
+//     console.log(second);
+//     console.log(...rest);
+//   })
+//   .catch(console.log);
+
+
+
+
+// Proxies objects in JavaScript
+
+//Proxies
+// let objects = [
+//   { id: 123, name: 'Steve', age: 21 },
+//   { id: 456, name: 'Riley', age: -34 },
+//   { id: 789, name: 'Bree', age: 140 },
+// ];
+// objects = objects.map((person) => {
+//   return new Proxy(person, {
+//     get: function (target, prop, receiver) {
+//       if (prop in target) {
+//         if (prop === 'age') {
+//           if (target[prop] >= 0 && target[prop] <= 130) {
+//             return target[prop];
+//             // return Reflect.get(...arguments);
+//             // return Reflect.get(target, prop, receiver);
+//           } else {
+//             throw new RangeError('Age is too high or too low.');
+//           }
+//         }
+//       }
+//     },
+//     set: function (target, prop) {
+//       return true;
+//     },
+//   });
+// });
+
+// objects.forEach((person) => {
+//   try {
+//     person.age;
+//   } catch (err) {
+//     console.log(err.name, err.message);
+//   }
+// });
+
+//wrapper IIFE
+// let obj = (function(myObj){
+//   let handler = {
+//     get: function(target, prop){
+
+//     },
+//     set: function(target, prop){
+
+//     }
+//   }
+//   return new Proxy(myObj, handler);
+// })({ prop1: 'hello', prop2: 'goodbye' })
+
+// let obj = { prop1: 'hello', prop2: 'goodbye' };
+
+// let handler = {
+//   default: 'NO PROP',
+//   get: function (target, prop, receiver) {
+//     if (prop in target) {
+//       return target[prop].toUpperCase();
+//     } else {
+//       throw new TypeError('No such prop');
+//     }
+//   },
+//   set: function (target, prop, receiver) {
+//     if (prop in target) {
+//       return true;
+//     } else {
+//       throw new TypeError('No such property');
+//     }
+//   },
+// };
+// let proxy = new Proxy(obj, handler);
+
+// proxy.prop1 = '¡hola!';
+// proxy.prop3 = 'blah';
+// console.log(proxy.prop1);
+// console.log(proxy.prop2);
+
+// let f = new Proxy(function () {}, {
+//   apply: function (target, thisArg, args) {
+//     //target MUST be a callable function
+//     //args is the list of values being passed to the function
+//     //thisArg is the object considered 'this' for this function call
+//   },
+//   // has:
+//   // deleteProperty:
+// });
+
+
+// Reducer function 
+
+/*
+Context for non-Archer fans
+https://www.youtube.com/watch?v=4IUNc6yxp2g
+https://www.youtube.com/watch?v=8FYJfEHOuY0
+*/
+
+
+// const reducer = (state, action) => {
+//   if (action === 'DARKEN') {
+//     return state + 'er';
+//   }
+//   if (action === 'LIGHTEN') {
+//     return state.replace('er', '');
+//   }
+//   return state;
+// };
+
+// let dark = 'dark';
+// dark = reducer(dark, 'DARKEN');
+// log(dark);
+// dark = reducer(dark, 'LIGHTEN');
+// dark = reducer(dark, 'LIGHTEN');
+// log(dark);
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'DARKEN':
+      if (state.agent === 'Archer' && state.turtleneckType === 'tactical') {
+        return {
+          ...state,
+          turtleneckBlackness: state.turtleneckBlackness + 20,
+        };
+      }
+      if (state.agent !== 'Archer') {
+        return state;
+      }
+    case 'LIGHTEN':
+      return state;
+  }
+  return state;
+};
+
+let state = {
+  agent: 'Archer',
+  turtleneckType: 'tactical',
+  turtleneckBlackness: 100,
+};
+state = reducer(state, { type: 'DARKEN' });
+state = reducer(state, { type: 'DARKEN' });
+state = reducer(state, { type: 'DARKEN' });
+console.log(state);
